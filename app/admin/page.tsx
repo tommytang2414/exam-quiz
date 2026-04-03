@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 
 const VPS = 'http://18.139.210.59:5001'
 const ADMIN_EMAILS = ['tommytang2414@gmail.com', 'tommytang.cc@gmail.com']
+const ADMIN_PASSWORD = 'ccsp-admin-2026'
 
 interface Stats {
   active_codes: number
@@ -51,16 +52,18 @@ export default function AdminPage() {
     }
   }, [])
 
+  const [password, setPassword] = useState('')
+
   function handleLogin(e: React.FormEvent) {
     e.preventDefault()
-    if (ADMIN_EMAILS.includes(email.trim().toLowerCase())) {
-      const validEmail = email.trim().toLowerCase()
-      localStorage.setItem('ccsp-admin-email', validEmail)
+    const normalizedEmail = email.trim().toLowerCase()
+    if (ADMIN_EMAILS.map(e => e.toLowerCase()).includes(normalizedEmail) && password === ADMIN_PASSWORD) {
+      localStorage.setItem('ccsp-admin-email', normalizedEmail)
       setLoggedIn(true)
       setLoginError('')
       loadStats()
     } else {
-      setLoginError('Not authorized. Contact admin.')
+      setLoginError('Invalid credentials.')
     }
   }
 
@@ -145,6 +148,13 @@ export default function AdminPage() {
               value={email}
               onChange={e => setEmail(e.target.value)}
               placeholder="your@gmail.com"
+              className="code-input"
+            />
+            <input
+              type="password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
+              placeholder="Password"
               className="code-input"
             />
             {loginError && <p className="error-msg">{loginError}</p>}

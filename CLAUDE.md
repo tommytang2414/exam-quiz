@@ -99,22 +99,12 @@ users(id, exam, token, data, created_at, updated_at)
 
 **Code is name-assigned**: Each code is pre-assigned to a specific name (Tommy, Hailey, etc). Wrong name = 403 error.
 
-### Admin Authentication (Google SSO)
-1. Admin visits `/admin`
-2. Signs in with Google OAuth (NextAuth.js)
-3. Session token sent to VPS API as Bearer token
-4. VPS validates Google user ID against `admins` table
-5. If authorized → access granted
+### Admin Authentication
+Email + password login (stored in localStorage after login).
+- Allowed emails: `tommytang2414@gmail.com`, `tommytang.cc@gmail.com`
+- Password: `ccsp-admin-2026`
 
-**First-time setup**: After deploying, manually add admin via:
-```bash
-# Get current admin token from VPS logs or DB
-# Then add your Google ID as admin:
-curl -X POST http://18.139.210.59:5001/api/admin/add-admin \
-  -H "Authorization: Bearer <OLD_ADMIN_TOKEN>" \
-  -H "Content-Type: application/json" \
-  -d '{"google_id": "<YOUR_GOOGLE_ID>", "email": "your@gmail.com", "name": "Your Name"}'
-```
+Login sends `X-Admin-Email` header to VPS for validation.
 
 ## Activation Codes (name-assigned, exam-aware)
 
