@@ -142,11 +142,11 @@ export default function AdminPage() {
           <div>
             <h1 className="text-2xl font-bold text-slate-100">Exam Quiz Admin</h1>
             <p className="text-slate-500 text-sm mt-1">
-              {session.user?.email}
+              {session?.user?.email}
             </p>
           </div>
           <div className="flex gap-2 items-center">
-            {session.user?.image && (
+            {session?.user?.image && (
               <img src={session.user.image} alt="" className="w-8 h-8 rounded-full" />
             )}
             <button onClick={() => signOut()} className="logout-btn">Logout</button>
