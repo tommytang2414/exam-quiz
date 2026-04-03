@@ -4,7 +4,7 @@ Mobile-first MCQ practice app for CCSP/CISSP exam preparation with cloud sync an
 
 ## URLs
 - **App**: https://ccsp-quiz.vercel.app
-- **Admin Panel**: http://18.139.210.59:5001/admin.html
+- **Admin Panel**: https://ccsp-quiz.vercel.app/admin
 - **VPS Backend API**: http://18.139.210.59:5001
 
 ## Stack
@@ -99,6 +99,23 @@ users(id, exam, token, data, created_at, updated_at)
 
 **Code is name-assigned**: Each code is pre-assigned to a specific name (Tommy, Hailey, etc). Wrong name = 403 error.
 
+### Admin Authentication (Google SSO)
+1. Admin visits `/admin`
+2. Signs in with Google OAuth (NextAuth.js)
+3. Session token sent to VPS API as Bearer token
+4. VPS validates Google user ID against `admins` table
+5. If authorized → access granted
+
+**First-time setup**: After deploying, manually add admin via:
+```bash
+# Get current admin token from VPS logs or DB
+# Then add your Google ID as admin:
+curl -X POST http://18.139.210.59:5001/api/admin/add-admin \
+  -H "Authorization: Bearer <OLD_ADMIN_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{"google_id": "<YOUR_GOOGLE_ID>", "email": "your@gmail.com", "name": "Your Name"}'
+```
+
 ## Activation Codes (name-assigned, exam-aware)
 
 | Code | User | Exam |
@@ -106,12 +123,7 @@ users(id, exam, token, data, created_at, updated_at)
 | `ALPWBB36` | Tommy | CCSP |
 | `5KN3WTNX` | Hailey | CCSP |
 
-Generate more via admin panel (http://18.139.210.59:5001/admin.html) with admin token — each code requires a name assignment.
-
-## Admin Token
-```
-sbm1Sdkjb0WkUS2iG2FsOHbm_lfSmjDulhZPq3ilhgA
-```
+Generate more via admin panel (https://ccsp-quiz.vercel.app/admin) — each code requires a name assignment.
 
 ## Cloud Sync
 User progress stored in VPS DB `users.data` as JSON:
@@ -132,18 +144,29 @@ ssh -i "C:/Users/user/PycharmProjects/CryptoStrategy/mcp_server/LightsailDefault
 
 ### Restart Flask app
 ```bash
-systemctl --user restart flask-ccsp
-```
-
-### Check status
-```bash
-systemctl --user status flask-ccsp
+# Find PID and restart
+ps aux | grep app.py | grep -v grep
+kill <PID>
+cd /home/ubuntu/ccsp-quiz && nohup python3 app.py > /tmp/flask-ccsp.log 2>&1 &
 ```
 
 ### View logs
 ```bash
-tail -f /home/ubuntu/ccsp-quiz/flask.log
+tail -f /tmp/flask-ccsp.log
 ```
+
+### Add Admin (Google SSO)
+```bash
+# Using old admin token to add first Google admin
+curl -X POST http://18.139.210.59:5001/api/admin/add-admin \
+  -H "Authorization: Bearer <OLD_ADMIN_TOKEN>" \
+  -H "Content-Type: application/json" \
+  -d '{"google_id": "YOUR_GOOGLE_ID", "email": "your@gmail.com", "name": "Your Name"}'
+```
+
+### Database
+- Path: `/home/ubuntu/ccsp-quiz/auth.db` (SQLite)
+- Tables: `codes`, `users`, `admins`
 
 ## Question Parsing
 Textbank uses SINGLE-SPACE separation (no pipe `|`). Parsed by matching first 80 chars of question text.
