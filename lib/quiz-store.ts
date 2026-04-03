@@ -41,7 +41,7 @@ export function useQuizStore() {
     const savedExam = getSavedExam() as ExamType
     if (token) {
       ;(async () => {
-        const cloud = await fetchCloudData()
+        const cloud = await fetchCloudData(savedExam)
         if (cloud) {
           setWrongIds(new Set(cloud.wrongIds))
           setTotalAnswered(cloud.totalAnswered)
@@ -157,7 +157,7 @@ export function useQuizStore() {
       totalCorrect: nextCorrect,
       lastUpdated: Date.now(),
     })
-  }, [confirmed, current, wrongIds, totalAnswered, totalCorrect])
+  }, [confirmed, current, wrongIds, totalAnswered, totalCorrect, examType])
 
   const next = useCallback(() => {
     const idx = queue.indexOf(current!)

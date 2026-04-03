@@ -4,6 +4,14 @@
 // No more CORS/mixed-content issues
 const API = '/api'
 
+// Per-exam progress structure
+export interface ExamProgress {
+  wrongIds: number[]
+  totalAnswered: number
+  totalCorrect: number
+  lastUpdated: number
+}
+
 export interface CloudData {
   exam: string
   wrongIds: number[]
@@ -47,7 +55,8 @@ export function logout(): void {
   localStorage.removeItem('ccsp-name')
 }
 
-export async function fetchCloudData(): Promise<CloudData | null> {
+// Fetch raw data from backend (contains progress for all exams)
+async function fetchRawData(): Promise<Record<string, ExamProgress> | null> {
   const token = getToken()
   if (!token) return null
   try {
@@ -61,24 +70,56 @@ export async function fetchCloudData(): Promise<CloudData | null> {
     if (typeof data === 'string') {
       try { data = JSON.parse(data) } catch { return null }
     }
-    if (!data || typeof data.wrongIds === 'undefined') return null
-    return data as CloudData
+    return data as Record<string, ExamProgress> | null
   } catch {
     return null
+  }
+}
+
+export async function fetchCloudData(exam: string): Promise<CloudData | null> {
+  const raw = await fetchRawData()
+  if (!raw) return null
+
+  // Get progress for specified exam, fallback to first available or default
+  const examList = Object.keys(raw)
+  const targetExam = raw[exam] ? exam : (examList[0] || 'CCSP')
+  const prog = raw[targetExam]
+
+  if (!prog) return null
+
+  return {
+    exam: targetExam,
+    wrongIds: prog.wrongIds || [],
+    totalAnswered: prog.totalAnswered || 0,
+    totalCorrect: prog.totalCorrect || 0,
+    lastUpdated: prog.lastUpdated || 0,
   }
 }
 
 export async function saveCloudData(data: CloudData): Promise<void> {
   const token = getToken()
   if (!token) return
+
   try {
+    // Fetch current data to merge
+    const raw = await fetchRawData()
+    const current = raw || {}
+
+    // Update only the current exam's progress
+    current[data.exam] = {
+      wrongIds: data.wrongIds,
+      totalAnswered: data.totalAnswered,
+      totalCorrect: data.totalCorrect,
+      lastUpdated: data.lastUpdated,
+    }
+
     await fetch(`${API}/data`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${token}`,
       },
-      body: JSON.stringify(data),
+      body: JSON.stringify(current),
     })
   } catch {
     // offline — will retry next save
