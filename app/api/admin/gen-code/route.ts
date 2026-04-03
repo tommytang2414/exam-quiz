@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server'
 const VPS = 'http://18.139.210.59:5001'
 
 export async function POST(req: NextRequest) {
-  const adminEmail = req.headers.get('X-Admin-Email') || ''
+  const adminEmail = req.nextUrl.searchParams.get('admin') || ''
   const body = await req.json()
   try {
     const res = await fetch(`${VPS}/api/admin/gen-code`, {

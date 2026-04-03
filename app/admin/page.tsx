@@ -75,10 +75,11 @@ export default function AdminPage() {
 
   async function api(path: string, opts: RequestInit = {}) {
     const adminEmail = localStorage.getItem('ccsp-admin-email') || ''
-    const r = await fetch(API + path, {
+    const url = new URL(API + path, window.location.origin)
+    url.searchParams.set('admin', adminEmail)
+    const r = await fetch(url.toString(), {
       ...opts,
       headers: {
-        'X-Admin-Email': adminEmail,
         'Content-Type': 'application/json',
         ...opts.headers,
       },
