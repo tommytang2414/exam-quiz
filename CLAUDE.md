@@ -25,6 +25,44 @@ cd C:/Users/user/exam-quiz
 npx vercel --prod --yes
 ```
 
+## Vercel Best Practices
+
+### Deploy Sequence
+Vercel checks git author. If remote is already set to GitHub, deploy will fail.
+```bash
+cd C:/Users/user/exam-quiz
+npx vercel --prod --yes
+# No need to remove/add origin — exam-quiz has its own repo
+```
+
+### Keep Deployments Clean
+Old deployments accumulate and use bandwidth. After major changes:
+```bash
+# List deployments
+npx vercel ls
+
+# Remove old deployment (by full URL)
+echo "y" | npx vercel rm https://ccsp-quiz-XXXXX-tommytangcc-3823s-projects.vercel.app
+```
+
+### Avoid Over-Deploying
+Each deploy creates a new production deployment. Batch changes before deploying.
+- Don't `vercel --prod` after every small fix
+- Commit all changes first, then deploy once
+- Vercel auto-expires old deployments after 90 days (if no alias points to them)
+
+### Project Organization (Vercel Account: tommytangcc-3823)
+| Project | URL | Purpose |
+|---------|-----|---------|
+| exam-quiz | https://ccsp-quiz.vercel.app | Exam practice app |
+| exchange-website | https://winwinexchangehk.com | Win Win Exchange client site |
+| portfolio | https://portfolio-olive-one-30.vercel.app | Tommy portfolio |
+
+### Bandwidth Limits (Free Tier)
+- 100GB/month shared across all projects
+- Monitor in Vercel dashboard if concerned
+- This project (quiz app) uses minimal bandwidth (~1MB/month for typical use)
+
 ## Architecture
 
 ### Frontend (Vercel)
@@ -112,6 +150,20 @@ Textbank uses SINGLE-SPACE separation (no pipe `|`). Parsed by matching first 80
 `vps_api/rebuild_questions.py` — CA anchor algorithm for fixing corrupted options.
 
 ## Worklog
+
+### 2026-04-03 — Exam-Aware Backend + Vercel Cleanup
+
+**Changes:**
+- `cloud-sync.ts`: Per-exam progress tracking (`{ CCSP: {...}, CISSP: {...} }`)
+- VPS backend already had `exam` column — no backend changes needed
+- Exam selector dropdown on home screen
+
+**Vercel Cleanup:**
+- Deleted `winwin-demo` and `exchange-website-demo` projects
+- Deleted 16 old ccsp-quiz deployments (kept only latest)
+- Now: 3 projects, 1 ccsp-quiz deployment
+
+**Deploy**: `npx vercel --prod --yes` ✓
 
 ### 2026-04-03 — Restructure to Exam Quiz (CCSP/CISSP Centralized)
 
