@@ -65,7 +65,9 @@ def find_ca_words(ca_text):
         if i > 0 and w in stop_words and i > 2:
             stop_idx = i
             break
-    return words[:stop_idx]
+    result = words[:stop_idx]
+    # Limit to first 2 words to avoid anchor spanning partitions
+    return result[:2]
 
 
 def ca_anchor_pos(words, ca_words, n):
@@ -94,6 +96,26 @@ def ca_anchor_pos(words, ca_words, n):
     return (best[0], best[1]) if best else (-1, -1)
 
 
+def find_answer_partition(words, ca_words, n, splits):
+    """Find which partition index actually contains the full answer words."""
+    # The answer words might span across partitions. Find the partition
+    # that contains the LAST word of the answer.
+    if not ca_words:
+        return -1
+    # Find where answer words start in the words array
+    full_anchor = ' '.join(ca_words)
+    for start in range(n - len(ca_words) + 1):
+        seg = ' '.join(words[start:start + len(ca_words)]).lower()
+        if seg == full_anchor.lower():
+            # Answer words found at position 'start' to 'start + len(ca_words) - 1'
+            answer_end_pos = start + len(ca_words) - 1
+            # Find which partition contains answer_end_pos
+            for pi in range(len(splits) - 1):
+                if splits[pi] <= answer_end_pos < splits[pi + 1]:
+                    return pi
+    return -1
+
+
 def smart_partition(words, n, ca_text, answer_idx):
     """Find valid 4-way partition using CA anchor."""
     if n < 4:
@@ -109,8 +131,15 @@ def smart_partition(words, n, ca_text, answer_idx):
 
     for sp in all_splits(n):
         splits = [0] + sp + [n]
-        # Check if CA anchor is in the answer option
-        if not (splits[answer_idx] <= ca_pos < splits[answer_idx + 1]):
+        # Find which partition the answer is actually in
+        ans_part = find_answer_partition(words, ca_words[:ca_len], n, splits)
+        if ans_part < 0:
+            continue  # Can't find answer in any partition
+        # Check if CA anchor is in the answer option (expanded: allow boundary)
+        # Allow if anchor is at the start of answer partition OR spans into it
+        in_answer = (splits[ans_part] <= ca_pos < splits[ans_part + 1]) or \
+                    (ca_pos < splits[ans_part] and splits[ans_part] - ca_pos <= 2)
+        if not in_answer:
             continue
         parts = [' '.join(words[splits[i]:splits[i+1]]) for i in range(4)]
 
@@ -124,17 +153,24 @@ def smart_partition(words, n, ca_text, answer_idx):
         if skip:
             continue
 
-        # Verify anchor words are in the answer option (CONTAIN check, not start)
+        # Verify anchor words are in the answer option
+        # The anchor may span multiple partitions, so check if answer option STARTS with the anchor
+        # OR if the anchor is contained within (may span across partitions)
         opt_words = words[splits[answer_idx]:splits[answer_idx + 1]]
         opt_lower = ' '.join(opt_words).lower()
         anchor_phrase = ' '.join(ca_words[:ca_len])
-        if opt_lower.find(anchor_phrase) != 0:
+        # Check if option starts with anchor
+        if opt_lower.startswith(anchor_phrase):
+            pass  # Good
+        elif opt_lower.find(anchor_phrase) >= 0:
+            pass  # Anchor contained (may span partitions)
+        else:
             continue
 
         # Score: prefer balanced partitions
         lens = [splits[i + 1] - splits[i] for i in range(4)]
         bal = max(lens) - min(lens)
-        ans_size = lens[answer_idx]
+        ans_size = lens[ans_part]
         # Penalize if answer option is too small
         size_penalty = max(0, 3 - ans_size) * 5
         score = bal + size_penalty
@@ -182,6 +218,7 @@ output_lines = [
     '  options: string[]',
     '  answer: number // 0-based index',
     '  explanation?: string',
+    '  domain?: number // 1-6 CCSP domain',
     '}',
     '',
     'export const questions: Question[] = [',
@@ -199,6 +236,7 @@ for block in blocks[1:]:
         continue
 
     after_topic = m_q.group(3)
+    topic_num = int(m_q.group(2))  # Topic number (1-6)
 
     # Find Correct Answer and Explanation (search AFTER the question mark)
     qmark = after_topic.find('?')
@@ -247,13 +285,18 @@ for block in blocks[1:]:
     # Partition: try equal first, fall back to smart if result has obvious fragments
     if n >= 4:
         opts = equal_partition(words, n)
-        # Check if equal partition has OBVIOUS fragments (common words, not acronyms)
-        has_frags = any(
-            len(o.split()) == 1 and o.lower() in FRAGMENTS_LOWER
-            for o in opts
-        ) if opts else True
-        if has_frags:
-            opts = smart_partition(words, n, ca_for_anchor, answer_idx)
+        # Verify equal_partition result: answer should be in the answer_idx partition
+        # If not, try smart_partition
+        eq_opts_check = [' '.join(opts[i].split()).lower() for i in range(4)] if opts else []
+        ca_words_limited = ca_for_anchor.lower().split()[:2]
+        if eq_opts_check and ca_words_limited:
+            ans_opt_text = eq_opts_check[answer_idx]
+            ca_phrase = ' '.join(ca_words_limited)
+            if ans_opt_text.find(ca_phrase) < 0:
+                # Answer not in correct partition, try smart_partition
+                opts_sp = smart_partition(words, n, ca_for_anchor, answer_idx)
+                if opts_sp:
+                    opts = opts_sp
         if opts is None:
             opts = equal_partition(words, n)
     else:
@@ -294,10 +337,12 @@ for block in blocks[1:]:
         '    text: "{text}",\n'
         '    options: ["{opts}"],\n'
         '    answer: {ans},\n'
-        '    explanation: "{expl}"\n'
+        '    explanation: "{expl}",\n'
+        '    domain: {domain}\n'
         '  }},'
     ).format(
         id=qid,
+        domain=topic_num,
         text=text_esc,
         opts='", "'.join(opts_esc),
         ans=answer_idx,

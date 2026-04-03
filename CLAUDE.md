@@ -164,17 +164,25 @@ Textbank uses SINGLE-SPACE separation (no pipe `|`). Parsed by matching first 80
 
 ## Worklog
 
-### 2026-04-03 — Exam-Aware Backend + Vercel Cleanup
+### 2026-04-04 — CCSP Question Bank Full Fix & Domain Categorization
 
 **Changes:**
-- `cloud-sync.ts`: Per-exam progress tracking (`{ CCSP: {...}, CISSP: {...} }`)
-- VPS backend already had `exam` column — no backend changes needed
-- Exam selector dropdown on home screen
+- Regenerated `lib/questions/ccsp.ts` from original `CCSP questionbank.txt`
+- Removed all 174 `xmexam.taobao.com` garbage text occurrences
+- Fixed 11 questions with split/malformed options (Q353, Q813, Q317, Q407, Q43, Q240, Q825, Q1125, Q1398, Q434, Q968)
+- Added `domain` field (1-6) to all 1482 questions
 
-**Vercel Cleanup:**
-- Deleted `winwin-demo` and `exchange-website-demo` projects
-- Deleted 16 old ccsp-quiz deployments (kept only latest)
-- Now: 3 projects, 1 ccsp-quiz deployment
+**Domain Distribution:**
+- Domain 1 (Cloud Concepts, Architecture, Design): 254 questions
+- Domain 2 (Cloud Data Security): 293 questions
+- Domain 3 (Cloud Platform & Infrastructure Security): 252 questions
+- Domain 4 (Cloud Application Security): 251 questions
+- Domain 5 (Cloud Security Operations): 240 questions
+- Domain 6 (Legal, Risk, and Compliance): 192 questions
+
+**Scripts:**
+- `regenerate_ccsp.py` — regenerates ccsp.ts from textbank using CA anchor algorithm
+- `apply_all_fixes.py` — applies known manual fixes to regenerated output
 
 **Deploy**: `npx vercel --prod --yes` ✓
 
