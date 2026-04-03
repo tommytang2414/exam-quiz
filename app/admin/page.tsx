@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 
-const VPS = 'http://18.139.210.59:5001'
+const API = '/api'
 const ADMIN_EMAILS = ['tommytang2414@gmail.com', 'tommytang.cc@gmail.com']
 const ADMIN_PASSWORD = 'ccsp-admin-2026'
 
@@ -75,7 +75,7 @@ export default function AdminPage() {
 
   async function api(path: string, opts: RequestInit = {}) {
     const adminEmail = localStorage.getItem('ccsp-admin-email') || ''
-    const r = await fetch(VPS + path, {
+    const r = await fetch(API + path, {
       ...opts,
       headers: {
         'X-Admin-Email': adminEmail,

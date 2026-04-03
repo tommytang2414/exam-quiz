@@ -3,11 +3,14 @@ import { NextRequest, NextResponse } from 'next/server'
 const VPS = 'http://18.139.210.59:5001'
 
 export async function GET(req: NextRequest) {
-  const token = req.headers.get('Authorization') || ''
+  const adminEmail = req.headers.get('X-Admin-Email') || ''
   const exam = req.nextUrl.searchParams.get('exam') || 'CCSP'
   try {
     const res = await fetch(`${VPS}/api/admin/codes?exam=${exam}`, {
-      headers: { 'Authorization': token },
+      headers: {
+        'X-Admin-Email': adminEmail,
+        'Content-Type': 'application/json',
+      },
     })
     const data = await res.json()
     return NextResponse.json(data)
