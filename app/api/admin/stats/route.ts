@@ -4,6 +4,8 @@ const VPS = 'http://18.139.210.59:5001'
 
 export async function GET(req: NextRequest) {
   const adminEmail = req.headers.get('X-Admin-Email') || ''
+  const debug = { received: adminEmail, headers: Object.fromEntries(req.headers.entries()) }
+  console.log('[/api/admin/stats] X-Admin-Email:', adminEmail, 'All headers:', JSON.stringify(debug))
   try {
     const res = await fetch(`${VPS}/api/admin/stats`, {
       headers: {
@@ -12,7 +14,7 @@ export async function GET(req: NextRequest) {
       },
     })
     const data = await res.json()
-    return NextResponse.json(data)
+    return NextResponse.json({ ...data, _debug: debug })
   } catch (e: any) {
     return NextResponse.json({ error: e.message }, { status: 500 })
   }
