@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 
-const API = 'http://18.139.210.59:5001'
+const API = ''
 
 interface Stats {
   active_codes: number
