@@ -20,6 +20,7 @@ interface User {
   id: string
   exam: string
   created_at: number
+  name: string
 }
 
 interface AllStats {
@@ -238,6 +239,7 @@ export default function AdminPage() {
               <table className="users-table">
                 <thead>
                   <tr>
+                    <th>Name</th>
                     <th>User ID</th>
                     <th>Exam</th>
                     <th>Registered</th>
@@ -246,6 +248,7 @@ export default function AdminPage() {
                 <tbody>
                   {users.map(u => (
                     <tr key={u.id}>
+                      <td>{u.name}</td>
                       <td className="mono">{u.id}</td>
                       <td>{u.exam}</td>
                       <td>{new Date(u.created_at * 1000).toLocaleDateString()}</td>
