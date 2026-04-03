@@ -101,21 +101,21 @@ def generate_code(exam, name, length=8):
                 return code
 
 def admin_require():
+    # Check X-Admin-Email header (hardcoded email whitelist)
+    admin_email = request.headers.get('X-Admin-Email', '')
+    allowed = ['tommytang2414@gmail.com', 'tommytang.cc@gmail.com']
+    if admin_email.lower() in [e.lower() for e in allowed]:
+        return True
+    # Check old Bearer token (backwards compatibility)
     auth = request.headers.get('Authorization', '')
-    if not auth.startswith('Bearer '):
-        return None
-    admin_token = auth[7:]
-    with get_db() as db:
-        cur = db.cursor()
-        # Check old static admin token (for backwards compatibility)
-        cur.execute('SELECT token FROM users WHERE id = ?', ('admin',))
-        row = cur.fetchone()
-        if row and admin_token == row['token']:
-            return True
-        # Check Google user ID (from NextAuth SSO)
-        cur.execute('SELECT email FROM admins WHERE google_id = ?', (admin_token,))
-        if cur.fetchone():
-            return True
+    if auth.startswith('Bearer '):
+        admin_token = auth[7:]
+        with get_db() as db:
+            cur = db.cursor()
+            cur.execute('SELECT token FROM users WHERE id = ?', ('admin',))
+            row = cur.fetchone()
+            if row and admin_token == row['token']:
+                return True
     return None
 
 # Static files

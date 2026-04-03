@@ -1,9 +1,9 @@
 'use client'
 
-import { useSession, signIn, signOut } from 'next-auth/react'
 import { useState, useEffect } from 'react'
 
 const VPS = 'http://18.139.210.59:5001'
+const ADMIN_EMAILS = ['tommytang2414@gmail.com', 'tommytang.cc@gmail.com']
 
 interface Stats {
   active_codes: number
@@ -29,7 +29,9 @@ interface AllStats {
 }
 
 export default function AdminPage() {
-  const { data: session, status } = useSession()
+  const [loggedIn, setLoggedIn] = useState(false)
+  const [email, setEmail] = useState('')
+  const [loginError, setLoginError] = useState('')
   const [activeTab, setActiveTab] = useState<'stats' | 'codes' | 'users'>('stats')
   const [stats, setStats] = useState<AllStats | null>(null)
   const [codes, setCodes] = useState<Code[]>([])
@@ -41,22 +43,39 @@ export default function AdminPage() {
   const [genMsg, setGenMsg] = useState('')
 
   useEffect(() => {
-    if (status === 'authenticated') {
+    const saved = localStorage.getItem('ccsp-admin-email')
+    if (saved && ADMIN_EMAILS.includes(saved)) {
+      setEmail(saved)
+      setLoggedIn(true)
       loadStats()
     }
-  }, [status])
+  }, [])
 
-  useEffect(() => {
-    if (status === 'authenticated' && activeTab === 'codes') loadCodes()
-    if (status === 'authenticated' && activeTab === 'users') loadUsers()
-  }, [status, activeTab, selectedExam])
+  function handleLogin(e: React.FormEvent) {
+    e.preventDefault()
+    if (ADMIN_EMAILS.includes(email.trim().toLowerCase())) {
+      const validEmail = email.trim().toLowerCase()
+      localStorage.setItem('ccsp-admin-email', validEmail)
+      setLoggedIn(true)
+      setLoginError('')
+      loadStats()
+    } else {
+      setLoginError('Not authorized. Contact admin.')
+    }
+  }
+
+  function handleLogout() {
+    localStorage.removeItem('ccsp-admin-email')
+    setLoggedIn(false)
+    setEmail('')
+  }
 
   async function api(path: string, opts: RequestInit = {}) {
-    const token = (session?.user as any)?.id || ''
+    const adminEmail = localStorage.getItem('ccsp-admin-email') || ''
     const r = await fetch(VPS + path, {
       ...opts,
       headers: {
-        'Authorization': `Bearer ${token}`,
+        'X-Admin-Email': adminEmail,
         'Content-Type': 'application/json',
         ...opts.headers,
       },
@@ -91,6 +110,12 @@ export default function AdminPage() {
     }
   }
 
+  useEffect(() => {
+    if (!loggedIn) return
+    if (activeTab === 'codes') loadCodes()
+    if (activeTab === 'users') loadUsers()
+  }, [loggedIn, activeTab, selectedExam])
+
   async function handleGenerate(e: React.FormEvent) {
     e.preventDefault()
     if (!genName.trim()) { setGenMsg('Please enter a name'); return }
@@ -108,25 +133,23 @@ export default function AdminPage() {
     }
   }
 
-  if (status === 'loading') {
-    return (
-      <main className="admin-screen">
-        <div className="login-box">
-          <p className="login-sub">Loading...</p>
-        </div>
-      </main>
-    )
-  }
-
-  if (status === 'unauthenticated') {
+  if (!loggedIn) {
     return (
       <main className="admin-screen">
         <div className="login-box">
           <h1 className="login-title">Admin Login</h1>
-          <p className="login-sub">Sign in with Google to access the admin panel</p>
-          <button onClick={() => signIn('google')} className="start-btn">
-            Sign in with Google
-          </button>
+          <p className="login-sub">Enter your admin email</p>
+          <form onSubmit={handleLogin} style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <input
+              type="email"
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              placeholder="your@gmail.com"
+              className="code-input"
+            />
+            {loginError && <p className="error-msg">{loginError}</p>}
+            <button type="submit" className="start-btn">Sign In</button>
+          </form>
         </div>
       </main>
     )
@@ -141,16 +164,9 @@ export default function AdminPage() {
         <div className="admin-header">
           <div>
             <h1 className="text-2xl font-bold text-slate-100">Exam Quiz Admin</h1>
-            <p className="text-slate-500 text-sm mt-1">
-              {session?.user?.email}
-            </p>
+            <p className="text-slate-500 text-sm mt-1">{email}</p>
           </div>
-          <div className="flex gap-2 items-center">
-            {session?.user?.image && (
-              <img src={session.user.image} alt="" className="w-8 h-8 rounded-full" />
-            )}
-            <button onClick={() => signOut()} className="logout-btn">Logout</button>
-          </div>
+          <button onClick={handleLogout} className="logout-btn">Logout</button>
         </div>
 
         <div className="tab-bar">
@@ -267,17 +283,12 @@ export default function AdminPage() {
         .login-box { background: rgba(30,41,59,0.8); border: 1px solid rgba(71,85,105,0.5); border-radius: 1.25rem; padding: 2rem; width: 100%; max-width: 360px; margin: 3rem auto; display: flex; flex-direction: column; gap: 1rem; }
         .login-title { font-size: 1.25rem; font-weight: 700; color: #f1f5f9; text-align: center; }
         .login-sub { color: #64748b; font-size: 0.875rem; text-align: center; }
+        .code-input { width: 100%; padding: 0.875rem 1rem; border-radius: 0.875rem; border: 1px solid rgba(99,102,241,0.4); background: rgba(15,23,42,0.8); color: #f1f5f9; font-size: 1rem; font-family: ui-monospace, monospace; outline: none; }
         .start-btn { width: 100%; background: #4f46e5; color: white; font-weight: 600; padding: 0.875rem; border-radius: 0.875rem; border: none; cursor: pointer; font-size: 1rem; }
         .start-btn:hover { background: #6366f1; }
         .error-msg { background: rgba(127,29,29,0.4); border: 1px solid rgba(220,38,38,0.4); border-radius: 0.5rem; padding: 0.75rem; color: #f87171; font-size: 0.875rem; }
         .success-msg { background: rgba(6,78,59,0.4); border: 1px solid rgba(16,185,129,0.4); border-radius: 0.5rem; padding: 0.75rem; color: #6ee7b7; font-size: 0.875rem; white-space: pre-wrap; margin-top: 0.75rem; }
         .logout-btn { background: rgba(30,41,59,0.6); color: #64748b; border: 1px solid rgba(71,85,105,0.4); border-radius: 0.5rem; padding: 0.3rem 0.75rem; font-size: 0.75rem; cursor: pointer; }
-        .flex { display: flex; }
-        .gap-2 { gap: 0.5rem; }
-        .items-center { align-items: center; }
-        .w-8 { width: 2rem; }
-        .h-8 { height: 2rem; }
-        .rounded-full { border-radius: 9999px; }
         .tab-bar { display: flex; gap: 0.25rem; background: rgba(15,23,42,0.6); padding: 0.25rem; border-radius: 0.75rem; margin-bottom: 1.5rem; }
         .tab { padding: 0.5rem 1rem; border-radius: 0.5rem; font-size: 0.875rem; font-weight: 500; color: #64748b; cursor: pointer; border: none; background: none; }
         .tab.active { background: rgba(79,70,229,0.3); color: #a5b4fc; }
