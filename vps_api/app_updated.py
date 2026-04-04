@@ -272,6 +272,7 @@ def list_users():
             'exam': r['exam'],
             'created_at': r['created_at'],
             'name': r['name'] or '-',
+            'token': r['token'],
             'totalAnswered': user_data.get('totalAnswered', 0),
             'totalCorrect': user_data.get('totalCorrect', 0),
             'wrongCount': len(user_data.get('wrongIds', [])),
