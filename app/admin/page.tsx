@@ -114,10 +114,28 @@ export default function AdminPage() {
     }
   }
 
+  async function handleRevokeUser(userId: string, exam: string) {
+    if (!confirm('Revoke this user? Their code will be freed for reuse.')) return
+    try {
+      const res = await api('/api/admin/revoke-user', {
+        method: 'POST',
+        body: JSON.stringify({ user_id: userId, exam }),
+      })
+      if (res.error) alert('Error: ' + res.error)
+      else {
+        loadUsers()
+        loadStats()
+      }
+    } catch (e: any) {
+      alert('Error: ' + e.message)
+    }
+  }
+
   useEffect(() => {
     if (!loggedIn) return
     if (activeTab === 'codes') loadCodes()
     if (activeTab === 'users') loadUsers()
+    if (activeTab === 'stats') loadStats()
   }, [loggedIn, activeTab, selectedExam])
 
   async function handleGenerate(e: React.FormEvent) {
@@ -130,8 +148,11 @@ export default function AdminPage() {
         body: JSON.stringify({ exam: genExam, name: genName.trim(), count: parseInt(genCount) || 1 }),
       })
       if (res.error) { setGenMsg('Error: ' + res.error) }
-      else { setGenMsg(`Generated: ${res.codes.join('  ')}`) }
-      loadCodes()
+      else {
+        setGenMsg(`Generated: ${res.codes.join('  ')}`)
+        loadCodes()
+        loadStats()
+      }
     } catch (e: any) {
       setGenMsg('Error: ' + e.message)
     }
@@ -263,6 +284,7 @@ export default function AdminPage() {
                     <th>User ID</th>
                     <th>Exam</th>
                     <th>Registered</th>
+                    <th></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -272,6 +294,14 @@ export default function AdminPage() {
                       <td className="mono">{u.id}</td>
                       <td>{u.exam}</td>
                       <td>{new Date(u.created_at * 1000).toLocaleDateString()}</td>
+                      <td>
+                        <button
+                          onClick={() => handleRevokeUser(u.id, u.exam)}
+                          className="revoke-btn"
+                        >
+                          Revoke
+                        </button>
+                      </td>
                     </tr>
                   ))}
                 </tbody>
@@ -328,6 +358,8 @@ export default function AdminPage() {
         .users-table td { padding: 0.625rem 0.75rem; border-bottom: 1px solid rgba(30,41,59,0.5); color: #94a3b8; }
         .mono { font-family: ui-monospace, monospace; font-size: 0.75rem; }
         .empty-msg { color: #475569; font-size: 0.875rem; padding: 1rem 0; }
+        .revoke-btn { background: rgba(220,38,38,0.3); color: #f87171; border: 1px solid rgba(220,38,38,0.4); border-radius: 0.375rem; padding: 0.25rem 0.625rem; font-size: 0.7rem; cursor: pointer; }
+        .revoke-btn:hover { background: rgba(220,38,38,0.5); }
         .mt-1 { margin-top: 0.25rem; }
         .text-2xl { font-size: 1.5rem; }
         .font-bold { font-weight: 700; }

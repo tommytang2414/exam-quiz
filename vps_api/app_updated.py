@@ -268,6 +268,30 @@ def list_users():
         'name': r['name'] or '-'
     } for r in rows]})
 
+@app.route('/api/admin/revoke-user', methods=['POST'])
+def revoke_user():
+    if not admin_require():
+        return jsonify({'error': 'Unauthorized'}), 401
+    body = request.json
+    user_id = body.get('user_id')
+    exam = body.get('exam', 'CCSP')
+    if not user_id:
+        return jsonify({'error': 'user_id required'}), 400
+    with get_db() as db:
+        # Get user's token
+        cur = db.cursor()
+        cur.execute('SELECT token FROM users WHERE id = ? AND exam = ?', (user_id, exam))
+        row = cur.fetchone()
+        if not row:
+            return jsonify({'error': 'User not found'}), 404
+        token = row['token']
+        # Delete user
+        db.execute('DELETE FROM users WHERE id = ? AND exam = ?', (user_id, exam))
+        # Free up the code they used
+        db.execute('UPDATE codes SET used_by = NULL, used_at = NULL WHERE used_by = ? AND exam = ?', (user_id, exam))
+        db.commit()
+    return jsonify({'ok': True, 'freed_token': token})
+
 @app.route('/api/admin/stats', methods=['GET'])
 def stats():
     if not admin_require():
