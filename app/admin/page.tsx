@@ -23,6 +23,9 @@ interface User {
   exam: string
   created_at: number
   name: string
+  totalAnswered: number
+  totalCorrect: number
+  wrongCount: number
 }
 
 interface AllStats {
@@ -282,8 +285,10 @@ export default function AdminPage() {
                   <tr>
                     <th>Name</th>
                     <th>User ID</th>
-                    <th>Exam</th>
-                    <th>Registered</th>
+                    <th>Answered</th>
+                    <th>Correct</th>
+                    <th>Wrong</th>
+                    <th>Score</th>
                     <th></th>
                   </tr>
                 </thead>
@@ -291,9 +296,11 @@ export default function AdminPage() {
                   {users.map(u => (
                     <tr key={u.id}>
                       <td>{u.name}</td>
-                      <td className="mono">{u.id}</td>
-                      <td>{u.exam}</td>
-                      <td>{new Date(u.created_at * 1000).toLocaleDateString()}</td>
+                      <td className="mono">{u.id.substring(0, 8)}...</td>
+                      <td>{u.totalAnswered}</td>
+                      <td>{u.totalCorrect}</td>
+                      <td>{u.wrongCount}</td>
+                      <td>{u.totalAnswered > 0 ? Math.round(u.totalCorrect / u.totalAnswered * 100) : 0}%</td>
                       <td>
                         <button
                           onClick={() => handleRevokeUser(u.id, u.exam)}

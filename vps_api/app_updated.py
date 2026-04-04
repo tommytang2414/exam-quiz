@@ -254,19 +254,29 @@ def list_users():
     with get_db() as db:
         cur = db.cursor()
         cur.execute('''
-            SELECT u.id, u.exam, u.created_at, c.name
+            SELECT u.id, u.exam, u.created_at, u.data, c.name
             FROM users u
             LEFT JOIN codes c ON c.used_by = u.id AND c.exam = u.exam
             WHERE u.exam = ? AND u.id != ?
             ORDER BY u.created_at DESC
         ''', (exam, 'admin'))
         rows = cur.fetchall()
-    return jsonify({'users': [{
-        'id': r['id'],
-        'exam': r['exam'],
-        'created_at': r['created_at'],
-        'name': r['name'] or '-'
-    } for r in rows]})
+    users = []
+    for r in rows:
+        try:
+            user_data = json.loads(r['data']) if r['data'] else {}
+        except:
+            user_data = {}
+        users.append({
+            'id': r['id'],
+            'exam': r['exam'],
+            'created_at': r['created_at'],
+            'name': r['name'] or '-',
+            'totalAnswered': user_data.get('totalAnswered', 0),
+            'totalCorrect': user_data.get('totalCorrect', 0),
+            'wrongCount': len(user_data.get('wrongIds', [])),
+        })
+    return jsonify({'users': users})
 
 @app.route('/api/admin/revoke-user', methods=['POST'])
 def revoke_user():
