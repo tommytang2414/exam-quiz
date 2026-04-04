@@ -8,7 +8,7 @@ Mobile-first MCQ practice app for CCSP/CISSP exam preparation with cloud sync an
 - **VPS Backend API**: http://18.139.210.59:5001
 
 ## Stack
-- Next.js 14 (App Router), TypeScript, Tailwind CSS v3 + custom component CSS
+- Next.js 14 (App Router), TypeScript, Tailwind CSS v3 + Geist font
 - Flask API on AWS Lightsail VPS (Python)
 - SQLite database on VPS
 - Vercel API routes as proxy (bypasses CORS)
@@ -87,6 +87,7 @@ Each deploy creates a new production deployment. Batch changes before deploying.
 ```sql
 codes(id, exam, code, used_by, used_at, created_at)
 users(id, exam, token, data, created_at, updated_at)
+admins(google_id, email, name, added_at)  -- legacy, now uses email whitelist
 ```
 
 ## Authentication Flow
@@ -127,42 +128,55 @@ User progress stored in VPS DB `users.data` as JSON:
 
 ## VPS Management
 
-### Connect
+**SSH Key:** `C:/Users/user/PycharmProjects/CryptoStrategy/mcp_server/LightsailDefaultKey-ap-southeast-1.pem`
+
 ```bash
 ssh -i "C:/Users/user/PycharmProjects/CryptoStrategy/mcp_server/LightsailDefaultKey-ap-southeast-1.pem" ubuntu@18.139.210.59
 ```
 
-### Restart Flask app
+**Restart Flask:**
 ```bash
-# Find PID and restart
 ps aux | grep app.py | grep -v grep
 kill <PID>
 cd /home/ubuntu/ccsp-quiz && nohup python3 app.py > /tmp/flask-ccsp.log 2>&1 &
 ```
 
-### View logs
-```bash
-tail -f /tmp/flask-ccsp.log
-```
+**View logs:** `tail -f /tmp/flask-ccsp.log`
 
-### Add Admin (Google SSO)
-```bash
-# Using old admin token to add first Google admin
-curl -X POST http://18.139.210.59:5001/api/admin/add-admin \
-  -H "Authorization: Bearer <OLD_ADMIN_TOKEN>" \
-  -H "Content-Type: application/json" \
-  -d '{"google_id": "YOUR_GOOGLE_ID", "email": "your@gmail.com", "name": "Your Name"}'
-```
-
-### Database
-- Path: `/home/ubuntu/ccsp-quiz/auth.db` (SQLite)
-- Tables: `codes`, `users`, `admins`
+**Database:** `/home/ubuntu/ccsp-quiz/auth.db` (SQLite)
 
 ## Question Parsing
 Textbank uses SINGLE-SPACE separation (no pipe `|`). Parsed by matching first 80 chars of question text.
 `vps_api/rebuild_questions.py` — CA anchor algorithm for fixing corrupted options.
 
 ## Changelog
+
+### 2026-04-05 — Admin Panel Enhanced + Email Auth
+
+**Admin Panel (https://ccsp-quiz.vercel.app/admin):**
+- Stats tab: Shows users, codes generated, codes used, unused per exam
+- Codes tab: Generate activation codes with name assignment, shows used/unused status
+- Users tab: Shows user name, ID (shortened), answered/correct/wrong counts, score %, revoke button
+
+**Admin Authentication:**
+- Replaced Google SSO (wasn't working) with email + password
+- Allowed emails: `tommytang2414@gmail.com`, `tommytang.cc@gmail.com`
+- Password: `ccsp-admin-2026`
+- Uses query param `?admin=email` instead of header (Vercel strips custom headers)
+
+**API Proxy Routes:**
+- `/api/admin/stats` — stats by exam
+- `/api/admin/codes?exam=CCSP` — all codes for exam
+- `/api/admin/users?exam=CCSP` — all users with progress data
+- `/api/admin/gen-code` — POST, generate new codes
+- `/api/admin/revoke-user` — POST, delete user + free their code
+
+**VPS Endpoints:**
+- `X-Admin-Email` header checked against whitelist
+- Users query includes `u.data` (JSON progress) parsed for stats
+- Revoke deletes user and frees their code
+
+**Deploy:** `npx vercel --prod --yes` ✓ | VPS restarted ✓
 
 ### 2026-04-05 — Q78 Audit + fix_overlaps() Attempt (abandoned)
 
