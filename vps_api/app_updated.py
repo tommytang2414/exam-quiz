@@ -254,7 +254,7 @@ def list_users():
     with get_db() as db:
         cur = db.cursor()
         cur.execute('''
-            SELECT u.id, u.exam, u.created_at, u.data, c.name
+            SELECT u.id, u.exam, u.created_at, u.data, u.token, c.name
             FROM users u
             LEFT JOIN codes c ON c.used_by = u.id AND c.exam = u.exam
             WHERE u.exam = ? AND u.id != ?
