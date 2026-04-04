@@ -299,7 +299,16 @@ export default function AdminPage() {
                     <tr key={u.id}>
                       <td>{u.name}</td>
                       <td className="mono" title={u.id}>{u.id.substring(0, 8)}...</td>
-                      <td className="mono token-cell" title={u.token}>{u.token.substring(0, 12)}...</td>
+                      <td className="mono token-cell">
+                        <span title={u.token}>{u.token.substring(0, 12)}...</span>
+                        <button
+                          onClick={() => navigator.clipboard.writeText(u.token)}
+                          className="copy-btn"
+                          title="Copy token"
+                        >
+                          Copy
+                        </button>
+                      </td>
                       <td>{u.totalAnswered}</td>
                       <td>{u.totalCorrect}</td>
                       <td>{u.wrongCount}</td>
@@ -370,7 +379,9 @@ export default function AdminPage() {
         .empty-msg { color: #475569; font-size: 0.875rem; padding: 1rem 0; }
         .revoke-btn { background: rgba(220,38,38,0.3); color: #f87171; border: 1px solid rgba(220,38,38,0.4); border-radius: 0.375rem; padding: 0.25rem 0.625rem; font-size: 0.7rem; cursor: pointer; }
         .revoke-btn:hover { background: rgba(220,38,38,0.5); }
-        .token-cell { color: #64748b; }
+        .token-cell { color: #64748b; display: flex; align-items: center; gap: 0.5rem; }
+        .copy-btn { background: rgba(79,70,229,0.3); color: #a5b4fc; border: 1px solid rgba(79,70,229,0.4); border-radius: 0.25rem; padding: 0.125rem 0.5rem; font-size: 0.65rem; cursor: pointer; }
+        .copy-btn:hover { background: rgba(79,70,229,0.5); }
         .mt-1 { margin-top: 0.25rem; }
         .text-2xl { font-size: 1.5rem; }
         .font-bold { font-weight: 700; }
