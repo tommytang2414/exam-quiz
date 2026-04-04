@@ -8,7 +8,7 @@ Mobile-first MCQ practice app for CCSP/CISSP exam preparation with cloud sync an
 - **VPS Backend API**: http://18.139.210.59:5001
 
 ## Stack
-- Next.js 14 (App Router), TypeScript, pure CSS
+- Next.js 14 (App Router), TypeScript, Tailwind CSS v3 + custom component CSS
 - Flask API on AWS Lightsail VPS (Python)
 - SQLite database on VPS
 - Vercel API routes as proxy (bypasses CORS)
@@ -162,7 +162,38 @@ curl -X POST http://18.139.210.59:5001/api/admin/add-admin \
 Textbank uses SINGLE-SPACE separation (no pipe `|`). Parsed by matching first 80 chars of question text.
 `vps_api/rebuild_questions.py` — CA anchor algorithm for fixing corrupted options.
 
-## Worklog
+## Changelog
+
+### 2026-04-05 — Full App Redesign (Tailwind + Components + Domain Filter)
+
+**Phase 1 — Infrastructure:**
+- Installed `tailwindcss@^3`, `postcss`, `autoprefixer`, `geist` npm packages
+- Created `tailwind.config.ts` (custom theme, Geist font variable)
+- Created `postcss.config.js`
+- Updated `app/layout.tsx` with GeistSans font
+- Rewrote `app/globals.css`: replaced ~430 lines of hand-written utilities with Tailwind directives + component CSS (~220 lines)
+- Deleted duplicate utilities: `flex`, `gap-*`, `p-*`, `text-*`, `font-*` etc — now handled by Tailwind
+
+**Phase 2 — Component Extraction:**
+- Extracted `ProgressRing` to `components/ProgressRing.tsx`
+- Created `components/screens/` with 5 screen components: LoginScreen, HomeScreen, QuizScreen, DoneScreen, ReviewScreen
+- Created `components/screens/index.ts` barrel
+- Created `lib/utils.ts` (getGreeting, SESSION_GOALS, CCSP_DOMAINS)
+- Slimmed `app/page.tsx` to ~20-line router
+
+**Phase 3 — Domain Filtering:**
+- Added `selectedDomains: number[]` + `setSelectedDomains` to quiz-store
+- `startQuiz()` and `goReview()` filter by selected domains
+- Domain filter D1-D6 chips in HomeScreen with multi-select
+
+**Phase 4 — Visual Redesign:**
+- **HomeScreen**: gradient stroke progress ring, 3-column stat cards with borders, exam selector cleaned up
+- **QuizScreen**: question card with domain badge, 48px+ touch targets, circle letter badges, green glow on correct, red shake animation on wrong, sticky bottom "Next" button with gradient fade
+- **ReviewScreen**: amber/orange accent, "REVIEW MODE" badge, amber progress bar and next button
+- **DoneScreen**: large circular score ring with dynamic color (green/amber/red), improved all-time card
+- **LoginScreen**: backdrop-blur card, SVG icon (no emoji), cleaner input styling
+
+**Deploy:** `npx vercel --prod --yes` ✓
 
 ### 2026-04-04 — Question Bank Full Reparse (parse_v2.py)
 

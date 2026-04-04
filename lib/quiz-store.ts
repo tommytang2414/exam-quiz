@@ -34,6 +34,7 @@ export function useQuizStore() {
   const [reviewQueue, setReviewQueue] = useState<Question[]>([])
   const [reviewAnswered, setReviewAnswered] = useState(0)
   const [examType, setExamType] = useState<ExamType>(DEFAULT_EXAM)
+  const [selectedDomains, setSelectedDomains] = useState<number[]>([])
 
   // Check existing token on mount
   useEffect(() => {
@@ -87,11 +88,14 @@ export function useQuizStore() {
 
   const startQuiz = useCallback((wrongOnly = false) => {
     const allQuestions = getQuestions(examType)
-    const src = wrongOnly && wrongIds.size > 0
-      ? allQuestions.filter(q => wrongIds.has(q.id))
+    const filtered = selectedDomains.length > 0
+      ? allQuestions.filter(q => selectedDomains.includes(q.domain ?? 0))
       : allQuestions
+    const src = wrongOnly && wrongIds.size > 0
+      ? filtered.filter(q => wrongIds.has(q.id))
+      : filtered
     const shuffled = shuffle(src)
-    const limited = shuffled.slice(0, sessionGoal > 0 ? sessionGoal : allQuestions.length)
+    const limited = shuffled.slice(0, sessionGoal > 0 ? sessionGoal : filtered.length)
     setQueue(limited)
     setCurrent(limited[0] ?? null)
     setSelected(null)
@@ -99,11 +103,14 @@ export function useQuizStore() {
     setSessionCorrect(0)
     setSessionAnswered(0)
     setMode('quiz')
-  }, [wrongIds, sessionGoal, examType])
+  }, [wrongIds, sessionGoal, examType, selectedDomains])
 
   const goReview = useCallback(() => {
     const allQuestions = getQuestions(examType)
-    const wrongQs = allQuestions.filter(q => wrongIds.has(q.id))
+    const filtered = selectedDomains.length > 0
+      ? allQuestions.filter(q => selectedDomains.includes(q.domain ?? 0))
+      : allQuestions
+    const wrongQs = filtered.filter(q => wrongIds.has(q.id))
     const sorted = wrongQs.sort((a, b) => a.id - b.id)
     setReviewQueue(sorted)
     setCurrent(sorted[0] ?? null)
@@ -111,7 +118,7 @@ export function useQuizStore() {
     setConfirmed(false)
     setReviewAnswered(0)
     setMode('review')
-  }, [wrongIds, examType])
+  }, [wrongIds, examType, selectedDomains])
 
   const reviewAnswer = useCallback((optIndex: number) => {
     if (confirmed) return
@@ -197,6 +204,7 @@ export function useQuizStore() {
     goReview, reviewAnswer, reviewNext,
     reviewQueue,
     examType, setExamType,
+    selectedDomains, setSelectedDomains,
     questions: getQuestions(examType),
   }
 }
