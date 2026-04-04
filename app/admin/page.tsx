@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 
-const API = '/api'
+const API = ''
 const ADMIN_EMAILS = ['tommytang2414@gmail.com', 'tommytang.cc@gmail.com']
 const ADMIN_PASSWORD = 'ccsp-admin-2026'
 
