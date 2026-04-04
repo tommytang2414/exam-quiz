@@ -164,6 +164,22 @@ Textbank uses SINGLE-SPACE separation (no pipe `|`). Parsed by matching first 80
 
 ## Changelog
 
+### 2026-04-05 — Q78 Audit + fix_overlaps() Attempt (abandoned)
+
+**Problem:** Q78 options = `["Software-based", "Software as a", "Service (SaaS)", "Type 1 Bare metal"]` — "Software as a Service (SaaS)" incorrectly split across two options.
+
+**fix_overlaps() added:** Post-parse validation that detects and re-merges split options using balanced capital-letter boundary re-splitting. Works for cases where a short word at boundary causes false split.
+
+**Audit results:**
+- 16 BAD = 15 textbank format issues (missing `?`) + 1 missing CA/Expl — not parser errors
+- 45 FALLBACK = equal_partition fallback — most are valid short single-word options
+- Q78 **cannot be fixed**: textbank source only has 3 options (`Software-based`, `Software as a Service (SaaS)`, `Type 1 Bare metal`). 4th option missing from source data. Capital-letter split can't create a 4th option from 3.
+- Q353 JSON: `{"Test": {"Vendor": "IC2"...}}` appears as option A — textbank data quality issue (JSON is question content, not an option)
+
+**Parser results:** OK=1437, FALLBACK=45, BAD=16, Total=1482
+
+**Commit:** `d029eee`
+
 ### 2026-04-05 — Full App Redesign (Tailwind + Components + Domain Filter)
 
 **Phase 1 — Infrastructure:**
