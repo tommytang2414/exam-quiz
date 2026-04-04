@@ -171,6 +171,75 @@ def parse_options(options_raw: str, answer_idx: int, ca_text: str) -> list[str] 
     return all_opts
 
 
+def fix_overlaps(opts: list[str]) -> list[str] | None:
+    """
+    Detect and fix cases where split_chunk incorrectly split a multi-word option.
+    Merges adjacent chunks and re-splits the merged text using capital-letter boundaries.
+    """
+    if len(opts) != 4:
+        return None
+    opts = [o for o in opts if o]
+    if len(opts) != 4:
+        return None
+
+    def split_into_4(text: str) -> list[str] | None:
+        """Split text into 4 options using capital-letter boundaries."""
+        cap_positions = find_all_cap_splits(text)
+        if len(cap_positions) < 3:
+            return None
+        # Try all combinations of 3 split points for 4 parts
+        best = None
+        best_score = float('inf')
+        for i in range(len(cap_positions) - 2):
+            for j in range(i + 1, len(cap_positions) - 1):
+                for k in range(j + 1, len(cap_positions)):
+                    p1, p2, p3 = cap_positions[i], cap_positions[j], cap_positions[k]
+                    a = text[:p1].strip()
+                    b = text[p1:p2].strip()
+                    c = text[p2:p3].strip()
+                    d = text[p3:].strip()
+                    if not all([a, b, c, d]):
+                        continue
+                    parts = [a, b, c, d]
+                    lens = [len(p) for p in parts]
+                    score = max(lens) - min(lens)
+                    if score < best_score:
+                        best_score = score
+                        best = parts
+        return best
+
+    for i in range(len(opts) - 1):
+        cur = opts[i].strip()
+        nxt = opts[i + 1].strip()
+        if not cur or not nxt:
+            continue
+
+        # Pattern 1: cur is prefix of nxt ("A", "A B") → merge and re-split
+        if nxt.lower().startswith(cur.lower() + ' '):
+            merged = (cur + ' ' + nxt[len(cur) + 1:]).strip()
+            new_text = ' '.join(opts[:i] + [merged] + opts[i + 2:])
+            result = split_into_4(new_text)
+            if result:
+                return result
+            opts = opts[:i] + [merged] + opts[i + 2:]
+            continue
+
+        # Pattern 2: last word of cur is short (1-2 chars) and nxt starts capital
+        cur_words = cur.split()
+        nxt_words = nxt.split()
+        if (cur_words and nxt_words and
+            len(cur_words[-1]) <= 2 and
+            nxt_words[0][0].isupper()):
+            merged = (cur + ' ' + nxt).strip()
+            new_text = ' '.join(opts[:i] + [merged] + opts[i + 2:])
+            result = split_into_4(new_text)
+            if result:
+                return result
+            opts = opts[:i] + [merged] + opts[i + 2:]
+
+    return None
+
+
 def equal_partition(words: list[str]) -> list[str]:
     """Fallback: split words into 4 equal chunks."""
     n = len(words)
@@ -267,7 +336,8 @@ for block in blocks[1:]:
         if ca_text:
             candidate = parse_options(options_raw, answer_idx, ca_text)
             if candidate and not any(o and o[0].islower() for o in candidate):
-                opts = candidate
+                fixed = fix_overlaps(candidate)
+                opts = fixed if fixed else candidate
                 break
 
     # Phase 2: if prefix search failed, try all substrings of ca_raw.
@@ -281,7 +351,8 @@ for block in blocks[1:]:
                 if ca_text:
                     candidate = parse_options(options_raw, answer_idx, ca_text)
                     if candidate and not any(o and o[0].islower() for o in candidate):
-                        opts = candidate
+                        fixed = fix_overlaps(candidate)
+                        opts = fixed if fixed else candidate
                         break
             if opts:
                 break
@@ -302,7 +373,8 @@ for block in blocks[1:]:
             if ca_text:
                 candidate = parse_options(options_raw, answer_idx, ca_text)
                 if candidate and not any(o and o[0].islower() for o in candidate):
-                    opts = candidate
+                    fixed = fix_overlaps(candidate)
+                    opts = fixed if fixed else candidate
                     break
 
     if opts:

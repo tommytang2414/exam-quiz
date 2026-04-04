@@ -2315,7 +2315,7 @@ export const questions: Question[] = [
   {
     id: 289,
     text: "Which of the following is an example of semi-structured data?",
-    options: ["An", "XML document A recorded meeting", "An email user's sent folder", "A database table"],
+    options: ["An XML document", "A recorded meeting", "An email user's sent folder", "A database table"],
     answer: 0,
     explanation: "Correct answer: Unstructured The complexity of data discovery depends on the type of data being analyzed",
     domain: 2
@@ -2827,7 +2827,7 @@ export const questions: Question[] = [
   {
     id: 353,
     text: "What type of data is displayed below?",
-    options: ["{ \"Test\": { \"Vendor\": \"IC2\", \"Exam\": false } }", "Structured", "Unstructured XML", "Semi-structured"],
+    options: ["{ \"Test\": { \"Vendor\": \"IC2\", \"Exam\": false } }", "Structured", "Unstructured", "XML Semi-structured"],
     answer: 3,
     explanation: "Correct answer: Semi-structured The question includes JSON-formatted data",
     domain: 2
@@ -3259,7 +3259,7 @@ export const questions: Question[] = [
   {
     id: 407,
     text: "A company wants to provide assurances to third parties that the products it is using are authentic. Which type of solution would accomplish this?",
-    options: ["Federated identity", "Key", "Shared ID", "Certificate"],
+    options: ["Federated identity", "Key", "Shared", "ID Certificate"],
     answer: 3,
     explanation: "Correct answer: Certificate Assurance mechanisms are important for secure communications and supply chain integrity",
     domain: 2
@@ -4787,7 +4787,7 @@ export const questions: Question[] = [
   {
     id: 598,
     text: "Which type of documentation shows that a data center has appropriate HVAC controls?",
-    options: ["SSAE", "ISO/IEC 27018", "SOC 2 Type II", "NERC/CIP"],
+    options: ["SSAE", "ISO/IEC 27018", "SOC 2 Type", "II NERC/CIP"],
     answer: 2,
     explanation: "Correct answer: SOC 2 Type II Customers rely on third-party audit reports to verify that providers maintain proper safeguards, including HVAC systems",
     domain: 3
@@ -5019,7 +5019,7 @@ export const questions: Question[] = [
   {
     id: 627,
     text: "When analyzing the security of a cloud service provider that does NOT allow direct auditing, what type of certification can customers look for instead?",
-    options: ["PCI DSS NIST", "CSF SOC 1", "Type II", "ISO 27001"],
+    options: ["PCI DSS", "NIST CSF", "SOC 1 Type", "II ISO 27001"],
     answer: 3,
     explanation: "Correct answer: ISO 27001 Third-party assurance mechanisms for cloud service providers give customers a trusted way to verify security practices when they cannot perform direct audits themselves",
     domain: 3
@@ -5499,7 +5499,7 @@ export const questions: Question[] = [
   {
     id: 687,
     text: "The information security manager, Rohan, is working with the network and application teams to determine the best data protection methods to use for a new application that is being developed. Their concerns are that the integrity and confidentiality of the data must be protected. Of the following, which is the BEST combination of technologies to meet their concerns?",
-    options: ["A Representation State Transfer (REST) API and the Rivest Shamir Adelman algorithm", "Transport Layer Security (TLS) using Advanced Encryption Standard (AES) and Message Digest 5", "Transport Layer Security (TLS) using Rivest Shamir Adelman (RSA) and Message Digest 5", "A Representation State Transfer (REST) API with the Secure Hash Algorithm (SHA256)"],
+    options: ["A Representation State Transfer (REST) API and the Rivest Shamir Adelman algorithm", "Transport Layer Security (TLS) using Advanced Encryption Standard (AES) and Message", "Digest 5 Transport Layer Security (TLS) using Rivest Shamir Adelman (RSA) and Message", "Digest 5 A Representation State Transfer (REST) API with the Secure Hash Algorithm (SHA256)"],
     answer: 1,
     explanation: "Correct answer: Transport Layer Security (TLS) using Advanced Encryption Standard (AES) and Message Digest 5 Protecting the data in transit with TLS using AES provides for the protection of the confidentiality of the data",
     domain: 3
@@ -6363,7 +6363,7 @@ export const questions: Question[] = [
   {
     id: 795,
     text: "Which of the following is MOST closely related to data loss prevention (DLP)?",
-    options: ["Denial-of-Service Prevention Security", "Function Isolation Separation of", "System and User Functionality", "Boundary Protection"],
+    options: ["Denial-of-Service Prevention", "Security Function Isolation", "Separation of System and User", "Functionality Boundary Protection"],
     answer: 3,
     explanation: "Correct answer: Boundary Protection NIST SP 800-53, Security and Privacy Controls for Information Systems and Organizations defines 51 security controls for systems and communication protection",
     domain: 3
@@ -10483,7 +10483,7 @@ export const questions: Question[] = [
   {
     id: 1310,
     text: "Which type of SOC report deals with financial controls to help a customer understand the financial stability of a CSP?",
-    options: ["SOC 3", "SOC 1 SOC", "2 Type II", "SOC 2 Type I"],
+    options: ["SOC 3 SOC 1", "SOC 2 Type", "II SOC 2", "Type I"],
     answer: 1,
     explanation: "Correct answer: SOC 1 SOC 1 reports focus on financial reporting controls",
     domain: 6
@@ -10499,7 +10499,7 @@ export const questions: Question[] = [
   {
     id: 1312,
     text: "You are working with the United States government and are in charge of securing some of the information systems within your agency. What regulation requires your agency to protect the government systems and the data that they hold?",
-    options: ["Federal Information Processing System 140 National Institute of", "Standards and Technology Special Publication 800-53", "Federal Risk and Authorization Management Plan", "Federal Information Security Management Act"],
+    options: ["Federal Information Processing System 140 National", "Institute of Standards and Technology Special", "Publication 800-53 Federal Risk and Authorization", "Management Plan Federal Information Security Management Act"],
     answer: 3,
     explanation: "Correct answer: Federal Information Security Management Act The Federal Information Security Management Act (FISMA) was enacted to provide a comprehensive framework for securing federal government information and systems",
     domain: 6
@@ -10507,7 +10507,7 @@ export const questions: Question[] = [
   {
     id: 1313,
     text: "Which type of CSP audit report removes sensitive information and is designed for public consumption?",
-    options: ["SOC 1 Type I", "SOC 3", "SOC 2 SOC 1", "Type II"],
+    options: ["SOC 1 Type", "I SOC 3", "SOC 2 SOC 1", "Type II"],
     answer: 1,
     explanation: "Correct answer: SOC 3 Customers and the general public need a clear view of CSP controls without confidential information",
     domain: 6
@@ -10675,7 +10675,7 @@ export const questions: Question[] = [
   {
     id: 1334,
     text: "Which of the following common contractual terms might include requiring the service provider to provide an annual SOC 2 report?",
-    options: ["Access to", "Cloud/Data", "Compliance Metrics", "Assurance"],
+    options: ["Access to", "Cloud/Data", "Compliance", "Metrics Assurance"],
     answer: 3,
     explanation: "Correct answer: Assurance A contract between a customer and a vendor can have various terms",
     domain: 6
@@ -10779,7 +10779,7 @@ export const questions: Question[] = [
   {
     id: 1347,
     text: "Which of the following types of SOC audits includes a review of an organization's control designs but nothing else?",
-    options: ["SOC 3", "SOC", "2 Type", "II SOC 2 Type I SOC 1"],
+    options: ["SOC 3 SOC 2", "Type II", "SOC 2 Type", "I SOC 1"],
     answer: 2,
     explanation: "Correct answer: SOC 2 Type I Service Organization Control (SOC) reports are generated by the American Institute of CPAs (AICPA)",
     domain: 6
@@ -11323,7 +11323,7 @@ export const questions: Question[] = [
   {
     id: 1415,
     text: "Which type of SOC report provides the MOST reliable guarantee that a service provider can meet its SLAs?",
-    options: ["SOC 2 Type II", "SOC 3", "SOC 2 Type", "I SOC 1"],
+    options: ["SOC 2 Type", "II SOC 3", "SOC 2 Type", "I SOC 1"],
     answer: 0,
     explanation: "Correct answer: SOC 2 Type II Service organization control (SOC) reports are generated by the American Institute of CPAs ( AICPA)",
     domain: 6
@@ -11539,7 +11539,7 @@ export const questions: Question[] = [
   {
     id: 1442,
     text: "Which of the following types of Service Organization Controls (SOC) reports could include an extended assessment of the effectiveness of an organization's security controls?",
-    options: ["SOC 1 Type II", "SOC 2 Type I", "SOC 2 Type II SOC", "1 Type I"],
+    options: ["SOC 1 Type II", "SOC 2 Type I", "SOC 2 Type II", "SOC 1 Type I"],
     answer: 2,
     explanation: "Correct answer: SOC 2 Type II SOC 2 reports can also be classified as Type I or Type II",
     domain: 6
@@ -11691,7 +11691,7 @@ export const questions: Question[] = [
   {
     id: 1461,
     text: "Which of the following types of SOC reports provides high-level information about an organization's controls intended for public dissemination?",
-    options: ["SOC 1 SOC 2", "Type I SOC 2", "Type II", "SOC 3"],
+    options: ["SOC 1 SOC 2", "Type I", "SOC 2 Type", "II SOC 3"],
     answer: 3,
     explanation: "Correct answer: SOC 3 Service Organization Control (SOC) reports are generated by the American Institute of CPAs (AICPA)",
     domain: 6
@@ -11747,7 +11747,7 @@ export const questions: Question[] = [
   {
     id: 1468,
     text: "A Platform as a Service (PaaS) provider knows that their potential customers need to have a level of confidence in their security. A cloud auditor has done a thorough audit of the provider's environment using the Statement of Standards for Attestation Engagements (SSAE) 18 methodology. Which audit report can they now provide to the general public?",
-    options: ["Service Organization Control (SOC) 1 Type ii", "Service Organization Control (SOC) 3", "Service Organization Control (SOC) 2 Type II", "Service Organization Control (SOC) 2 Type i"],
+    options: ["Service Organization Control (SOC) 1", "Type ii Service Organization Control (SOC) 3", "Service Organization Control (SOC) 2 Type II", "Service Organization Control (SOC) 2 Type i"],
     answer: 1,
     explanation: "Correct answer: Service Organization Control (SOC) 3 SOC 3 reports are meant to be consumed and reviewed by the general public",
     domain: 6
