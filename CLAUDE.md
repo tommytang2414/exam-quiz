@@ -164,6 +164,27 @@ Textbank uses SINGLE-SPACE separation (no pipe `|`). Parsed by matching first 80
 
 ## Worklog
 
+### 2026-04-04 — Question Bank Full Reparse (parse_v2.py)
+
+**Problem:** Previous parser (regenerate_ccsp.py) used equal partition fallback for ~95% of questions, producing systematically wrong option splits. Q1 had options ["Multi-tenancy Resource pooling", "Shadow IT", "Use of", "default passwords"] — answer index pointed to wrong text.
+
+**New parser (`parse_v2.py`) — 3-phase algorithm:**
+1. **Phase 1** — Prefix search: try progressively shorter prefixes of explanation's "Correct answer: X" against options_raw with word-boundary matching
+2. **Phase 2** — Substring search: scan all n-grams of ca_raw (handles explanation using full name "Software as a Service (SaaS)" vs option abbreviation "SaaS")
+3. **Phase 3** — Reverse word search: try each word from options_raw that appears in ca_raw
+
+**Key improvements over old parser:**
+- Word-boundary matching (no substring-within-word like "structured" inside "Semi-structured")
+- Period-inclusive matching (sentence options ending with "." are handled correctly)
+- Quality rejection: if parse gives lowercase-starting option → retry with shorter anchor
+- Retry loop: shrink anchor phrase until parse succeeds with all-uppercase option starts
+
+**Results:** 1437/1482 (97%) clean parses, 45 fallback (3%), 16 bad (<1%)
+- Before: ~1397 questions had wrong option splits
+- After: ~45 questions use equal-partition fallback (mostly edge cases)
+
+**Deploy:** https://ccsp-quiz.vercel.app ✓
+
 ### 2026-04-04 — Domain Display + TypeScript Fix
 
 **Changes:**
