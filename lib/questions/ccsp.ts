@@ -10075,9 +10075,9 @@ export const questions: Question[] = [
   {
     id: 1259,
     text: "In the shared responsibility model, the consumer will always be responsible for what in the following service models: Infrastructure as a Service (IaaS), Software as a Service (SaaS,) and Platform as a Service (PaaS) models?",
-    options: ["Application security Identity and", "access management Platform security", "Governance, Risk management,", "and Complicance (GRC)"],
+    options: ["Application security", "Identity and access management", "Platform security", "Governance, Risk management, and Compliance (GRC)"],
     answer: 3,
-    explanation: "rvice (IaaS), Software as a Service (SaaS,) and Platform as a Service (PaaS) models? Application security Identity and access management Platform security Governance, Risk management, and Complicance (GRC) Correct Answer: D Explanation: Correct answer: Governance, Risk management, and Complicance (GRC) In any cloud deployment model, IaaS, PaaS, or SaaS, the cloud consumer will be responsible for any control over the data they store in the cloud",
+    explanation: "Governance, Risk management, and Compliance (GRC)",
     domain: 5
   },
   {

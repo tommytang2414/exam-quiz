@@ -9,6 +9,7 @@ export interface Question {
   options: string[]
   answer: number
   explanation?: string
+  domain?: number
 }
 
 const QUESTION_BANKS: Record<ExamType, QuestionType[]> = {

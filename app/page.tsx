@@ -236,6 +236,9 @@ function QuizScreen({ store }: { store: ReturnType<typeof useQuizStore> }) {
       <div className="flex-1 flex flex-col px-5 gap-5">
         <div className="flex-1 flex flex-col justify-center gap-5">
           <h2 className="question-text">{current!.text}</h2>
+          {current!.domain && (
+            <p className="text-xs text-indigo-400/60 mt-1 font-mono">Domain {current!.domain}</p>
+          )}
 
           <div className="options-list">
             {current!.options.map((opt, i) => {
@@ -370,6 +373,9 @@ function ReviewScreen({ store }: { store: ReturnType<typeof useQuizStore> }) {
       {/* Question */}
       <div className="flex-1 flex flex-col gap-4 max-w-sm mx-auto w-full">
         <p className="question-text">{current!.text}</p>
+        {current!.domain && (
+          <p className="text-xs text-indigo-400/60 mt-1 font-mono">Domain {current!.domain}</p>
+        )}
 
         <div className="options-list">
           {current!.options.map((opt, i) => {

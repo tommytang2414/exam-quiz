@@ -164,6 +164,15 @@ Textbank uses SINGLE-SPACE separation (no pipe `|`). Parsed by matching first 80
 
 ## Worklog
 
+### 2026-04-04 — Domain Display + TypeScript Fix
+
+**Changes:**
+- `lib/questions/index.ts`: Added `domain?: number` to exported `Question` interface (was missing, caused TypeScript build error)
+- `app/page.tsx`: Added `Domain X` display below question text in both QuizScreen and ReviewScreen
+- Build succeeded, deployed to https://ccsp-quiz.vercel.app
+
+**TypeScript error fix**: `Property 'domain' does not exist on type 'Question'` — the `Question` interface in `index.ts` didn't re-export the `domain` field from `ccsp.ts`. Fixed by adding `domain?: number` to the interface.
+
 ### 2026-04-04 — CCSP Question Bank Full Fix & Domain Categorization
 
 **Changes:**
