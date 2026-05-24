@@ -1,7 +1,7 @@
 'use client'
 
 import { useQuizStore } from '@/lib/quiz-store'
-import { LoginScreen, HomeScreen, QuizScreen, DoneScreen, ReviewScreen } from '@/components/screens'
+import { LoginScreen, HomeScreen, QuizScreen, DoneScreen, ReviewScreen, HotspotScreen, DragDropScreen } from '@/components/screens'
 
 export default function QuizPage() {
   const store = useQuizStore()
@@ -19,5 +19,7 @@ export default function QuizPage() {
   if (store.mode === 'done') return <DoneScreen store={store} />
   if (store.mode === 'quiz' && store.current) return <QuizScreen store={store} />
   if (store.mode === 'review' && store.current) return <ReviewScreen store={store} />
+  if (store.mode === 'hotspot') return <HotspotScreen store={store} questions={store.hsQueue} />
+  if (store.mode === 'dragdrop') return <DragDropScreen store={store} questions={store.ddQueue} />
   return null
 }

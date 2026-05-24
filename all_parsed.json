@@ -1,0 +1,532 @@
+{
+  "hotspot": [
+    {
+      "id": 7,
+      "topic": 2,
+      "text": "You have an Azure Active Directory (Azure AD) tenant named contoso.com that contains the users shown in the following table. You create and enforce an Azure AD Identity Protection user risk policy that has the following settings: ✑ Assignment: Include Group1, Exclude Group2 ✑ Conditions: Sign-in risk of Medium and above ✑ Access: Allow access, Require password change For each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+      "questionType": "hotspot",
+      "type": "yesno",
+      "boxes": [
+        {
+          "answer": "Yes",
+          "explanation": "User1 is member of Group1. Sign in from unfamiliar location is risk level Medium."
+        },
+        {
+          "answer": "Yes",
+          "explanation": "User2 is member of Group1. Sign in from anonymous IP address is risk level Medium."
+        },
+        {
+          "answer": "No",
+          "explanation": "Sign-ins from IP addresses with suspicious activity is low. Note: Get IT Certi\u0000cation Unlock free, top-quality video courses on ExamTopics with a simple registration Elevate your learning journey with our expertly curated content. educational resources designed for xamTopics! Azure AD Identity protection can detect six types of suspicious sign-in activities: ✑ Users with leaked credentials ✑ Sign-ins from anonymous IP addresses ✑ Impossible travel to atypical locations ✑ Sign-ins from infected devices ✑ Sign-ins from IP addresses with suspicious activity ✑ Sign-ins from unfamiliar locations These six types of events are categorized in to 3 levels of risks גHigh, Medium & Low: References: http:/ /www.rebeladmin.com/2018/09/step-step-guide-con\u0000gure-risk-based-azure-conditional-access-policies/"
+        }
+      ],
+      "explanation": null
+    },
+    {
+      "id": 9,
+      "topic": 2,
+      "text": "You have an Azure Active Directory (Azure AD) tenant named contoso.com. The tenant contains the users shown in the following table. You con\u0000gure an access review named Review1 as shown in the following exhibit. Use the drop-down menus to select the answer choice that completes each statement based on the information presented in the graphic.",
+      "questionType": "hotspot",
+      "type": "text",
+      "boxes": [
+        {
+          "answer": "User3 only",
+          "explanation": "Use the Members (self) option to have the users review their own role assignments."
+        }
+      ],
+      "explanation": null
+    },
+    {
+      "id": 11,
+      "topic": 2,
+      "text": "Your company has two o\u0000ces in Seattle and New York. Each o\u0000ce connects to the Internet by using a NAT device. The o\u0000ces use the IP addresses shown in the following table. The company has an Azure Active Directory (Azure AD) tenant named contoso.com. The tenant contains the users shown in the following table. The MFA service settings are con\u0000gured as shown in the exhibit. (Click the Exhibit tab.) For each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+      "questionType": "hotspot",
+      "type": "text",
+      "boxes": [
+        {
+          "answer": "Yes",
+          "explanation": "Box 2: No - Use of Microsoft Authenticator is not required. Either a text or phone call is required for MFA. Note: Microsoft Authenticator is a multifactor app for mobile devices that generates time-based codes used during the Two-Step Veri\u0000cation process."
+        },
+        {
+          "answer": "",
+          "explanation": ""
+        },
+        {
+          "answer": "No",
+          "explanation": "The New York IP address subnet is included in the \"skip multi-factor authentication for request. Reference: https:/ /www.cayosoft.com/difference-enabling-enforcing-mfa/"
+        }
+      ],
+      "explanation": null
+    },
+    {
+      "id": 13,
+      "topic": 2,
+      "text": "You have an Azure Container Registry named Registry1. You add role assignments for Registry1 as shown in the following table. Which users can upload images to Registry1 and download images from Registry1? To answer, select the appropriate options in the answer area.",
+      "questionType": "hotspot",
+      "type": "text",
+      "boxes": [
+        {
+          "answer": "User1 and User4 only",
+          "explanation": "Owner, Contributor and AcrPush can push images."
+        },
+        {
+          "answer": "User1, User2, and User4",
+          "explanation": "All, except AcrImagineSigner, can download/pull images. Reference: https:/ /docs.microsoft.com/bs-latn-ba/azure/container-registry/container-registry-roles"
+        }
+      ],
+      "explanation": null
+    },
+    {
+      "id": 21,
+      "topic": 2,
+      "text": "You have an Azure Active Directory (Azure AD) tenant named contoso.com that contains the users shown in the following table. Azure AD Privileged Identity Management (PIM) is used in contoso.com. In PIM, the Password Administrator role has the following settings: ✑ Maximum activation duration (hours): 2 ✑ Send email notifying admins of activation: Disable ✑ Require incident/request ticket number during activation: Disable ✑ Require Azure Multi-Factor Authentication for activation: Enable ✑ Require approval to activate this role: Enable ✑ Selected approver: Group1 You assign users the Password Administrator role as shown in the following table. For each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+      "questionType": "hotspot",
+      "type": "yesno",
+      "boxes": [
+        {
+          "answer": "Yes",
+          "explanation": "Active assignments don't require the member to perform any action to use the role. Members assigned as active have the privileges assigned to the role at all times."
+        },
+        {
+          "answer": "Yes",
+          "explanation": "While Multi-Factor Authentication is disabled for User2 and the setting Require Azure Multi-Factor Authentication for activation is enabled, User2 can request the role but will need to enable MFA to use the role. Note: Eligible assignments require the member of the role to perform an action to use the role. Actions might include performing a multi- factor authentication (MFA) check, providing a business justi\u0000cation, or requesting approval from designated approvers."
+        },
+        {
+          "answer": "No",
+          "explanation": "User3 is Group1, which is a Selected Approver Group, however, self-approval is not allowed and someone else from group is required to approve the request. Reference: https:/ /docs.microsoft.com/en-us/azure/active-directory/privileged-identity-management/pim-resource-roles-assign-roles"
+        }
+      ],
+      "explanation": null
+    },
+    {
+      "id": 24,
+      "topic": 2,
+      "text": "You create a new Azure subscription that is associated to a new Azure Active Directory (Azure AD) tenant. You create one active conditional access policy named Portal Policy. Portal Policy is used to provide access to the Microsoft Azure Management cloud app. The Conditions settings for Portal Policy are con\u0000gured as shown in the Conditions exhibit. (Click the Conditions tab.) The Grant settings for Portal Policy are con\u0000gured as shown in the Grant exhibit. (Click the Grant tab.) For each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+      "questionType": "hotspot",
+      "type": "yesno",
+      "boxes": [
+        {
+          "answer": "Yes",
+          "explanation": "The Contoso location is included in the policy and MFA is required."
+        },
+        {
+          "answer": "No",
+          "explanation": "The policy applies to the Azure portal and Azure management endpoints. The policy does not apply to web services host in Azure."
+        },
+        {
+          "answer": "No",
+          "explanation": "The policy applies only to users in the Contoso location. The policy does not apply to users external to the Contoso location. Reference: https:/ /docs.microsoft.com/en-us/azure/active-directory/conditional-access/location-condition"
+        }
+      ],
+      "explanation": null
+    },
+    {
+      "id": 27,
+      "topic": 2,
+      "text": "You have an Azure Active Directory (Azure AD) tenant that contains the users shown in the following table. From Azure AD Privileged Identity Management (PIM), you con\u0000gure the settings for the Security Administrator role as shown in the following exhibit. From PIM, you assign the Security Administrator role to the following groups: ✑ Group1: Active assignment type, permanently assigned ✑ Group2: Eligible assignment type, permanently eligible For each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+      "questionType": "hotspot",
+      "type": "yesno",
+      "boxes": [
+        {
+          "answer": "No",
+          "explanation": "User1 is a member of Group1. Group1: Active assignment type, permanently assigned"
+        },
+        {
+          "answer": "Yes",
+          "explanation": "Active Type: A role assignment that doesn't require a user to perform any action to use the role. Users assigned as active have the privileges assigned to the role"
+        },
+        {
+          "answer": "No",
+          "explanation": "User3 is member of Group1 and Group2. Group1: Active assignment type, permanently assigned Group2: Eligible assignment type, permanently eligible Reference: https:/ /docs.microsoft.com/en-us/azure/active-directory/privileged-identity-management/pim-con\u0000gure https:/ /docs.microsoft.com/bs-cyrl- ba/azure/active-directory/privileged-identity-management/pim-resource-roles-con\u0000gure-role-settings"
+        }
+      ],
+      "explanation": null
+    },
+    {
+      "id": 28,
+      "topic": 2,
+      "text": "Your company has an Azure subscription named Subscription1 that contains the users shown in the following table. The company is sold to a new owner. The company needs to transfer ownership of Subscription1. Which user can transfer the ownership and which tool should the user use? To answer, select the appropriate options in the answer area.",
+      "questionType": "hotspot",
+      "type": "text",
+      "boxes": [
+        {
+          "answer": "",
+          "explanation": ""
+        },
+        {
+          "answer": "Azure Account Center",
+          "explanation": "Azure Account Center can be used. Reference: https:/ /docs.microsoft.com/en-us/azure/billing/billing-subscription-transfer#transfer-billing-ownership-of-an-azure-subscription"
+        }
+      ],
+      "explanation": null
+    },
+    {
+      "id": 73,
+      "topic": 2,
+      "text": "You have an Azure Active Directory (Azure AD) tenant that contains two users named User1 and User2 and a registered app named App1. You create an app-speci\u0000c role named Role1. You need to assign Role1 to User1 and enable User2 to request access to App1. Which two settings should you modify? To answer, select the appropriate settings in the answer area.",
+      "questionType": "hotspot",
+      "type": "text",
+      "boxes": [
+        {
+          "answer": "Roles and administrators",
+          "explanation": "Here you will \u0000nd Role1 and be able to assign User1 to the role."
+        },
+        {
+          "answer": "Self Service",
+          "explanation": "Under Self Service, there is an option to גAllow users to request access to this applicationג.€"
+        }
+      ],
+      "explanation": null
+    },
+    {
+      "id": 9,
+      "topic": 3,
+      "text": "You create resources in an Azure subscription as shown in the following table. VNET1 contains two subnets named Subnet1 and Subnet2. Subnet1 has a network ID of 10.0.0.0/24. Subnet2 has a network ID of 10.1.1.0/24. Contoso1901 is con\u0000gured as shown in the exhibit. (Click the Exhibit tab.) For each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+      "questionType": "hotspot",
+      "type": "yesno",
+      "boxes": [
+        {
+          "answer": "Yes",
+          "explanation": "Access from Subnet1 is allowed."
+        },
+        {
+          "answer": "No",
+          "explanation": "No access from Subnet2 is allowed."
+        },
+        {
+          "answer": "Yes",
+          "explanation": "Access from IP address 193.77.10.2 is allowed."
+        }
+      ],
+      "explanation": null
+    },
+    {
+      "id": 15,
+      "topic": 3,
+      "text": "You have an Azure subscription. The subscription contains Azure virtual machines that run Windows Server 2016. You need to implement a policy to ensure that each virtual machine has a custom antimalware virtual machine extension installed. How should you complete the policy? To answer, select the appropriate options in the answer area.",
+      "questionType": "hotspot",
+      "type": "text",
+      "boxes": [
+        {
+          "answer": "DeployIfNotExists",
+          "explanation": "DeployIfNotExists executes a template deployment when the condition is met."
+        },
+        {
+          "answer": "Template",
+          "explanation": "The details property of the DeployIfNotExists effects has all the subproperties that de\u0000ne the related resources to match and the template deployment to execute. Deployment [required] This property should include the full template deployment as it would be passed to the Microsoft.Resources/deployment References: https:/ /docs.microsoft.com/en-us/azure/governance/policy/concepts/effects"
+        }
+      ],
+      "explanation": null
+    },
+    {
+      "id": 24,
+      "topic": 3,
+      "text": "You have an Azure subscription that contains an Azure Active Directory (Azure AD) tenant named contoso.com. The tenant contains the users shown in the following table. You create a resource group named RG1. Which users can modify the permissions for RG1 and which users can create virtual networks in RG1? To answer, select the appropriate options in the answer area.",
+      "questionType": "hotspot",
+      "type": "text",
+      "boxes": [
+        {
+          "answer": "Only an owner can change permissions on resources.",
+          "explanation": ""
+        }
+      ],
+      "explanation": null
+    },
+    {
+      "id": 31,
+      "topic": 3,
+      "text": "You have an Azure subscription that contains the virtual machines shown in the following table. Subnet1 and Subnet2 have a Microsoft.Storage service endpoint con\u0000gured. You have an Azure Storage account named storageacc1 that is con\u0000gured as shown in the following exhibit. For each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+      "questionType": "hotspot",
+      "type": "yesno",
+      "boxes": [
+        {
+          "answer": "Yes",
+          "explanation": "The public IP of VM1 is allowed through the \u0000rewall."
+        },
+        {
+          "answer": "No",
+          "explanation": "The allowed virtual network list is empty so VM2 cannot access storageacc1 directly. The public IP address of VM2 is not in the allowed IP list so VM2 cannot access storageacc1 over the Internet."
+        },
+        {
+          "answer": "No",
+          "explanation": "The allowed virtual network list is empty so VM3 cannot access storageacc1 directly. VM3 does not have a public IP address so it cannot access storageacc1 over the Internet. Reference: https:/ /docs.microsoft.com/en-gb/azure/storage/common/storage-network-security"
+        }
+      ],
+      "explanation": null
+    },
+    {
+      "id": 46,
+      "topic": 3,
+      "text": "You have a network security group (NSG) bound to an Azure subnet. You run Get-AzNetworkSecurityRuleCon\u0000g and receive the output shown in the following exhibit. Use the drop-down menus to select the answer choice that completes each statement based on the information presented in the graphic.",
+      "questionType": "hotspot",
+      "type": "text",
+      "boxes": [
+        {
+          "answer": "",
+          "explanation": ""
+        },
+        {
+          "answer": "allowed",
+          "explanation": "TCP Port 21 controls the FTP session. Contoso_FTP has SourceAddressPre\u0000x {1.2.3.4/32} and DestinationAddressPre\u0000x {10.0.0.5/32} Note: The Get-AzureRmNetworkSecurityRuleCon\u0000g cmdlet gets a network security rule con\u0000guration for an Azure network security group. Security rules in network security groups enable you to \u0000lter the type of network tra\u0000c that can \u0000ow in and out of virtual network subnets and network interfaces. Reference: https:/ /docs.microsoft.com/en-us/azure/virtual-network/manage-network-security-group"
+        }
+      ],
+      "explanation": null
+    },
+    {
+      "id": 53,
+      "topic": 3,
+      "text": "You have an Azure subscription that contains a storage account named storage1 and several virtual machines. The storage account and virtual machines are in the same Azure region. The network con\u0000gurations of the virtual machines are shown in the following table. The virtual network subnets have service endpoints de\u0000ned as shown in the following table. You con\u0000gure the following Firewall and virtual networks settings for storage1: ✑ Allow access from: Selected networks ✑ Virtual networks: VNET3\\Subnet3 Firewall `\" Address range: 52.233.129.0/24 For each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+      "questionType": "hotspot",
+      "type": "yesno",
+      "boxes": [
+        {
+          "answer": "No",
+          "explanation": "VNet1 has a service endpoint con\u0000gure for Azure Storage. However, the Azure storage does not allow access from VNet1 or the public IP address of VM1."
+        },
+        {
+          "answer": "Yes",
+          "explanation": "VNet2 does not have a service endpoint con\u0000gured. However, the Azure storage allows access from the public IP address of VM2."
+        },
+        {
+          "answer": "No",
+          "explanation": "Azure storage allows access from VNet3. However, VNet3 does not have a service endpoint for Azure storage. The Azure storage also does not allow access from the public IP of VM3."
+        }
+      ],
+      "explanation": null
+    },
+    {
+      "id": 55,
+      "topic": 3,
+      "text": "You have the Azure virtual networks shown in the following table. You have the Azure virtual machines shown in the following table. The \u0000rewalls on all the virtual machines allow ping tra\u0000c. NSG1 is con\u0000gured as shown in the following exhibit. Inbound security rules - Outbound security rules - For each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+      "questionType": "hotspot",
+      "type": "yesno",
+      "boxes": [
+        {
+          "answer": "Yes",
+          "explanation": "VM1 and VM3 are on peered VNets. The \u0000rewall rules with a source of ASG1 and ASG2 allow 'any' tra\u0000c on 'any' protocol so pings are allowed between VM1 and VM3."
+        },
+        {
+          "answer": "No",
+          "explanation": "VM2 and VM4 are on separate VNets and the VNets are not peered. Therefore, the pings would have to go over the Internet. VM4 does have a public IP and the \u0000rewall allows pings. However, for VM2 to be able to ping VM4, VM2 would also need a public IP address. In Azure, pings don't go out through the default gateway as they would in a physical network. For an Azure VM to ping external IPs, the VM must have a public IP address assigned to it."
+        },
+        {
+          "answer": "Yes",
+          "explanation": "VM3 has a public IP address and the \u0000rewall allows tra\u0000c on port 3389."
+        }
+      ],
+      "explanation": null
+    },
+    {
+      "id": 62,
+      "topic": 3,
+      "text": "You have an Azure subscription that is linked to an Azure Active Directory (Azure AD). The tenant contains the users shown in the following table. You have an Azure key vault named Vault1 that has Purge protection set to Disable. Vault1 contains the access policies shown in the following table. You create role assignments for Vault1 as shown in the following table. For each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+      "questionType": "hotspot",
+      "type": "yesno",
+      "boxes": [
+        {
+          "answer": "No",
+          "explanation": "Resource Policy Contributor or Security Administrator is required. User1 is Security Administrator only with the no speci\u0000c permission granted to Vault1. The Security Admin can view and update permissions for Security Center. Same permissions as the Security Reader role and can also update the security policy and dismiss alerts and recommendations. However:"
+        },
+        {
+          "answer": "Yes",
+          "explanation": "User2 is a Network Contributor, with Select All Key, Secret & Certi\u0000cate permissions, and Key Vault Reader. The Network Contributor role lets you manage networks, but not access to them."
+        },
+        {
+          "answer": "Yes",
+          "explanation": "User3 is a Key Vault Contributor and a User Access Administrator for Vault. The Key Vault Contributor role allows you to manage key vaults, but does not allow you to assign roles in Azure RBAC, and does not allow you to access secrets, keys, or certi\u0000cates. Reference: https:/ /docs.microsoft.com/en-us/azure/role-based-access-control/built-in-roles#network-contributor https:/ /charbelnemnom.com/enable- purge-protection-key-vault-azure-policy/"
+        }
+      ],
+      "explanation": null
+    },
+    {
+      "id": 51,
+      "topic": 4,
+      "text": "You have an Azure subscription that contains the resources shown in the following table. VM1 and VM2 are stopped. You create an alert rule that has the following settings: ✑ Resource: RG1 ✑ Condition: All Administrative operations ✑ Actions: Action groups con\u0000gured for this alert rule: ActionGroup1 ✑ Alert rule name: Alert1 You create an action rule that has the following settings: ✑ Scope: VM1 ✑ Filter criteria: Resource Type = \"Virtual Machines\" ✑ De\u0000ne on this scope: Suppression ✑ Suppression con\u0000g: From now (always) ✑ Name: ActionRule1 For each of the following statements, select Yes if the statement is true. Otherwise, select No. Note: Each correct selection is worth one point.",
+      "questionType": "hotspot",
+      "type": "text",
+      "boxes": [
+        {
+          "answer": "The scope for the action rule is set to VM1 and is set to suppress alerts inde\u0000nitely.",
+          "explanation": ""
+        },
+        {
+          "answer": "The scope for the action rule is not set to VM2.",
+          "explanation": ""
+        }
+      ],
+      "explanation": null
+    },
+    {
+      "id": 84,
+      "topic": 4,
+      "text": "You have an Azure subscription that contains a blob container named cont1. Cont1 has the access policies shown in the following exhibit. Use the drop-down menus to select the answer choice that completes each statement based on the information presented in the graphic.",
+      "questionType": "hotspot",
+      "type": "text",
+      "boxes": [
+        {
+          "answer": "4",
+          "explanation": "A container can have up to 5 stored access policies. Maximum number of stored access policies per blob container: 5"
+        },
+        {
+          "answer": "1",
+          "explanation": "Blob version supports one version-level immutability policy and one legal hold. A policy on a blob version can override a default policy speci\u0000ed on the account or container. Reference: https:/ /docs.microsoft.com/en-us/azure/storage/blobs/scalability-targets https:/ /docs.microsoft.com/en- us/azure/storage/blobs/immutable-storage-overview"
+        }
+      ],
+      "explanation": null
+    },
+    {
+      "id": 6,
+      "topic": 5,
+      "text": "You have the Azure Information Protection labels as shown in the following table. You have the Azure Information Protection policies as shown in the following table. You need to identify how Azure Information Protection will label \u0000les. What should you identify? To answer, select the appropriate options in the answer area.",
+      "questionType": "hotspot",
+      "type": "text",
+      "boxes": [
+        {
+          "answer": "Label 2 only",
+          "explanation": "How multiple conditions are evaluated when they apply to more than one label 1. The labels are ordered for evaluation, according to their position that you specify in the policy: The label positioned \u0000rst has the lowest position (least sensitive) and the label positioned last has the highest position (most sensitive). 2. The most sensitive label is applied. 3. The last sublabel is applied."
+        },
+        {
+          "answer": "No Label",
+          "explanation": "Automatic classi\u0000cation applies to Word, Excel, and PowerPoint when documents are saved, and apply to Outlook when emails are sent. Automatic classi\u0000cation does not apply to Microsoft Notepad. Reference: https:/ /docs.microsoft.com/en-us/azure/information-protection/con\u0000gure-policy-classi\u0000cation"
+        }
+      ],
+      "explanation": null
+    },
+    {
+      "id": 11,
+      "topic": 5,
+      "text": "You have an Azure subscription that contains an Azure key vault named Vault1. On January 1, 2019, Vault1 stores the following secrets. All dates are in mm/dd/yy format. When can each secret be used by an application? To answer, select the appropriate options in the answer area.",
+      "questionType": "hotspot",
+      "type": "text",
+      "boxes": [
+        {
+          "answer": "Never",
+          "explanation": "Password1 is disabled."
+        }
+      ],
+      "explanation": null
+    },
+    {
+      "id": 18,
+      "topic": 5,
+      "text": "You need to create an Azure key vault. The solution must ensure that any object deleted from the key vault be retained for 90 days. How should you complete the command? To answer, select the appropriate options in the answer area.",
+      "questionType": "hotspot",
+      "type": "text",
+      "boxes": [
+        {
+          "answer": "-EnablePurgeProtection",
+          "explanation": "If speci\u0000ed, protection against immediate deletion is enabled for this vault; requires soft delete to be enabled as well."
+        },
+        {
+          "answer": "-EnableSoftDelete",
+          "explanation": "Speci\u0000es that the soft-delete functionality is enabled for this key vault. When soft-delete is enabled, for a grace period, you can recover this key vault and its contents after it is deleted. Reference: https:/ /docs.microsoft.com/en-us/powershell/module/azurerm.keyvault/new-azurermkeyvault"
+        }
+      ],
+      "explanation": null
+    },
+    {
+      "id": 52,
+      "topic": 5,
+      "text": "You have a hybrid Azure Active Directory (Azure AD) tenant named contoso.com that contains a user named User1 and the servers shown in the following table. The tenant is linked to an Azure subscription that contains a storage account named storage1. The storage1 account contains a \u0000le share named share1. User1 is assigned the Storage File Data SMB Share Contributor role for storage1. The Security protocol settings for the \u0000le shares of storage1 are con\u0000gured as shown in the following exhibit. For each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+      "questionType": "hotspot",
+      "type": "yesno",
+      "boxes": [
+        {
+          "answer": "No",
+          "explanation": "Kerberos uses user's credentials, not access keys."
+        },
+        {
+          "answer": "Yes",
+          "explanation": "Kerberos uses user's credentials."
+        },
+        {
+          "answer": "No",
+          "explanation": "Reference: https:/ /docs.microsoft.com/en-us/azure/active-directory/app-proxy/application-proxy-con\u0000gure-single-sign-on-with-kcd"
+        }
+      ],
+      "explanation": null
+    }
+  ],
+  "dd_order": [
+    {
+      "id": 8,
+      "topic": 2,
+      "text": "DRAG DROP - You need to con\u0000gure an access review. The review will be assigned to a new collection of reviews and reviewed by resource owners. Which three actions should you perform in sequence? To answer, move the appropriate actions from the list of actions to the answer area and arrange them in the correct order. Select and Place:",
+      "questionType": "dragdrop",
+      "dragType": "order",
+      "items": [
+        {
+          "position": 1,
+          "text": "Create an access review program"
+        },
+        {
+          "position": 2,
+          "text": "Create an access review control"
+        },
+        {
+          "position": 3,
+          "text": "Set Reviewers to Group owners"
+        }
+      ],
+      "explanation": null
+    },
+    {
+      "id": 18,
+      "topic": 2,
+      "text": "DRAG DROP - You create an Azure subscription with Azure AD Premium P2. You need to ensure that you can use Azure Active Directory (Azure AD) Privileged Identity Management (PIM) to secure Azure AD roles. Which three actions should you perform in sequence? To answer, move the appropriate actions from the list of actions to the answer area and arrange them in the correct order. Select and Place:",
+      "questionType": "dragdrop",
+      "dragType": "order",
+      "items": [
+        {
+          "position": 3,
+          "text": "Sign up PIM for Azure AD roles"
+        }
+      ],
+      "explanation": null
+    },
+    {
+      "id": 14,
+      "topic": 5,
+      "text": "DRAG DROP - Your company has an Azure Active Directory (Azure AD) tenant named contoso.com. The company is developing an application named App1. App1 will run as a service on server that runs Windows Server 2016. App1 will authenticate to contoso.com and access Microsoft Graph to read directory data. You need to delegate the minimum required permissions to App1. Which three actions should you perform in sequence from the Azure portal? To answer, move the appropriate actions from the list of actions to the answer area and arrange them in the correct order. Select and Place:",
+      "questionType": "dragdrop",
+      "dragType": "order",
+      "items": [
+        {
+          "position": 1,
+          "text": "Create an app registration"
+        },
+        {
+          "position": 2,
+          "text": "Add an application permission"
+        },
+        {
+          "position": 3,
+          "text": "Grant permissions -"
+        }
+      ],
+      "explanation": null
+    },
+    {
+      "id": 22,
+      "topic": 5,
+      "text": "DRAG DROP - You have an Azure subscription named Sub1 that contains an Azure Storage account named contosostorage1 and an Azure key vault named Contosokeyvault1. You plan to create an Azure Automation runbook that will rotate the keys of contosostorage1 and store them in Contosokeyvault1. You need to implement prerequisites to ensure that you can implement the runbook. Which three actions should you perform in sequence? To answer, move the appropriate actions from the list of actions to the answer area and arrange them in the correct order. Select and Place:",
+      "questionType": "dragdrop",
+      "dragType": "order",
+      "items": [
+        {
+          "position": 1,
+          "text": "Create an Azure Automation account"
+        },
+        {
+          "position": 2,
+          "text": "Import PowerShell modules to the Azure Automation account"
+        },
+        {
+          "position": 3,
+          "text": "Create a connection resource in the Azure Automation account"
+        }
+      ],
+      "explanation": null
+    }
+  ]
+}

@@ -20,7 +20,8 @@ const TOPIC_LISTS: Record<string, { id: number; name: string }[]> = {
 export function HomeScreen({ store }: Props) {
   const { wrongCount, totalAnswered, totalCorrect, sessionGoal, setSessionGoal,
           startQuiz, doLogout, resetProgress, goReview, examType, setExamType,
-          selectedDomains, setSelectedDomains } = store
+          selectedDomains, setSelectedDomains,
+          startHotspot, startDragDrop, hotspotQuestions, ddOrderQuestions } = store
   const total = store.questions.length
   const done = totalAnswered
   const remaining = total - done
@@ -139,6 +140,27 @@ export function HomeScreen({ store }: Props) {
               <button onClick={() => startQuiz(true)} className="wrong-retry-btn">Practice</button>
             </div>
           </div>
+        </div>
+      )}
+
+      {examType === 'AZ500' && (
+        <div className="flex gap-2 w-full max-w-sm">
+          {hotspotQuestions.length > 0 && (
+            <button
+              onClick={() => startHotspot(false)}
+              className="flex-1 py-3 px-4 rounded-xl border border-violet-500/30 text-violet-400 text-sm font-semibold hover:bg-violet-500/10 transition-colors"
+            >
+              HOTSPOT ({hotspotQuestions.length})
+            </button>
+          )}
+          {ddOrderQuestions.length > 0 && (
+            <button
+              onClick={() => startDragDrop(false)}
+              className="flex-1 py-3 px-4 rounded-xl border border-cyan-500/30 text-cyan-400 text-sm font-semibold hover:bg-cyan-500/10 transition-colors"
+            >
+              DRAG DROP ({ddOrderQuestions.length})
+            </button>
+          )}
         </div>
       )}
 

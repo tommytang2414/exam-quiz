@@ -3,8 +3,11 @@
 import { useState, useEffect, useCallback } from 'react'
 import { getQuestions, DEFAULT_EXAM, type ExamType, type Question, AZ500_TOPICS, CCSP_DOMAINS } from './questions'
 import { fetchCloudData, saveCloudData, register, getToken, logout, getSavedExam } from './cloud-sync'
+import { hotspotQuestions } from './questions/az500_extra'
+import { ddOrderQuestions } from './questions/az500_extra'
+import type { HotspotQuestion, DragDropQuestion } from './questions/types'
 
-type QuizMode = 'login' | 'home' | 'quiz' | 'done' | 'review' | 'select-exam'
+type QuizMode = 'login' | 'home' | 'quiz' | 'done' | 'review' | 'select-exam' | 'hotspot' | 'dragdrop'
 type LoadState = 'loading' | 'ready'
 
 function shuffle<T>(arr: T[]): T[] {
@@ -36,6 +39,18 @@ export function useQuizStore() {
   const [reviewAnswered, setReviewAnswered] = useState(0)
   const [examType, setExamType] = useState<ExamType>(DEFAULT_EXAM)
   const [selectedDomains, setSelectedDomains] = useState<number[]>([])
+
+  // HOTSPOT state
+  const [hsQueue, setHsQueue] = useState<HotspotQuestion[]>([])
+  const [hsIndex, setHsIndex] = useState(0)
+  const [hsSelections, setHsSelections] = useState<Record<number, string>>({})
+  const [hsConfirmed, setHsConfirmed] = useState(false)
+
+  // DRAG DROP state
+  const [ddQueue, setDdQueue] = useState<DragDropQuestion[]>([])
+  const [ddIndex, setDdIndex] = useState(0)
+  const [ddSelections, setDdSelections] = useState<(number | null)[]>([])
+  const [ddConfirmed, setDdConfirmed] = useState(false)
 
   useEffect(() => {
     const token = getToken()
@@ -148,7 +163,6 @@ export function useQuizStore() {
     const isMulti = q.isMulti
 
     if (isMulti) {
-      // Toggle multi-select
       const next = new Set(selectedMulti)
       if (next.has(optIndex)) {
         next.delete(optIndex)
@@ -156,11 +170,10 @@ export function useQuizStore() {
         next.add(optIndex)
       }
       setSelectedMulti(next)
-      setSelected(null)  // single selection unused for multi
+      setSelected(null)
     } else {
       setSelected(optIndex)
       setConfirmed(true)
-      // Check single-select answer
       const correct = q.answer === optIndex
       const nextAnswered = totalAnswered + 1
       const nextCorrect = correct ? totalCorrect + 1 : totalCorrect
@@ -239,6 +252,103 @@ export function useQuizStore() {
     await saveCloudData({ exam: examType, wrongIds: [], totalAnswered: 0, totalCorrect: 0, lastUpdated: Date.now() })
   }, [examType])
 
+  // ─── HOTSPOT ──────────────────────────────────────────────────────────────
+
+  const startHotspot = useCallback((wrongOnly = false) => {
+    const filtered = selectedDomains.length > 0
+      ? hotspotQuestions.filter(q => selectedDomains.includes(q.topic ?? 0))
+      : hotspotQuestions
+    const src = wrongOnly && wrongIds.size > 0
+      ? filtered.filter(q => wrongIds.has(q.id))
+      : filtered
+    const shuffled = shuffle(src)
+    const limited = shuffled.slice(0, sessionGoal > 0 ? sessionGoal : filtered.length)
+    setHsQueue(limited)
+    setHsIndex(0)
+    setHsSelections({})
+    setHsConfirmed(false)
+    setMode('hotspot')
+  }, [wrongIds, sessionGoal, selectedDomains])
+
+  const hsSelect = useCallback((boxIndex: number, value: string) => {
+    setHsSelections(prev => ({ ...prev, [boxIndex]: value }))
+  }, [])
+
+  const hsConfirm = useCallback(() => {
+    setHsConfirmed(true)
+    // Update wrongIds based on correctness
+    const q = hsQueue[hsIndex]
+    const answers = q.boxes.map(b => b.answer)
+    const userAnswers = Object.entries(hsSelections).map(([k, v]) => ({ idx: parseInt(k), val: v }))
+    const allCorrect = answers.every((a, i) => hsSelections[i] === a)
+    if (!allCorrect) {
+      setWrongIds(prev => new Set([...prev, q.id]))
+    } else {
+      setWrongIds(prev => { const s = new Set(prev); s.delete(q.id); return s })
+    }
+  }, [hsQueue, hsIndex, hsSelections])
+
+  const hsNext = useCallback(() => {
+    if (hsIndex + 1 >= hsQueue.length) {
+      setMode('home')
+    } else {
+      setHsIndex(i => i + 1)
+      setHsSelections({})
+      setHsConfirmed(false)
+    }
+  }, [hsIndex, hsQueue.length])
+
+  // ─── DRAG DROP ────────────────────────────────────────────────────────────
+
+  const startDragDrop = useCallback((wrongOnly = false) => {
+    const filtered = selectedDomains.length > 0
+      ? ddOrderQuestions.filter(q => selectedDomains.includes(q.topic ?? 0))
+      : ddOrderQuestions
+    const src = wrongOnly && wrongIds.size > 0
+      ? filtered.filter(q => wrongIds.has(q.id))
+      : filtered
+    const shuffled = shuffle(src)
+    const limited = shuffled.slice(0, sessionGoal > 0 ? sessionGoal : filtered.length)
+    setDdQueue(limited)
+    setDdIndex(0)
+    setDdSelections(limited[0] ? limited[0].items.map(() => null as number | null) : [] as (number | null)[])
+    setDdConfirmed(false)
+    setMode('dragdrop')
+  }, [wrongIds, sessionGoal, selectedDomains])
+
+  const ddSelect = useCallback((itemIndex: number, position: number | null) => {
+    setDdSelections(prev => {
+      const next = [...prev]
+      next[itemIndex] = position
+      return next
+    })
+  }, [])
+
+  const ddConfirm = useCallback(() => {
+    setDdConfirmed(true)
+    const q = ddQueue[ddIndex]
+    const correctOrder = q.items.map(item => item.position)
+    const userOrder = ddSelections.filter(p => p !== null) as number[]
+    const allCorrect =
+      userOrder.length === correctOrder.length &&
+      userOrder.every((pos, i) => pos === correctOrder[i])
+    if (!allCorrect) {
+      setWrongIds(prev => new Set([...prev, q.id]))
+    } else {
+      setWrongIds(prev => { const s = new Set(prev); s.delete(q.id); return s })
+    }
+  }, [ddQueue, ddIndex, ddSelections])
+
+  const ddNext = useCallback(() => {
+    if (ddIndex + 1 >= ddQueue.length) {
+      setMode('home')
+    } else {
+      setDdIndex(i => i + 1)
+      setDdSelections(ddQueue[ddIndex + 1] ? ddQueue[ddIndex + 1].items.map(() => null as number | null) : [] as (number | null)[])
+      setDdConfirmed(false)
+    }
+  }, [ddIndex, ddQueue])
+
   const wrongCount = wrongIds.size
 
   return {
@@ -258,5 +368,11 @@ export function useQuizStore() {
     selectedDomains, setSelectedDomains,
     questions: getQuestions(examType),
     confirmMulti,
+    // HOTSPOT
+    hotspotQuestions, hsQueue, hsIndex, hsSelections, hsConfirmed,
+    startHotspot, hsSelect, hsConfirm, hsNext,
+    // DRAG DROP
+    ddOrderQuestions, ddQueue, ddIndex, ddSelections, ddConfirmed,
+    startDragDrop, ddSelect, ddConfirm, ddNext,
   }
 }

@@ -1,0 +1,1319 @@
+[
+  {
+    "id": "T2-Q7",
+    "topic": 2,
+    "question": "You have an Azure Active Directory (Azure AD) tenant named contoso.com that contains the users shown in the following table.\nYou create and enforce an Azure AD Identity Protection user risk policy that has the following settings:\n✑ Assignment: Include Group1, Exclude Group2\n✑ Conditions: Sign-in risk of Medium and above\n✑ Access: Allow access, Require password change\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {
+      "1": {
+        "answer": "Yes",
+        "explanation": "User1 is member of Group1. Sign in from unfamiliar location is risk level Medium."
+      },
+      "2": {
+        "answer": "Yes",
+        "explanation": "User2 is member of Group1. Sign in from anonymous IP address is risk level Medium."
+      },
+      "3": {
+        "answer": "No",
+        "explanation": "Sign-ins from IP addresses with suspicious activity is low."
+      }
+    },
+    "count": 3
+  },
+  {
+    "id": "T2-Q9",
+    "topic": 2,
+    "question": "You have an Azure Active Directory (Azure AD) tenant named contoso.com. The tenant contains the users shown in the following table.\nYou con\u0000gure an access review named Review1 as shown in the following exhibit.\nUse the drop-down menus to select the answer choice that completes each statement based on the information presented in the graphic.",
+    "boxes": {
+      "1": {
+        "answer": "User3 only",
+        "explanation": "Use the Members (self) option to have the users review their own role assignments."
+      }
+    },
+    "count": 1
+  },
+  {
+    "id": "T2-Q11",
+    "topic": 2,
+    "question": "Your company has two o\u0000ces in Seattle and New York. Each o\u0000ce connects to the Internet by using a NAT device. The o\u0000ces use the IP\naddresses shown in the following table.\nThe company has an Azure Active Directory (Azure AD) tenant named contoso.com. The tenant contains the users shown in the following\ntable.\nThe MFA service settings are con\u0000gured as shown in the exhibit. (Click the Exhibit tab.)\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {
+      "1": {
+        "answer": "Yes",
+        "explanation": "Box 2: No - Use of Microsoft Authenticator is not required. Either a text or phone call is required for MFA."
+      }
+    },
+    "count": 1
+  },
+  {
+    "id": "T2-Q13",
+    "topic": 2,
+    "question": "You have an Azure Container Registry named Registry1.\nYou add role assignments for Registry1 as shown in the following table.\nWhich users can upload images to Registry1 and download images from Registry1? To answer, select the appropriate options in the answer\narea.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {
+      "1": {
+        "answer": "User1 and User4 only",
+        "explanation": "Owner, Contributor and AcrPush can push images."
+      },
+      "2": {
+        "answer": "User1, User2, and User4",
+        "explanation": "All, except AcrImagineSigner, can download/pull images."
+      }
+    },
+    "count": 2
+  },
+  {
+    "id": "T2-Q21",
+    "topic": 2,
+    "question": "You have an Azure Active Directory (Azure AD) tenant named contoso.com that contains the users shown in the following table.\nAzure AD Privileged Identity Management (PIM) is used in contoso.com.\nIn PIM, the Password Administrator role has the following settings:\n✑ Maximum activation duration (hours): 2\n✑ Send email notifying admins of activation: Disable\n✑ Require incident/request ticket number during activation: Disable\n✑ Require Azure Multi-Factor Authentication for activation: Enable\n✑ Require approval to activate this role: Enable\n✑ Selected approver: Group1\nYou assign users the Password Administrator role as shown in the following table.\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {
+      "1": {
+        "answer": "Yes",
+        "explanation": "Active assignments don't require the member to perform any action to use the role. Members assigned as active have the privileges assigned to the role at all times."
+      },
+      "2": {
+        "answer": "Yes",
+        "explanation": "While Multi-Factor Authentication is disabled for User2 and the setting Require Azure Multi-Factor Authentication for activation is enabled, User2 can request the role but will need to enable MFA to use the role."
+      }
+    },
+    "count": 2
+  },
+  {
+    "id": "T2-Q24",
+    "topic": 2,
+    "question": "You create a new Azure subscription that is associated to a new Azure Active Directory (Azure AD) tenant.\nYou create one active conditional access policy named Portal Policy. Portal Policy is used to provide access to the Microsoft Azure\nManagement cloud app.\nThe Conditions settings for Portal Policy are con\u0000gured as shown in the Conditions exhibit. (Click the Conditions tab.)\nThe Grant settings for Portal Policy are con\u0000gured as shown in the Grant exhibit. (Click the Grant tab.)",
+    "boxes": {
+      "1": {
+        "answer": "Yes",
+        "explanation": "The Contoso location is included in the policy and MFA is required."
+      },
+      "2": {
+        "answer": "No",
+        "explanation": "The policy applies to the Azure portal and Azure management endpoints. The policy does not apply to web services host in Azure."
+      },
+      "3": {
+        "answer": "No",
+        "explanation": "The policy applies only to users in the Contoso location. The policy does not apply to users external to the Contoso location."
+      }
+    },
+    "count": 3
+  },
+  {
+    "id": "T2-Q25",
+    "topic": 2,
+    "question": "You have an Azure Active Directory (Azure AD) tenant that contains the users shown in the following table.\nThe tenant contains the named locations shown in the following table.\nYou create the conditional access policies for a cloud app named App1 as shown in the following table.\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T2-Q26",
+    "topic": 2,
+    "question": "You have an Azure subscription named Sub 1 that is associated to an Azure Active Directory (Azure AD) tenant named contoso.com. The\ntenant contains the users shown in the following table.\nEach user is assigned an Azure AD Premium P2 license.\nYou plan to onboard and con\u0000gure Azure AD Identity Protection.\nWhich users can onboard Azure AD Identity Protection, remediate users, and con\u0000gure policies? To answer, select the appropriate options in\nthe answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T2-Q27",
+    "topic": 2,
+    "question": "You have an Azure Active Directory (Azure AD) tenant that contains the users shown in the following table.\nFrom Azure AD Privileged Identity Management (PIM), you con\u0000gure the settings for the Security Administrator role as shown in the following\nexhibit.\nFrom PIM, you assign the Security Administrator role to the following groups:\n✑ Group1: Active assignment type, permanently assigned\n✑ Group2: Eligible assignment type, permanently eligible\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {
+      "1": {
+        "answer": "No",
+        "explanation": "User1 is a member of Group1. Group1: Active assignment type, permanently assigned"
+      },
+      "2": {
+        "answer": "Yes",
+        "explanation": "Active Type: A role assignment that doesn't require a user to perform any action to use the role. Users assigned as active have the privileges assigned to the role"
+      },
+      "3": {
+        "answer": "No",
+        "explanation": "User3 is member of Group1 and Group2. Group1: Active assignment type, permanently assigned Group2: Eligible assignment type, permanently eligible"
+      }
+    },
+    "count": 3
+  },
+  {
+    "id": "T2-Q28",
+    "topic": 2,
+    "question": "Your company has an Azure subscription named Subscription1 that contains the users shown in the following table.\nThe company is sold to a new owner.\nThe company needs to transfer ownership of Subscription1.\nWhich user can transfer the ownership and which tool should the user use? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {
+      "2": {
+        "answer": "Azure Account Center -",
+        "explanation": ""
+      }
+    },
+    "count": 1
+  },
+  {
+    "id": "T2-Q31",
+    "topic": 2,
+    "question": "You have an Azure Active Directory (Azure AD) tenant that contains the users shown in the following table.\nYou create and enforce an Azure AD Identity Protection sign-in risk policy that has the following settings:\n✑ Assignments: Include Group1, exclude Group2\n✑ Conditions: Sign-in risk level: Medium and above\n✑ Access: Allow access, Require multi-factor authentication\nYou need to identify what occurs when the users sign in to Azure AD.\nWhat should you identify for each user? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T2-Q32",
+    "topic": 2,
+    "question": "You have an Azure Active Directory (Azure AD) tenant that contains the users shown in the following table.\nIn Azure AD Privileged Identity Management (PIM), the Role settings for the Contributor role are con\u0000gured as shown in the exhibit. (Click the\nExhibit tab.)\nYou assign users the Contributor role on May 1, 2019 as shown in the following table.\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T2-Q33",
+    "topic": 2,
+    "question": "You work at a company named Contoso, Ltd. that has the o\u0000ces shown in the following table.\nContoso has an Azure Active Directory (Azure AD) tenant named contoso.com. All contoso.com users have Azure Multi-Factor Authentication\n(MFA) enabled. The tenant contains the users shown in the following table.\nThe multi-factor authentication settings for contoso.com are con\u0000gured as shown in the following exhibit.\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T2-Q37",
+    "topic": 2,
+    "question": "Your network contains an on-premises Active Directory domain that syncs to an Azure Active Directory (Azure AD) tenant. The tenant contains\nthe users shown in the following table.\nThe tenant contains the groups shown in the following table.\nYou con\u0000gure a multi-factor authentication (MFA) registration policy that has the following settings:\n✑ Assignments:\n- Include: Group1\n- Exclude: Group2\n✑ Controls: Require Azure MFA registration\n✑ Enforce Policy: On\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T2-Q41",
+    "topic": 2,
+    "question": "You have an Azure subscription named Subscription1 that contains the resources shown in the following table.\nYou create an Azure role by using the following JSON \u0000le.\nYou assign Role1 to User1 for RG1.\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T2-Q53",
+    "topic": 2,
+    "question": "You have the hierarchy of Azure resources shown in the following exhibit.\nRG1, RG2, and RG3 are resource groups.\nRG2 contains a virtual machine named VM2.\nYou assign role-based access control (RBAC) roles to the users shown in the following table.\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T2-Q54",
+    "topic": 2,
+    "question": "You plan to implement an Azure function named Function1 that will create new storage accounts for containerized application instances.\nYou need to grant Function1 the minimum required privileges to create the storage accounts. The solution must minimize administrative\neffort.\nWhat should you do? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T2-Q56",
+    "topic": 2,
+    "question": "You have an Azure Active Directory (Azure AD) tenant that contains the resources shown in the following table.\nUser2 is the owner of Group2.\nThe user and group settings for App1 are con\u0000gured as shown in the following exhibit.\nYou enable self-service application access for App1 as shown in the following exhibit.\nUser3 is con\u0000gured to approve access to App1.\nAfter you enable self-service application access for App1, who will be con\u0000gured as the Group2 owner and who will be con\u0000gured as the App1\nusers? To answer, select the appropriate options in the answer area.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T2-Q57",
+    "topic": 2,
+    "question": "You have a management group named Group1 that contains an Azure subscription named sub1. Sub1 has a subscription ID of 11111111-1234-\n1234-1234-\n1111111111.\nYou need to create a custom Azure role-based access control (RBAC) role that will delegate permissions to manage the tags on all the objects\nin Group1.\nWhat should you include in the role de\u0000nition of Role1? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T2-Q58",
+    "topic": 2,
+    "question": "You have an Azure subscription that contains the custom roles shown in the following table.\nIn the Azure portal, you plan to create new custom roles by cloning existing roles. The new roles will be con\u0000gured as shown in the following\ntable.\nWhich roles can you clone to create each new role? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T2-Q59",
+    "topic": 2,
+    "question": "You have an Azure subscription that contains the Azure Active Directory (Azure AD) resources shown in the following table.\nYou create the groups shown in the following table.\nWhich resources can you add to Group5 and Group6? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T2-Q60",
+    "topic": 2,
+    "question": "You have an Azure Active Directory (Azure AD) tenant named contoso.com that contains three security groups named Group1, Group2, and\nGroup3 and the users shown in the following table.\nGroup3 is a member of Group2.\nIn contoso.com, you register an enterprise application named App1 that has the following settings:\n✑ Owners: User1\n✑ Users and groups: Group2\nYou con\u0000gure the properties of App1 as shown in the following exhibit.\nFor each of the following statements, select Yes if the statement is true. Otherwise, select no.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T2-Q62",
+    "topic": 2,
+    "question": "Your network contains an on-premises Active Directory domain named adatum.com that syncs to Azure Active Directory (Azure AD).\nThe Azure AD tenant contains the users shown in the following table.\nYou con\u0000gure the Authentication methods `\" Password Protection settings for adatum.com as shown in the following exhibit.\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T2-Q63",
+    "topic": 2,
+    "question": "Your company has an Azure subscription named Subscription1. Subscription1 is associated with the Azure Active Directory tenant that\nincludes the users shown in the following table.\nThe company is sold to a new owner.\nThe company needs to transfer ownership of Subscription1.\nWhich user can transfer the ownership and which tool should the user use? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T2-Q67",
+    "topic": 2,
+    "question": "You have an Azure subscription named Subscription1 that contains the resources shown in the following table.\nYou create a custom RBAC role in Subscription1 by using the following JSON \u0000le.\nYou assign Role1 to User1 on RG1.\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T2-Q68",
+    "topic": 2,
+    "question": "You have an Azure subscription that contains the resources shown in the following table.\nThe subscription is linked to an Azure Active Directory (Azure AD) tenant that contains the users shown in the following table.\nYou create the groups shown in the following table.\nThe membership rules for Group1 and Group2 are con\u0000gured as shown in the following exhibit.\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T2-Q71",
+    "topic": 2,
+    "question": "You have an Azure Active Directory (Azure AD) tenant that contains the users shown in the following table.\nYou create and enforce an Azure AD Identity Protection sign-in risk policy that has the following settings:\n✑ Assignments: Include Group1, exclude Group2\n✑ Conditions: Sign-in risk level: Low and above\n✑ Access: Allow access, Require multi-factor authentication\nYou need to identify what occurs when the users sign in to Azure AD.\nWhat should you identify for each user? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T2-Q72",
+    "topic": 2,
+    "question": "You have an Azure subscription that contains an Azure SQL database named SQL1.\nYou plan to deploy a web app named App1.\nYou need to provide App1 with read and write access to SQL1. The solution must meet the following requirements:\n✑ Provide App1 with access to SQL1 without storing a password.\n✑ Use the principle of least privilege.\n✑ Minimize administrative effort.\nWhich type of account should App1 use to access SQL1, and which database roles should you assign to App1? To answer, select the\nappropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T2-Q73",
+    "topic": 2,
+    "question": "You have an Azure Active Directory (Azure AD) tenant that contains two users named User1 and User2 and a registered app named App1.\nYou create an app-speci\u0000c role named Role1.\nYou need to assign Role1 to User1 and enable User2 to request access to App1.\nWhich two settings should you modify? To answer, select the appropriate settings in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {
+      "1": {
+        "answer": "Roles and administrators",
+        "explanation": "Here you will \u0000nd Role1 and be able to assign User1 to the role."
+      },
+      "2": {
+        "answer": "Self Service",
+        "explanation": "Under Self Service, there is an option to גAllow users to request access to this applicationג.€"
+      }
+    },
+    "count": 2
+  },
+  {
+    "id": "T2-Q77",
+    "topic": 2,
+    "question": "You have an Azure subscription that contains a resource group named RG1. RG1 contains a storage account named storage1.\nYou have two custom Azure roles named Role1 and Role2 that are scoped to RG1.\nThe permissions for Role1 are shown in the following JSON code.\nThe permissions for Role2 are shown in the following JSON code.\nYou assign the roles to the users shown in the following table.\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T2-Q82",
+    "topic": 2,
+    "question": "You have an Azure subscription that contains the resources shown in the following table.\nYou perform the following tasks:\n• Create a managed identity named Managed1.\n• Create a Microsoft 365 group named Group1.\n• Register an enterprise application named App1.\n• Enable a system-assigned managed identity for VM1.\nYou need to identify which service principals were created and which identities can be assigned the Reader role for RG1.\nWhat should you identify? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T2-Q83",
+    "topic": 2,
+    "question": "You have an Azure Active directory tenant that syncs with an Active Directory Domain Services (AD DS) domain.\nYou plan to create an Azure \u0000le share that will contain folders and \u0000les.\nWhich identity store can you use to assign permissions to the Azure \u0000le share and folders within the share? To answer, select the appropriate\noptions in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T2-Q86",
+    "topic": 2,
+    "question": "You have the role assignments shown in the following exhibit.\nUse the drop-down menus to select the answer choice that completes each statement based on the information presented in the graphic.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T2-Q88",
+    "topic": 2,
+    "question": "You have an Azure subscription that contains a resource group named RG1. RG1 contains a virtual machine named VM1 that uses Azure\nActive Directory (Azure AD) authentication.\nYou have two custom Azure roles named Role1 and Role2 that are scoped to RG1.\nThe permissions for Role1 are shown in the following JSON code.\nThe permissions for Role2 are shown in the following JSON code.\nYou assign the roles to the users shown in the following table.\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T2-Q93",
+    "topic": 2,
+    "question": "You have an Azure subscription that contains a storage account named contoso2023.\nYou need to perform the following tasks:\n• Verify that identity-based authentication over SMB is enabled.\n• Only grant users access to contoso2023 in the year 2023.\nWhich two settings should you use? To answer, select the appropriate settings in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T2-Q102",
+    "topic": 2,
+    "question": "You have an Azure subscription that contains a user named Admin1 and an Azure key vault named Vault1.\nYou plan to implement Microsoft Entra Veri\u0000ed ID.\nYou need to create an access policy to ensure that Admin1 has permissions to Vault1 that support the implementation of the Veri\u0000ed ID\nservice. The solution must use the principle of least privilege.\nWhich three key permissions should you select? To answer, select the appropriate permissions in the answer area.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T2-Q105",
+    "topic": 2,
+    "question": "You have an Azure subscription that contains a user named User1 and a storage account named storage1. The storage1 account contains the\nresources shown in the following table.\nUser1 is assigned the following roles for storage1:\n• Storage Blob Data Reader\n• Storage Table Data Contributor\n• Storage File Data SMB Share Reader\nIn storage1, you create a shared access signature (SAS) named SAS1 as shown in the following exhibit.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T2-Q110",
+    "topic": 2,
+    "question": "You have an Azure AD tenant that contains the groups shown in the following table.\nYou assign licenses to the groups as shown in the following table.\nOn May1, you delete Group1, Group2, and Group3.\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T2-Q112",
+    "topic": 2,
+    "question": "You have a Microsoft Entra tenant that contains the users shown in the following table.\nYou con\u0000gure the Temporary Access Pass settings as shown in the following exhibit.\nYou add the Temporary Access Pass authentication method to Admin2.\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T2-Q113",
+    "topic": 2,
+    "question": "Your network contains an on-premises Active Directory domain named adatum.com that syncs to a Microsoft Entra tenant.\nThe Microsoft Entra tenant contains the users shown in the following table.\nYou con\u0000gure the Microsoft Entra Password Protection settings for adatum.com as shown in the following exhibit.\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T2-Q114",
+    "topic": 2,
+    "question": "You have a Microsoft Entra tenant that contains the users shown in the following table.\nFrom Microsoft Entra Privileged Identity Management (PIM), you con\u0000gure the settings for the Security Administrator role as shown in the\nfollowing exhibit.\nFrom PIM, you assign the Security Administrator role to the following groups:",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T2-Q116",
+    "topic": 2,
+    "question": "Your network contains an on-premises Active Directory domain that syncs to a Microsoft Entra tenant. The tenant contains the users shown in\nthe following table.\nThe tenant contains the groups shown in the following table.\nYou con\u0000gure a multi-factor authentication (MFA) registration policy that has the following settings:\n• Assignments:\no Include: Group1\no Exclude: Group2\n• Controls: Require Azure MFA registration\n• Enforce Policy: On\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T2-Q120",
+    "topic": 2,
+    "question": "You have a Microsoft Entra tenant that contains the groups shown in the following table.\nFrom the Azure portal, you con\u0000gure a group expiration policy that has a lifetime of 180 days.\nWhich groups will be deleted after 180 days of inactivity, and what is the maximum amount of time you have to restore a deleted group? To\nanswer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T2-Q122",
+    "topic": 2,
+    "question": "You have a Microsoft Entra tenant that contains the user shown in the following table.\nYou con\u0000gure a Conditional Access policy that has the following settings:\n• Name:CAPolicy1\n• Assignments\no Users or workload identities: Group1\no Target resources: All cloud apps\n• Access controls\no Grant access: Require multifactor authentication\nFrom Microsoft Authenticator settings for the tenant, the Enable and Target settings are con\u0000gured as shown in the Enable and Target exhibit.\n(Click the Enable and Target tab.)\nFrom Microsoft Authenticator settings for the tenant, the Con\u0000gure settings are con\u0000gured as shown in the Con\u0000gure exhibit. (Click the\nCon\u0000gure tab.)\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T2-Q124",
+    "topic": 2,
+    "question": "You have a Microsoft Entra tenant named contoso.com.\nYou collaborate with a partner organization that has a Microsoft Entra tenant named fabrikam.com. Fabrikam.com has multi-factor\nauthentication (MFA) enabled for all users.\nContoso.com has the Cross-tenant access settings con\u0000gured as shown in the Cross-tenant access settings exhibit. (Click the Cross-tenant\naccess settings tab.)\nContoso.com has the External collaboration settings con\u0000gured as shown in the External collaboration settings exhibit. (Click the External\ncollaboration settings tab.)\nYou create a Conditional Access policy that has the following settings:\n• Name: CAPolicy1\n• Assignments\no Guest or external users: B2B collaboration guest users\no Target resources\n- Include: All cloud apps\n• Access controls\n- Grant access\n• Require device to be marked as compliant\n• Require multi-factor authentication",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T3-Q9",
+    "topic": 3,
+    "question": "You create resources in an Azure subscription as shown in the following table.\nVNET1 contains two subnets named Subnet1 and Subnet2. Subnet1 has a network ID of 10.0.0.0/24. Subnet2 has a network ID of 10.1.1.0/24.\nContoso1901 is con\u0000gured as shown in the exhibit. (Click the Exhibit tab.)\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {
+      "1": {
+        "answer": "Yes",
+        "explanation": "Access from Subnet1 is allowed."
+      },
+      "2": {
+        "answer": "No",
+        "explanation": "No access from Subnet2 is allowed."
+      },
+      "3": {
+        "answer": "Yes",
+        "explanation": "Access from IP address 193.77.10.2 is allowed."
+      }
+    },
+    "count": 3
+  },
+  {
+    "id": "T3-Q15",
+    "topic": 3,
+    "question": "You have an Azure subscription. The subscription contains Azure virtual machines that run Windows Server 2016.\nYou need to implement a policy to ensure that each virtual machine has a custom antimalware virtual machine extension installed.\nHow should you complete the policy? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {
+      "1": {
+        "answer": "DeployIfNotExists",
+        "explanation": "DeployIfNotExists executes a template deployment when the condition is met."
+      },
+      "2": {
+        "answer": "Template",
+        "explanation": "The details property of the DeployIfNotExists effects has all the subproperties that de\u0000ne the related resources to match and the template deployment to execute. Deployment [required] This property should include the full template deployment as it would be passed to the Microsoft.Resources/deployment"
+      }
+    },
+    "count": 2
+  },
+  {
+    "id": "T3-Q23",
+    "topic": 3,
+    "question": "You have an Azure subscription that contains the virtual machines shown in the following table.\nYou create the Azure policies shown in the following table.\nYou create the resource locks shown in the following table.\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T3-Q24",
+    "topic": 3,
+    "question": "You have an Azure subscription that contains an Azure Active Directory (Azure AD) tenant named contoso.com. The tenant contains the users\nshown in the following table.\nYou create a resource group named RG1.\nWhich users can modify the permissions for RG1 and which users can create virtual networks in RG1? To answer, select the appropriate\noptions in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {
+      "1": {
+        "answer": "Only an owner can change permissions on resources.",
+        "explanation": ""
+      },
+      "2": {
+        "answer": "A Contributor can create/modify/delete anything in the subscription but cannot change permissions.",
+        "explanation": ""
+      }
+    },
+    "count": 2
+  },
+  {
+    "id": "T3-Q29",
+    "topic": 3,
+    "question": "You have a \u0000le named File1.yaml that contains the following contents.\nYou create an Azure container instance named container1 by using File1.yaml.\nYou need to identify where you can access the values of Variable1 and Variable2.\nWhat should you identify? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T3-Q31",
+    "topic": 3,
+    "question": "You have an Azure subscription that contains the virtual machines shown in the following table.\nSubnet1 and Subnet2 have a Microsoft.Storage service endpoint con\u0000gured.\nYou have an Azure Storage account named storageacc1 that is con\u0000gured as shown in the following exhibit.\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "boxes": {
+      "1": {
+        "answer": "Yes",
+        "explanation": "The public IP of VM1 is allowed through the \u0000rewall."
+      },
+      "2": {
+        "answer": "No",
+        "explanation": "The allowed virtual network list is empty so VM2 cannot access storageacc1 directly. The public IP address of VM2 is not in the allowed IP"
+      }
+    },
+    "count": 2
+  },
+  {
+    "id": "T3-Q32",
+    "topic": 3,
+    "question": "You have Azure virtual machines that have Update Management enabled. The virtual machines are con\u0000gured as shown in the following table.\nYou schedule two update deployments named Update1 and Update2. Update1 updates VM3. Update2 updates VM6.\nWhich additional virtual machines can be updated by using Update1 and Update2? To answer, select the appropriate options in the answer\narea.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T3-Q33",
+    "topic": 3,
+    "question": "You have an Azure subscription named Sub1.\nYou create a virtual network that contains one subnet. On the subnet, you provision the virtual machines shown in the following table.\nCurrently, you have not provisioned any network security groups (NSGs).\nYou need to implement network security to meet the following requirements:\n✑\n Allow tra\u0000c to VM4 from VM3 only.\n✑ Allow tra\u0000c from the Internet to VM1 and VM2 only.\n✑ Minimize the number of NSGs and network security rules.\nHow many NSGs and network security rules should you create? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T3-Q34",
+    "topic": 3,
+    "question": "You have an Azure key vault.\nYou need to delegate administrative access to the key vault to meet the following requirements:\n✑ Provide a user named User1 with the ability to set advanced access policies for the key vault.\n✑\n Provide a user named User2 with the ability to add and delete certi\u0000cates in the key vault.\n✑ Use the principle of least privilege.\nWhat should you use to assign access to each user? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T3-Q37",
+    "topic": 3,
+    "question": "You have two Azure virtual machines in the East US 2 region as shown in the following table.\nYou deploy and con\u0000gure an Azure Key vault.\nYou need to ensure that you can enable Azure Disk Encryption on VM1 and VM2.\nWhat should you modify on each virtual machine? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T3-Q46",
+    "topic": 3,
+    "question": "You have a network security group (NSG) bound to an Azure subnet.\nYou run Get-AzNetworkSecurityRuleCon\u0000g and receive the output shown in the following exhibit.\nUse the drop-down menus to select the answer choice that completes each statement based on the information presented in the graphic.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {
+      "2": {
+        "answer": "allowed",
+        "explanation": "TCP Port 21 controls the FTP session. Contoso_FTP has SourceAddressPre\u0000x {1.2.3.4/32} and DestinationAddressPre\u0000x {10.0.0.5/32}"
+      }
+    },
+    "count": 1
+  },
+  {
+    "id": "T3-Q53",
+    "topic": 3,
+    "question": "You have an Azure subscription that contains a storage account named storage1 and several virtual machines. The storage account and\nvirtual machines are in the same Azure region. The network con\u0000gurations of the virtual machines are shown in the following table.\nThe virtual network subnets have service endpoints de\u0000ned as shown in the following table.\nYou con\u0000gure the following Firewall and virtual networks settings for storage1:\n✑ Allow access from: Selected networks\n✑ Virtual networks: VNET3\\Subnet3\nFirewall `\" Address range: 52.233.129.0/24\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {
+      "1": {
+        "answer": "No",
+        "explanation": "VNet1 has a service endpoint con\u0000gure for Azure Storage. However, the Azure storage does not allow access from VNet1 or the public IP address of VM1."
+      },
+      "2": {
+        "answer": "Yes",
+        "explanation": "VNet2 does not have a service endpoint con\u0000gured. However, the Azure storage allows access from the public IP address of VM2."
+      },
+      "3": {
+        "answer": "No",
+        "explanation": "Azure storage allows access from VNet3. However, VNet3 does not have a service endpoint for Azure storage. The Azure storage also does not allow access from the public IP of VM3."
+      }
+    },
+    "count": 3
+  },
+  {
+    "id": "T3-Q55",
+    "topic": 3,
+    "question": "You have the Azure virtual networks shown in the following table.\nYou have the Azure virtual machines shown in the following table.\nThe \u0000rewalls on all the virtual machines allow ping tra\u0000c.\nNSG1 is con\u0000gured as shown in the following exhibit.\nInbound security rules -\nOutbound security rules -\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {
+      "1": {
+        "answer": "Yes",
+        "explanation": "VM1 and VM3 are on peered VNets. The \u0000rewall rules with a source of ASG1 and ASG2 allow 'any' tra\u0000c on 'any' protocol so pings are allowed between VM1 and VM3."
+      },
+      "2": {
+        "answer": "No",
+        "explanation": "VM2 and VM4 are on separate VNets and the VNets are not peered. Therefore, the pings would have to go over the Internet. VM4 does have a public IP and the \u0000rewall allows pings. However, for VM2 to be able to ping VM4, VM2 would also need a public IP address. In Azure, pings don't go out through the default gateway as they would in a physical network. For an Azure VM to ping external IPs, the VM must have a public IP address assigned to it."
+      },
+      "3": {
+        "answer": "Yes",
+        "explanation": "VM3 has a public IP address and the \u0000rewall allows tra\u0000c on port 3389."
+      }
+    },
+    "count": 3
+  },
+  {
+    "id": "T3-Q62",
+    "topic": 3,
+    "question": "You have an Azure subscription that is linked to an Azure Active Directory (Azure AD). The tenant contains the users shown in the following\ntable.\nYou have an Azure key vault named Vault1 that has Purge protection set to Disable. Vault1 contains the access policies shown in the\nfollowing table.\nYou create role assignments for Vault1 as shown in the following table.\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {
+      "1": {
+        "answer": "No",
+        "explanation": "Resource Policy Contributor or Security Administrator is required. User1 is Security Administrator only with the no speci\u0000c permission granted to Vault1. The Security Admin can view and update permissions for Security Center. Same permissions as the Security Reader role and can also update the security policy and dismiss alerts and recommendations. However:"
+      }
+    },
+    "count": 1
+  },
+  {
+    "id": "T3-Q63",
+    "topic": 3,
+    "question": "You have an Azure subscription that contains the virtual machines shown in the following table.\nVNET1, VNET2, and VNET3 are peered with each other.\nYou perform the following actions:\n• Create two application security groups named ASG1 and ASG2 in the West US region.\n• Add the network interface of VM1 to ASG1.\nThe network interfaces of which virtual machines can you add to ASG1 and ASG2? To answer, select the appropriate options in the answer\narea.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T3-Q70",
+    "topic": 3,
+    "question": "You have an Azure subscription.\nYou plan to deploy the virtual machines shown in the following table.\nYou need to identify the virtual machines and operating systems that can be deployed as con\u0000dential virtual machines?\nWhich Windows virtual machines and which Linux virtual machines should you identify?",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T4-Q1",
+    "topic": 4,
+    "question": "You have an Azure subscription that contains the resources shown in the following table.\nTransparent Data Encryption (TDE) is disabled on SQL1.\nYou assign policies to the resource groups as shown in the following table.\nYou plan to deploy Azure SQL databases by using an Azure Resource Manager (ARM) template. The databases will be con\u0000gured as shown in\nthe following table.\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T4-Q2",
+    "topic": 4,
+    "question": "You have an Azure subscription named Sub1. Sub1 has an Azure Storage account named storage1 that contains the resources shown in the\nfollowing table.\nYou generate a shared access signature (SAS) to connect to the blob service and the \u0000le service.\nWhich tool can you use to access the contents in Container1 and Share1 by using the SAS? To answer, select the appropriate options in the\nanswer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T4-Q15",
+    "topic": 4,
+    "question": "You plan to use Azure Log Analytics to collect logs from 200 servers that run Windows Server 2016.\nYou need to automate the deployment of the Microsoft Monitoring Agent to all the servers by using an Azure Resource Manager template.\nHow should you complete the template? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T4-Q16",
+    "topic": 4,
+    "question": "You have an Azure subscription that contains the alerts shown in the following exhibit.\nUse the drop-down menus to select the answer choice that completes each statement based on the information presented in the graphic.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T4-Q18",
+    "topic": 4,
+    "question": "You have the hierarchy of Azure resources shown in the following exhibit.\nYou create the Azure Blueprints de\u0000nitions shown in the following table.\nTo which objects can you assign Blueprint1 and Blueprint2? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T4-Q20",
+    "topic": 4,
+    "question": "You have an Azure subscription that contains a user named Admin1 and a resource group named RG1.\nIn Azure Monitor, you create the alert rules shown in the following table.\nAdmin1 performs the following actions on RG1:\n✑ Adds a virtual network named VNET1\n✑ Adds a Delete lock named Lock1\nWhich rules will trigger an alert as a result of the actions of Admin1? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T4-Q23",
+    "topic": 4,
+    "question": "You have an Azure Sentinel workspace that contains an Azure Active Directory (Azure AD) connector, an Azure Log Analytics query named\nQuery1, and a playbook named Playbook1.\nQuery1 returns a subset of security events generated by Azure AD.\nYou plan to create an Azure Sentinel analytic rule based on Query1 that will trigger Playbook1.\nYou need to ensure that you can add Playbook1 to the new rule.\nWhat should you do? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T4-Q24",
+    "topic": 4,
+    "question": "You have an Azure subscription that contains the resources shown in the following table.\nAn IP address of 10.1.0.4 is assigned to VM5. VM5 does not have a public IP address.\nVM5 has just in time (JIT) VM access con\u0000gured as shown in the following exhibit.\nYou enable JIT VM access for VM5.\nNSG1 has the inbound rules shown in the following exhibit.\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T4-Q26",
+    "topic": 4,
+    "question": "You have an Azure Active Directory (Azure AD) tenant named contoso.com that contains the users shown in the following table.\nContoso.com contains a group naming policy. The policy has a custom blocked word list rule that includes the word Contoso.\nWhich users can create a group named Contoso Sales in contoso.com? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T4-Q30",
+    "topic": 4,
+    "question": "You plan to use Azure Sentinel to create an analytic rule that will detect suspicious threats and automate responses.\nWhich components are required for the rule? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T4-Q36",
+    "topic": 4,
+    "question": "You suspect that users are attempting to sign in to resources to which they have no access.\nYou need to create an Azure Log Analytics query to identify failed user sign-in attempts from the last three days. The results must only show\nusers who had more than \u0000ve failed sign-in attempts.\nHow should you con\u0000gure the query? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T4-Q40",
+    "topic": 4,
+    "question": "You have an Azure subscription that contains an Azure Sentinel workspace.\nAzure Sentinel is con\u0000gured to ingest logs from several Azure workloads. A third-party service management platform is used to manage\nincidents.\nYou need to identify which Azure Sentinel components to con\u0000gure to meet the following requirements:\n✑ When Azure Sentinel identi\u0000es a threat, an incident must be created.\n✑ A ticket must be logged in the service management platform when an incident is created in Azure Sentinel.\nWhich component should you identify for each requirement? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T4-Q41",
+    "topic": 4,
+    "question": "You have an Azure subscription.\nYou need to create and deploy an Azure policy that meets the following requirements:\n✑ When a new virtual machine is deployed, automatically install a custom security extension.\n✑ Trigger an autogenerated remediation task for non-compliant virtual machines to install the extension.\nWhat should you include in the policy? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T4-Q47",
+    "topic": 4,
+    "question": "You have 20 Azure subscriptions and a security group named Group1. The subscriptions are children of the root management group.\nEach subscription contains a resource group named RG1.\nYou need to ensure that for each subscription RG1 meets the following requirements:\n✑ The members of Group1 are assigned the Owner role.\n✑\n The modi\u0000cation of permissions to RG1 is prevented.\nWhat should you do? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T4-Q51",
+    "topic": 4,
+    "question": "You have an Azure subscription that contains the resources shown in the following table.\nVM1 and VM2 are stopped.\nYou create an alert rule that has the following settings:\n✑ Resource: RG1\n✑ Condition: All Administrative operations\n✑\n Actions: Action groups con\u0000gured for this alert rule: ActionGroup1\n✑ Alert rule name: Alert1\nYou create an action rule that has the following settings:\n✑ Scope: VM1\n✑ Filter criteria: Resource Type = \"Virtual Machines\"\n✑\n De\u0000ne on this scope: Suppression\n✑ Suppression con\u0000g: From now (always)\n✑ Name: ActionRule1\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNote: Each correct selection is worth one point.",
+    "boxes": {
+      "1": {
+        "answer": "The scope for the action rule is set to VM1 and is set to suppress alerts inde\u0000nitely.",
+        "explanation": ""
+      },
+      "2": {
+        "answer": "The scope for the action rule is not set to VM2.",
+        "explanation": ""
+      },
+      "3": {
+        "answer": "Adding a tag is not an administrative operation.",
+        "explanation": ""
+      }
+    },
+    "count": 3
+  },
+  {
+    "id": "T4-Q61",
+    "topic": 4,
+    "question": "You have an Azure subscription named Subscription1 that contains the resources shown in the following table.\nYou have an Azure subscription named Subscription2 that contains the following resources:\n✑ An Azure Sentinel workspace\n✑ An Azure Event Grid instance\nYou need to ingest the CEF messages from the NVA1 to Azure Sentinel.\nWhat should you con\u0000gure for each subscription? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T4-Q62",
+    "topic": 4,
+    "question": "You have an Azure subscription named Subscription1 that contains a resource group named RG1 and a user named User1. User1 is assigned\nthe Owner role for\nRG1.\nYou create an Azure Blueprints de\u0000nition named Blueprint1 that includes a resource group named RG2 as shown in the following exhibit.\nYou assign Blueprint1 to Subscription1 by using the following settings:\n✑ Lock assignment: Read Only\n✑ Managed Identity: System assigned\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T4-Q65",
+    "topic": 4,
+    "question": "You have an Azure Sentinel workspace that has the following data connectors:\n✑ Azure Active Directory Identity Protection\n✑ Common Event Format (CEF)\nAzure Firewall -\nYou need to ensure that data is being ingested from each connector.\nFrom the Logs query window, which table should you query for each connector? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T4-Q67",
+    "topic": 4,
+    "question": "You have an Azure subscription that contains three storage accounts, an Azure SQL managed instance named SQL1, and three Azure SQL\ndatabases.\nThe storage accounts are con\u0000gured as shown in the following table.\nSQL1 has the following settings:\n✑ Auditing: On\n✑ Audit log destination: storage1\nThe Azure SQL databases are con\u0000gured as shown in the following table.\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T4-Q74",
+    "topic": 4,
+    "question": "You are con\u0000guring just in time (JIT) VM access to a Windows Server 2019 Azure virtual machine.\nYou need to grant users PowerShell access to the virtual machine by using JIT VM access.\nWhat should you con\u0000gure? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T4-Q75",
+    "topic": 4,
+    "question": "You have an Azure subscription that contains the resources shown in the following table.\nYou create the Azure Storage accounts shown in the following table.\nYou need to con\u0000gure auditing for SQL1.\nWhich storage accounts and Log Analytics workspaces can you use as the audit log destination? To answer, select the appropriate options in\nthe answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T4-Q83",
+    "topic": 4,
+    "question": "You have an Azure subscription that contains an Azure key vault. The role assignments for the key vault are shown in the following exhibit.\nUse the drop-down menus to select the answer choice that completes each statement based on the information presented in the graphic.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T4-Q84",
+    "topic": 4,
+    "question": "You have an Azure subscription that contains a blob container named cont1. Cont1 has the access policies shown in the following exhibit.\nUse the drop-down menus to select the answer choice that completes each statement based on the information presented in the graphic.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {
+      "1": {
+        "answer": "4",
+        "explanation": "A container can have up to 5 stored access policies. Maximum number of stored access policies per blob container: 5"
+      },
+      "2": {
+        "answer": "1",
+        "explanation": "Blob version supports one version-level immutability policy and one legal hold. A policy on a blob version can override a default policy speci\u0000ed on the account or container."
+      }
+    },
+    "count": 2
+  },
+  {
+    "id": "T4-Q86",
+    "topic": 4,
+    "question": "You have an Azure Active Directory (Azure AD) tenant named contoso.com that has Azure Active Directory Premium Plan 1 licenses.\nYou need to create a group named Group1 that will be assigned the Global reader role.\nWhich portal should you use to create Group1, and which type of group should you create? To answer, select the appropriate options in the\nanswer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T4-Q87",
+    "topic": 4,
+    "question": "You have a management group named MG1 that contains an Azure subscription and a resource group named RG1. RG1 contains a virtual\nmachine named VM1.\nYou have the custom Azure roles shown in the following table.\nThe permissions for Role1 are shown in the following role de\u0000nition \u0000le.\nThe permissions for Role2 are shown in the following role de\u0000nition \u0000le.\nYou assign the roles to the users shown in the following table.\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T4-Q89",
+    "topic": 4,
+    "question": "You have an Azure subscription that contains the following Azure \u0000rewall:\n• Name: Fw1\n• Azure region: UK West\n• Private IP address: 10.1.3.4\n• Public IP address: 23.236.62.147\nThe subscription contains the virtual networks shown in the following table.\nThe subscription contains the subnets shown in the following table.\nThe subscription contains the routes shown in the following table.\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T4-Q90",
+    "topic": 4,
+    "question": "You have an Azure subscription that contains a user named User1 and a storage account named storage1. The storage1 account contains the\nresources shown in the following table.\nIn storage1, you create a shared access signature (SAS) named SAS1 as shown in the following exhibit.\nTo which resources can User1 write on July 1, 2022 by using SAS1 and key1? To answer select the appropriate options in the answer area.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T4-Q92",
+    "topic": 4,
+    "question": "You have an Azure subscription that contains a user named User1. User1 is assigned the Reader role for the subscription.\nYou plan to create a custom role named Role1 and assign Role1 to User1.\nYou need to ensure that User1 can create and manage application security groups by using Azure portal.\nWhich two permissions should you add to Role1? To answer, select the appropriate permissions in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T4-Q95",
+    "topic": 4,
+    "question": "You have an Azure subscription named Sub1 that contains the resource groups shown in the following table.\nYou create the Azure Policy de\u0000nition shown in the following exhibit.\nYou assign the policy to Sub1.\nYou plan to create the resources shown in the following table.\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T4-Q104",
+    "topic": 4,
+    "question": "On Monday, you con\u0000gure an email noti\u0000cation in Microsoft Defender for Cloud to notify user1@contoso.com about alerts that have a severity\nlevel of Low, Medium, or High.\nOn Tuesday, Microsoft Defender for Cloud generates the security alerts shown in the following table.\nHow many email noti\u0000cations will user1@contoso.com receive on Tuesday? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T4-Q107",
+    "topic": 4,
+    "question": "You have an Azure subscription that uses Microsoft Defender for Cloud.\nYou plan to use the Secure Score Over Time workbook.\nYou need to con\u0000gure the Continuous export settings for the Defender for Cloud data.\nWhich two settings should you con\u0000gure? To answer, select the appropriate settings in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T4-Q110",
+    "topic": 4,
+    "question": "You have an Azure subscription that contains a Microsoft Defender External Attack Surface Management (Defender EASM) resource named\nEASM1. EAMS1 contains the inventory assets shown in the following table.\nWhich assets are scanned daily, and which assets will display in the default dashboard charts? To answer, select the appropriate options in\nthe answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T4-Q112",
+    "topic": 4,
+    "question": "You plan to deploy a custom policy initiative for Microsoft Defender for Cloud.\nYou need to identify all the resource groups that have a Delete lock.\nHow should you complete the policy de\u0000nition? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T4-Q120",
+    "topic": 4,
+    "question": "You have an Azure key vault.\nYou need to delegate administrative access to the key vault to meet the following requirements:\n• Provide a user named User1 with the ability to set access policies for the key vault.\n• Provide a user named User2 with the ability to add and delete certi\u0000cates in the key vault.\n• Use the principle of least privilege.\nWhat should you use to assign access to each user? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T4-Q121",
+    "topic": 4,
+    "question": "You have an Azure subscription named Sub1 that contains two resource groups named RGnet and NET .\nYou have the Azure Policy de\u0000nition shown in the following exhibit.\nYou assign the policy de\u0000nition to Sub1 and NET .\nYou plan to deploy the resources shown in the following table.\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T5-Q3",
+    "topic": 5,
+    "question": "You have an Azure subscription that contains a web app named App1 and an Azure key vault named Vault1.\nYou need to con\u0000gure App1 to store and access the secrets in Vault1.\nHow should you con\u0000gure App1? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T5-Q4",
+    "topic": 5,
+    "question": "You have an Azure key vault named KeyVault1 that contains the items shown in the following table.\nIn KeyVault1, the following events occur in sequence:\n✑ Item1 is deleted.\n✑ Item2 and Policy1 are deleted.\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T5-Q6",
+    "topic": 5,
+    "question": "You have the Azure Information Protection labels as shown in the following table.\nYou have the Azure Information Protection policies as shown in the following table.\nYou need to identify how Azure Information Protection will label \u0000les.\nWhat should you identify? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {
+      "1": {
+        "answer": "Label 2 only",
+        "explanation": "How multiple conditions are evaluated when they apply to more than one label 1. The labels are ordered for evaluation, according to their position that you specify in the policy: The label positioned \u0000rst has the lowest position (least sensitive) and the label positioned last has the highest position (most sensitive)."
+      }
+    },
+    "count": 1
+  },
+  {
+    "id": "T5-Q10",
+    "topic": 5,
+    "question": "You have the Azure key vaults shown in the following table.\nKV1 stores a secret named Secret1 and a key for a managed storage account named Key1.\nYou back up Secret1 and Key1.\nTo which key vaults can you restore each backup? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T5-Q11",
+    "topic": 5,
+    "question": "You have an Azure subscription that contains an Azure key vault named Vault1.\nOn January 1, 2019, Vault1 stores the following secrets. All dates are in mm/dd/yy format.\nWhen can each secret be used by an application? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {
+      "1": {
+        "answer": "Never",
+        "explanation": "Password1 is disabled."
+      }
+    },
+    "count": 1
+  },
+  {
+    "id": "T5-Q17",
+    "topic": 5,
+    "question": "You have an Azure subscription named Sub1 that is associated to an Azure Active Directory (Azure AD) tenant named contoso.com.\nYou plan to implement an application that will consist of the resources shown in the following table.\nUsers will authenticate by using their Azure AD user account and access the Cosmos DB account by using resource tokens.\nYou need to identify which tasks will be implemented in CosmosDB1 and WebApp1.\nWhich task should you identify for each resource? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T5-Q18",
+    "topic": 5,
+    "question": "You need to create an Azure key vault. The solution must ensure that any object deleted from the key vault be retained for 90 days.\nHow should you complete the command? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {
+      "1": {
+        "answer": "-EnablePurgeProtection",
+        "explanation": "If speci\u0000ed, protection against immediate deletion is enabled for this vault; requires soft delete to be enabled as well."
+      },
+      "2": {
+        "answer": "-EnableSoftDelete",
+        "explanation": "Speci\u0000es that the soft-delete functionality is enabled for this key vault. When soft-delete is enabled, for a grace period, you can recover this key vault and its contents after it is deleted."
+      }
+    },
+    "count": 2
+  },
+  {
+    "id": "T5-Q23",
+    "topic": 5,
+    "question": "You have an Azure Storage account that contains a blob container named container1 and a client application named App1.\nYou need to enable App1 access to container1 by using Azure Active Directory (Azure AD) authentication.\nWhat should you do? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T5-Q24",
+    "topic": 5,
+    "question": "You have an Azure subscription that contains an Azure key vault named ContosoKey1.\nYou create users and assign them roles as shown in the following table.\nYou need to identify which users can perform the following actions:\n✑ Delegate permissions for ContosoKey1.\n✑\n Con\u0000gure network access to ContosoKey1.\nWhich users should you identify? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T5-Q30",
+    "topic": 5,
+    "question": "You have an Azure subscription that contains the resources shown in the following table.\nUser1 is a member of Group1. Group1 and User2 are assigned the Key Vault Contributor role for Vault1.\nOn January 1, 2019, you create a secret in Vault1. The secret is con\u0000gured as shown in the exhibit. The date format YYYY-MM-DD is used on\nthe exhibit. (Click the Exhibit tab.)\nUser2 is assigned an access policy to Vault1. The policy has the following con\u0000gurations:\n✑ Key Management Operations: Get, List, and Restore\n✑ Cryptographic Operations: Decrypt and Unwrap Key\n✑ Secret Management Operations: Get, List, and Restore\nGroup1 is assigned an access policy to Vault1. The policy has the following con\u0000gurations:\n✑ Key Management Operations: Get and Recover\n✑ Secret Management Operations: List, Backup, and Recover\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T5-Q31",
+    "topic": 5,
+    "question": "You have an Azure Active Directory (Azure AD) tenant named contoso1812.onmicrosoft.com that contains the users shown in the following\ntable.\nYou create an Azure Information Protection label named Label1. The Protection settings for Label1 are con\u0000gured as shown in the exhibit.\n(Click the Exhibit tab.)\nLabel1 is applied to a \u0000le named File1.\nFor each of the following statements, select Yes if the statement is true, Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T5-Q38",
+    "topic": 5,
+    "question": "You have an Azure subscription that contains the following resources:\n✑ An Azure key vault\n✑ An Azure SQL database named Database1\nTwo Azure App Service web apps named AppSrv1 and AppSrv2 that are con\u0000gured to use system-assigned managed identities and access\nDatabase1\nYou need to implement an encryption solution for Database1 that meets the following requirements:\n✑ The data in a column named Discount in Database1 must be encrypted so that only AppSrv1 can decrypt the data.\n✑ AppSrv1 and AppSrv2 must be authorized by using managed identities to obtain cryptographic keys.\nHow should you con\u0000gure the encryption settings for Database1? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T5-Q39",
+    "topic": 5,
+    "question": "You have an Azure subscription that contains the storage accounts shown in the following table.\nYou need to con\u0000gure authorization access.\nWhich authorization types can you use for each storage account? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T5-Q44",
+    "topic": 5,
+    "question": "You have an Azure subscription that contains the storage accounts shown in the following table.\nYou enable Azure Defender for Storage.\nWhich storage services of storage5 are monitored by Azure Defender for Storage, and which storage accounts are protected by Azure Defender\nfor Storage? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T5-Q49",
+    "topic": 5,
+    "question": "You have an Azure subscription that contains an Azure key vault named KeyVault1 and the virtual machines shown in the following table.\nYou set the Key Vault access policy to Enable access to Azure Disk Encryption for volume encryption.\nKeyVault1 is con\u0000gured as shown in the following exhibit.\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T5-Q52",
+    "topic": 5,
+    "question": "You have a hybrid Azure Active Directory (Azure AD) tenant named contoso.com that contains a user named User1 and the servers shown in\nthe following table.\nThe tenant is linked to an Azure subscription that contains a storage account named storage1. The storage1 account contains a \u0000le share\nnamed share1.\nUser1 is assigned the Storage File Data SMB Share Contributor role for storage1.\nThe Security protocol settings for the \u0000le shares of storage1 are con\u0000gured as shown in the following exhibit.\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {
+      "1": {
+        "answer": "No",
+        "explanation": "Kerberos uses user's credentials, not access keys."
+      },
+      "2": {
+        "answer": "Yes",
+        "explanation": "Kerberos uses user's credentials."
+      },
+      "3": {
+        "answer": "No -",
+        "explanation": ""
+      }
+    },
+    "count": 3
+  },
+  {
+    "id": "T5-Q54",
+    "topic": 5,
+    "question": "You have a Microsoft Sentinel deployment.\nYou need to connect a third-party security solution to the deployment. The third-party solution will send Common Event Format (CEF)-\nformatted messages.\nWhat should you include in the solution? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T5-Q58",
+    "topic": 5,
+    "question": "You have an Azure subscription that contains the key vaults shown in the following table.\nThe subscription contains the users shown in the following table.\nOn June 1, you perform the following actions:\n• Delete a key named key1 from KeyVault1.\n• Delete a secret named secret1 from KeyVault2.\nFor each of the following statements, select Yes If the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T5-Q59",
+    "topic": 5,
+    "question": "You have an Azure Active Directory (Azure AD) tenant that contains two administrative units named AU1 and AU2.\nUsers are assigned to the administrative units as shown in the following table.\nUsers are assigned the roles shown in the following table.\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T5-Q61",
+    "topic": 5,
+    "question": "You have an Azure SQL database named DB1 that contains a table named Tablet.\nYou need to con\u0000gure DB1 to meet the following requirements:\n• Sensitive data in Table1 must be identi\u0000ed automatically.\n• Only the \u0000rst character and last character of the sensitive data must be displayed in query results.\nWhich two features should you con\u0000gure? To answer, select the features in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T5-Q62",
+    "topic": 5,
+    "question": "You have an Azure subscription that contains two users named User1 and User2 and the blob containers shown in the following table.\nPolicy1 is con\u0000gured as shown in the following exhibit.\nYou assign the roles for storage1 as shown in the following table.\nThe storage1 account has the following shared access signature (SAS) named SAS1:\n• Allowed services: Blob\n• Allowed resource types: Container\n• Allowed permissions: Read, Write, List, Add, Create\n• Blob versioning permissions: enables deletion of versions\n• Allowed blob index permissions: Read/Write\n• Starr and expiry date/time:\no Start: 12/1/2021\no End: 12/31/2021\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T5-Q63",
+    "topic": 5,
+    "question": "Your on-premises network contains the servers shown in the following table.\nYou have an Azure subscription that contains multiple virtual machines that run either Windows Server 2019 or SLES.\nYou plan to implement adaptive application controls in Microsoft Defender for Cloud.\nWhich operating systems and platforms can you monitor? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T5-Q66",
+    "topic": 5,
+    "question": "You have an Azure AD tenant named contoso.com that contains the users shown in the following table.\nYou add enterprise applications to contoso.com as shown in the following table.\nYou need to identify which users can grant admin consent for App1 and App2.\nWhich users should you identify for each application? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T5-Q68",
+    "topic": 5,
+    "question": "You have a Microsoft Sentinel deployment.\nYou need to connect a third-party security solution to the deployment. The third-party solution will send Common Event Format (CEF)-\nformatted messages.\nWhat should you include in the solution? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T5-Q76",
+    "topic": 5,
+    "question": "You have an Azure subscription that contains the virtual networks shown in the following table.\nNSG1 rules restrict access to the internet from Subnet3.\nThe subscription contains the function apps shown in the following table.\nVirtual network integration has the default settings.\nYou need to con\u0000gure network access for App1 and App2 to meet the following requirements:\n• Deny inbound access to App1 from Subnet1 and allow inbound access from Subnet2.\n• Deny outbound access from App2 to the internet.\nWhat should you do for each requirement? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T6-Q2",
+    "topic": 6,
+    "question": "You have an Azure subscription that contains the virtual machines shown in the following table.\nSubnet1 and Subnet2 have a network security group (NSG). The NSG has an outbound rule that has the following con\u0000gurations:\n• Port: Any\n• Source: Any\n• Priority: 100\n• Action: Deny\n• Protocol: Any\n• Destination: Storage\nThe subscription contains a storage account named storage1.\nYou create a private endpoint named Private1 that has the following settings:\n• Resource type: Microsoft.Storage/storageAccounts\n• Resource: storage1\n• Target sub-resource: blob\n• Virtual network: VNet1\n• Subnet: Subnet1\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T6-Q3",
+    "topic": 6,
+    "question": "You have an Azure subscription that contains the resources shown in the following table.\nVNet1 contains the subnets shown in the following table.\nYou plan to use the Azure portal to deploy an Azure \u0000rewall named AzFW1 to VNet1.\nWhich resource group and subnet can you use to deploy AzFW1? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T6-Q6",
+    "topic": 6,
+    "question": "You have an Azure subscription that is linked to an Azure AD tenant and contains the virtual machines shown in the following table.\nThe subnets of the virtual networks have the service endpoints shown in the following table.\nYou create the resources shown in the following table.\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T6-Q10",
+    "topic": 6,
+    "question": "You have an Azure Subscription that is connected to an on-premises datacenter and contains the resources shown in the following table.\nYou need to con\u0000gure virtual network service endpoints for VNet1 and VNet2. The solution must meet the following requirements:\n• The virtual machines that connect to the subnet of VNet1 must access storage1, storage2, and Azure AD by using the Microsoft backbone\nnetwork.\n• The virtual machines that connect to the subnet of VNet2 must access storage1 and KeyVault1 by using the Microsoft backbone network.\n• The virtual machines must use the Microsoft backbone network to communicate between VNet1 and VNet2.\nHow many service endpoints should you con\u0000gure for each virtual network? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T6-Q15",
+    "topic": 6,
+    "question": "You have an Azure subscription that contains the resources shown in the following table.\nVNet1 connects to a remote site by using a Site-to-Site (S2S) VPN that uses forced tunneling.\nVNet1 contains the subnets shown in the following table.\nThe SQL subnet contains SQL1.\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T6-Q17",
+    "topic": 6,
+    "question": "You have an Azure subscription that contains the virtual networks shown in the following table.\nThe subscription contains the subnets shown in the following table.\nYou plan to create an Azure web app named WebApp2 that will have the following con\u0000gurations:\n• Region: East US\n• VNet integration: Enabled\n• Scale out: Autoscale to up to 10 instances\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T6-Q20",
+    "topic": 6,
+    "question": "You are implementing an Azure Application Gateway web application \u0000rewall (WAF) named WAF1.\nYou have the following Bicep code snippet.\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T6-Q21",
+    "topic": 6,
+    "question": "You have an Azure subscription that contains the virtual networks shown in the following table.\nNSG1 and NSG2 both have default rules only.\nThe subscription contains the virtual machines shown in the following table.\nThe subscription contains the web apps shown in the following table.\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T6-Q25",
+    "topic": 6,
+    "question": "You have an Azure subscription that contains an Azure \u0000rewall named AzFW1. AzFW1 has a \u0000rewall policy named FWPolicy1.\nYou need to add rule collections to FWPolicy1 to meet the following requirements:\n• Allow tra\u0000c based on the FQDN of the destination.\n• Allow TCP tra\u0000c.\nWhich types of rule collections should you add for each requirement? To answer, select the appropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T6-Q26",
+    "topic": 6,
+    "question": "You have an Azure subscription that contains the virtual networks shown in the following table.\nThe subscription contains the virtual machines shown in the following table.\nAll the virtual machines have only private IP addresses.\nYou deploy Azure Bastion to VNet1 as shown in the following exhibit.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T6-Q27",
+    "topic": 6,
+    "question": "You have an Azure subscription that contains the resources shown in the following table.\nYou plan to use service endpoints and service endpoint policies.\nWhich resources can be accessed by using a service endpoint, and which resources support service endpoint policies? To answer, select the\nappropriate options in the answer area.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T6-Q28",
+    "topic": 6,
+    "question": "You have an Azure App Service web app named App1 as shown in the following exhibit.\nSubnet 2 contains a virtual machine named VM1.\nUse the drop-down menus to select the answer choice that completes each statement based on the information presented in the graphic.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T6-Q29",
+    "topic": 6,
+    "question": "You have an Azure subscription that contains a virtual machine named VM1.\nYou have a network security group (NSG) named NSG1 that is associated to the network interface of VM1 and is con\u0000gured as shown in the\nfollowing exhibit.\nJust-in-time (JIT) VM access is enabled on VM1 and has the following con\u0000gurations:\n• Management ports: 3389, 22\n• Maximum time range: 3 hours\n• Allowed source IP addresses: Any\nYou activate the JIT rule and connect to VM1 by using SSH.\nFor each of the following statements, select Yes if the statement is true, otherwise select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T6-Q31",
+    "topic": 6,
+    "question": "You have an Azure subscription that contains a virtual network named VNet1. VNet1 contains the subnets shown in the following table.\nThe subscription contains the virtual machines shown in the following table.\nVM3 contains a service that listens for connections on port 8080.\nFor VM1, you con\u0000gure just-in-time (JIT) VM access as shown in the following exhibit.\nFor each of the following statement, select Yes if the statement is true. Otherwise, select No.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T7-Q1",
+    "topic": 7,
+    "question": "You have an Azure subscription that contains the resources shown in the following table.\nYou create a shared access token as shown in the following exhibit.\nWhich resources can you access by using the shared access token and Key1? To answer, select the appropriate options in the answer area.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T7-Q3",
+    "topic": 7,
+    "question": "You have an Azure subscription that contains the resources shown in the following table.\nSQL1 has the following con\u0000gurations:\n• Auditing: Enabled\n• Audit log destination: storage1, Workspace1\nDB1 has the following con\u0000gurations:\n• Auditing: Enabled\n• Audit log destination: storage2\nDB2 has auditing disabled.\nWhere are the audit logs for DB1 and DB2 stored? To answer, select the appropriate options in the answer area.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T7-Q6",
+    "topic": 7,
+    "question": "You have an Azure subscription that contains the virtual machines shown in the following table.\nYou have an Azure Cosmos DB account named cosmos1 con\u0000gured as shown in the following exhibit.\nFor each of the following statements, select Yes if the statement is true. Otherwise, select No.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T7-Q10",
+    "topic": 7,
+    "question": "You have an Azure subscription that contains the virtual networks shown in the following table.\nThe subscription contains the virtual machines shown in the following table.\nYou have a storage account named contoso2024 that contains the following resources:\n• A container named Container1 that contains a \u0000le named File1\n• A \u0000le share named Share1 that contains a \u0000le named File2\nYou create a private endpoint for contoso2024 as shown in the following exhibit.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T7-Q14",
+    "topic": 7,
+    "question": "Your company uses cloud-based resources from the following platforms:\n• Azure\n• Amazon Web Services (AWS)\n• Google Cloud Platform (GCP)\nYou plan to implement Microsoft Defender for Cloud.\nOn which platforms can you use Defender for Cloud to protect containers and storage? To answer, select the appropriate options in the answer\narea.\nNOTE: Each correct selection is worth one point.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T8-Q2",
+    "topic": 8,
+    "question": "Introductory Info\nThis is a case study. Case studies are not timed separately. You can use as much exam time as you would like to complete each case.\nHowever, there may be additional case studies and sections on this exam. You must manage your time to ensure that you are able to\ncomplete all questions included on this exam in the time provided.\nTo answer the questions included in a case study, you will need to reference information that is provided in the case study. Case studies might\ncontain exhibits and other resources that provide more information about the scenario that is described in the case study. Each question is\nindependent of the other questions in this case study.\nAt the end of this case study, a review screen will appear. This screen allows you to review your answers and to make changes before you\nmove to the next section of the exam. After you begin a new section, you cannot return to this section.\nTo start the case study -\nTo display the \u0000rst question in this case study, click the Next button. Use the buttons in the left pane to explore the content of the case study\nbefore you answer the questions. Clicking these buttons displays information such as business requirements, existing environment, and\nproblem statements. If the case study has an All Information tab, note that the information displayed is identical to the information displayed\non the subsequent tabs. When you are ready to answer a question, click the Question button to return to the question.\nOverview -\nLitware, Inc. is a digital media company that has 500 employees in the Chicago area and 20 employees in the San Francisco area.\nExisting Environment -\nLitware has an Azure subscription named Sub1 that has a subscription ID of 43894a43-17c2-4a39-8cfc-3540c2653ef4.\nSub1 is associated to an Azure Active Directory (Azure AD) tenant named litwareinc.com. The tenant contains the user objects and the device\nobjects of all the\nLitware employees and their devices. Each user is assigned an Azure AD Premium P2 license. Azure AD Privileged Identity Management (PIM)\nis activated.\nThe tenant contains the groups shown in the following table.\nThe Azure subscription contains the objects shown in the following table.\nAzure Security Center is set to the Standard tier.\nRequirements -\nPlanned Changes -",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T10-Q3",
+    "topic": 10,
+    "question": "Introductory Info\nThis is a case study. Case studies are not timed separately. You can use as much exam time as you would like to complete each case.\nHowever, there may be additional case studies and sections on this exam. You must manage your time to ensure that you are able to\ncomplete all questions included on this exam in the time provided.\nTo answer the questions included in a case study, you will need to reference information that is provided in the case study. Case studies might\ncontain exhibits and other resources that provide more information about the scenario that is described in the case study. Each question is\nindependent of the other questions in this case study.\nAt the end of this case study, a review screen will appear. This screen allows you to review your answers and to make changes before you\nmove to the next section of the exam. After you begin a new section, you cannot return to this section.\nTo start the case study -\nTo display the \u0000rst question in this case study, click the Next button. Use the buttons in the left pane to explore the content of the case study\nbefore you answer the questions. Clicking these buttons displays information such as business requirements, existing environment, and\nproblem statements. If the case study has an All Information tab, note that the information displayed is identical to the information displayed\non the subsequent tabs. When you are ready to answer a question, click the Question button to return to the question.\nGeneral Overview -\nFabrikam, Inc. is a consulting company that has a main o\u0000ce in Montreal and branch o\u0000ces in Seattle and New York. Fabrikam has IT , human\nresources (HR), and \u0000nance departments.\nExisting Environment -\nNetwork Environment -\nFabrikam has a Microsoft 365 subscription and an Azure subscription named subscription1.\nThe network contains an on-premises Active Directory domain named Fabrikam.com. The domain contains two organizational units (OUs)\nnamed OU1 and OU2.\nAzure AD Connect cloud sync syncs only OU1.\nThe Azure resources hierarchy is shown in the following exhibit.\nThe Azure Active Directory (Azure AD) tenant contains the users shown in the following table.",
+    "boxes": {
+      "1": {
+        "answer": "Admin3 only",
+        "explanation": "The Contributor role has the necessary write permissions to create the resource group."
+      },
+      "2": {
+        "answer": "Admin4 only",
+        "explanation": "You need Owner level access to be able to manage permissions. The Contributor role can do most things but cannot modify permissions on existing objects."
+      }
+    },
+    "count": 2
+  },
+  {
+    "id": "T11-Q3",
+    "topic": 11,
+    "question": "Introductory Info\nThis is a case study. Case studies are not timed separately. You can use as much exam time as you would like to complete each case.\nHowever, there may be additional case studies and sections on this exam. You must manage your time to ensure that you are able to\ncomplete all questions included on this exam in the time provided.\nTo answer the questions included in a case study, you will need to reference information that is provided in the case study. Case studies might\ncontain exhibits and other resources that provide more information about the scenario that is described in the case study. Each question is\nindependent of the other questions in this case study.\nAt the end of this case study, a review screen will appear. This screen allows you to review your answers and to make changes before you\nmove to the next section of the exam. After you begin a new section, you cannot return to this section.\nTo start the case study -\nTo display the \u0000rst question in this case study, click the Next button. Use the buttons in the left pane to explore the content of the case study\nbefore you answer the questions. Clicking these buttons displays information such as business requirements, existing environment, and\nproblem statements. If the case study has an All Information tab, note that the information displayed is identical to the information displayed\non the subsequent tabs. When you are ready to answer a question, click the Question button to return to the question.\nGeneral Overview -\nFabrikam, Inc. is a consulting company that has a main o\u0000ce in Montreal and branch o\u0000ces in Seattle and New York. Fabrikam has IT , human\nresources (HR), and \u0000nance departments.\nExisting Environment -\nNetwork Environment -\nFabrikam has a Microsoft 365 subscription and an Azure subscription named subscription1.\nThe network contains an on-premises Active Directory domain named Fabrikam.com. The domain contains two organizational units (OUs)\nnamed OU1 and OU2.\nAzure AD Connect cloud sync syncs only OU1.\nThe Azure resources hierarchy is shown in the following exhibit.\nThe Azure Active Directory (Azure AD) tenant contains the users shown in the following table.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T12-Q3",
+    "topic": 12,
+    "question": "Introductory Info\nThis is a case study. Case studies are not timed separately. You can use as much exam time as you would like to complete each case.\nHowever, there may be additional case studies and sections on this exam. You must manage your time to ensure that you are able to\ncomplete all questions included on this exam in the time provided.\nTo answer the questions included in a case study, you will need to reference information that is provided in the case study. Case studies might\ncontain exhibits and other resources that provide more information about the scenario that is described in the case study. Each question is\nindependent of the other questions in this case study.\nAt the end of this case study, a review screen will appear. This screen allows you to review your answers and to make changes before you\nmove to the next section of the exam. After you begin a new section, you cannot return to this section.\nTo start the case study -\nTo display the \u0000rst question in this case study, click the Next button. Use the buttons in the left pane to explore the content of the case study\nbefore you answer the questions. Clicking these buttons displays information such as business requirements, existing environment, and\nproblem statements. If the case study has an All Information tab, note that the information displayed is identical to the information displayed\non the subsequent tabs. When you are ready to answer a question, click the Question button to return to the question.\nOverview -\nLitware, Inc. is a digital media company that has 500 employees in the Chicago area and 20 employees in the San Francisco area.\nExisting Environment -\nLitware has an Azure subscription named Sub1 that has a subscription ID of 43894a43-17c2-4a39-8cfc-3540c2653ef4.\nSub1 is associated to an Azure Active Directory (Azure AD) tenant named litwareinc.com. The tenant contains the user objects and the device\nobjects of all the\nLitware employees and their devices. Each user is assigned an Azure AD Premium P2 license. Azure AD Privileged Identity Management (PIM)\nis activated.\nThe tenant contains the groups shown in the following table.\nThe Azure subscription contains the objects shown in the following table.\nIdentity and Access Requirements\nAzure Security Center is set to the Standard tier.\nRequirements -",
+    "boxes": {
+      "1": {
+        "answer": "DeployIfNotExists",
+        "explanation": "DeployIfNotExists executes a template deployment when the condition is met. Azure policy de\u0000nition Antimalware Incorrect Answers: Append: Append is used to add additional \u0000elds to the requested resource during creation or update. A common example is adding tags on resources such as costCenter or specifying allowed IPs for a storage resource. Deny: Deny is used to prevent a resource request that doesn't match de\u0000ned standards through a policy de\u0000nition and fails the request."
+      }
+    },
+    "count": 1
+  },
+  {
+    "id": "T13-Q1",
+    "topic": 13,
+    "question": "Introductory Info\nCase Study -\nThis is a case study. Case studies are not timed separately. You can use as much exam time as you would like to complete each case.\nHowever, there may be additional case studies and sections on this exam. You must manage your time to ensure that you are able to\ncomplete all questions included on this exam in the time provided.\nTo answer the questions included in a case study, you will need to reference information that is provided in the case study. Case studies might\ncontain exhibits and other resources that provide more information about the scenario that is described in the case study. Each question is\nindependent of the other questions in this case study.\nAt the end of this case study, a review screen will appear. This screen allows you to review your answers and to make changes before you\nmove to the next section of the exam. After you begin a new section, you cannot return to this section.\nTo start the case study -\nTo display the \u0000rst question in this case study, click the Next button. Use the buttons in the left pane to explore the content of the case study\nbefore you answer the questions. Clicking these buttons displays information such as business requirements, existing environment, and\nproblem statements. If the case study has an All Information tab, note that the information displayed is identical to the information displayed\non the subsequent tabs. When you are ready to answer a question, click the Question button to return to the question.\nOverview -\nContoso, Ltd. is a consulting company that has a main o\u0000ce in Montreal and two branch o\u0000ces in Seattle and New York.\nThe company hosts its entire server infrastructure in Azure.\nContoso has two Azure subscriptions named Sub1 and Sub2. Both subscriptions are associated to an Azure Active Directory (Azure AD) tenant\nnamed contoso.com.\nExisting Environment -\nAzure AD -\nContoso.com contains the users shown in the following table.\nContoso.com contains the security groups shown in the following table.\nSub1 -\nSub1 contains six resource groups named RG1, RG2, RG3, RG4, RG5, and RG6.\nUser9 creates the virtual networks shown in the following table.",
+    "boxes": {
+      "2": {
+        "answer": "Only User3",
+        "explanation": "Match \"*on\" is only true for London (User3) as 'London' is the only word that ends with 'on'. Scenario: Contoso.com contains the users shown in the following table. Contoso.com contains the security groups shown in the following table."
+      }
+    },
+    "count": 1
+  },
+  {
+    "id": "T13-Q2",
+    "topic": 13,
+    "question": "Introductory Info\nCase Study -\nThis is a case study. Case studies are not timed separately. You can use as much exam time as you would like to complete each case.\nHowever, there may be additional case studies and sections on this exam. You must manage your time to ensure that you are able to\ncomplete all questions included on this exam in the time provided.\nTo answer the questions included in a case study, you will need to reference information that is provided in the case study. Case studies might\ncontain exhibits and other resources that provide more information about the scenario that is described in the case study. Each question is\nindependent of the other questions in this case study.\nAt the end of this case study, a review screen will appear. This screen allows you to review your answers and to make changes before you\nmove to the next section of the exam. After you begin a new section, you cannot return to this section.\nTo start the case study -\nTo display the \u0000rst question in this case study, click the Next button. Use the buttons in the left pane to explore the content of the case study\nbefore you answer the questions. Clicking these buttons displays information such as business requirements, existing environment, and\nproblem statements. If the case study has an All Information tab, note that the information displayed is identical to the information displayed\non the subsequent tabs. When you are ready to answer a question, click the Question button to return to the question.\nOverview -\nContoso, Ltd. is a consulting company that has a main o\u0000ce in Montreal and two branch o\u0000ces in Seattle and New York.\nThe company hosts its entire server infrastructure in Azure.\nContoso has two Azure subscriptions named Sub1 and Sub2. Both subscriptions are associated to an Azure Active Directory (Azure AD) tenant\nnamed contoso.com.\nExisting Environment -\nAzure AD -\nContoso.com contains the users shown in the following table.\nContoso.com contains the security groups shown in the following table.\nSub1 -\nSub1 contains six resource groups named RG1, RG2, RG3, RG4, RG5, and RG6.\nUser9 creates the virtual networks shown in the following table.\nSub1 contains the locks shown in the following table.",
+    "boxes": {
+      "2": {
+        "answer": "Yes. VM3 is on Subnet12. There is no NSG attached to Subnet12 so the tra\u0000c will be allowed by default.",
+        "explanation": ""
+      }
+    },
+    "count": 1
+  },
+  {
+    "id": "T13-Q3",
+    "topic": 13,
+    "question": "Introductory Info\nCase Study -\nThis is a case study. Case studies are not timed separately. You can use as much exam time as you would like to complete each case.\nHowever, there may be additional case studies and sections on this exam. You must manage your time to ensure that you are able to\ncomplete all questions included on this exam in the time provided.\nTo answer the questions included in a case study, you will need to reference information that is provided in the case study. Case studies might\ncontain exhibits and other resources that provide more information about the scenario that is described in the case study. Each question is\nindependent of the other questions in this case study.\nAt the end of this case study, a review screen will appear. This screen allows you to review your answers and to make changes before you\nmove to the next section of the exam. After you begin a new section, you cannot return to this section.\nTo start the case study -\nTo display the \u0000rst question in this case study, click the Next button. Use the buttons in the left pane to explore the content of the case study\nbefore you answer the questions. Clicking these buttons displays information such as business requirements, existing environment, and\nproblem statements. If the case study has an All Information tab, note that the information displayed is identical to the information displayed\non the subsequent tabs. When you are ready to answer a question, click the Question button to return to the question.\nOverview -\nContoso, Ltd. is a consulting company that has a main o\u0000ce in Montreal and two branch o\u0000ces in Seattle and New York.\nThe company hosts its entire server infrastructure in Azure.\nContoso has two Azure subscriptions named Sub1 and Sub2. Both subscriptions are associated to an Azure Active Directory (Azure AD) tenant\nnamed contoso.com.\nExisting Environment -\nAzure AD -\nContoso.com contains the users shown in the following table.\nContoso.com contains the security groups shown in the following table.\nSub1 -\nSub1 contains six resource groups named RG1, RG2, RG3, RG4, RG5, and RG6.\nUser9 creates the virtual networks shown in the following table.\nSub1 contains the locks shown in the following table.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T13-Q5",
+    "topic": 13,
+    "question": "Introductory Info\nCase Study -\nThis is a case study. Case studies are not timed separately. You can use as much exam time as you would like to complete each case.\nHowever, there may be additional case studies and sections on this exam. You must manage your time to ensure that you are able to\ncomplete all questions included on this exam in the time provided.\nTo answer the questions included in a case study, you will need to reference information that is provided in the case study. Case studies might\ncontain exhibits and other resources that provide more information about the scenario that is described in the case study. Each question is\nindependent of the other questions in this case study.\nAt the end of this case study, a review screen will appear. This screen allows you to review your answers and to make changes before you\nmove to the next section of the exam. After you begin a new section, you cannot return to this section.\nTo start the case study -\nTo display the \u0000rst question in this case study, click the Next button. Use the buttons in the left pane to explore the content of the case study\nbefore you answer the questions. Clicking these buttons displays information such as business requirements, existing environment, and\nproblem statements. If the case study has an All Information tab, note that the information displayed is identical to the information displayed\non the subsequent tabs. When you are ready to answer a question, click the Question button to return to the question.\nOverview -\nContoso, Ltd. is a consulting company that has a main o\u0000ce in Montreal and two branch o\u0000ces in Seattle and New York.\nThe company hosts its entire server infrastructure in Azure.\nContoso has two Azure subscriptions named Sub1 and Sub2. Both subscriptions are associated to an Azure Active Directory (Azure AD) tenant\nnamed contoso.com.\nExisting Environment -\nAzure AD -\nContoso.com contains the users shown in the following table.\nContoso.com contains the security groups shown in the following table.\nSub1 -\nSub1 contains six resource groups named RG1, RG2, RG3, RG4, RG5, and RG6.\nUser9 creates the virtual networks shown in the following table.\nSub1 contains the locks shown in the following table.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T14-Q1",
+    "topic": 14,
+    "question": "Introductory Info\nThis is a case study. Case studies are not timed separately. You can use as much exam time as you would like to complete each case.\nHowever, there may be additional case studies and sections on this exam. You must manage your time to ensure that you are able to\ncomplete all questions included on this exam in the time provided.\nTo answer the questions included in a case study, you will need to reference information that is provided in the case study. Case studies might\ncontain exhibits and other resources that provide more information about the scenario that is described in the case study. Each question is\nindependent of the other questions in this case study.\nAt the end of this case study, a review screen will appear. This screen allows you to review your answers and to make changes before you\nmove to the next section of the exam. After you begin a new section, you cannot return to this section.\nTo start the case study -\nTo display the \u0000rst question in this case study, click the Next button. Use the buttons in the left pane to explore the content of the case study\nbefore you answer the questions. Clicking these buttons displays information such as business requirements, existing environment, and\nproblem statements. If the case study has an All Information tab, note that the information displayed is identical to the information displayed\non the subsequent tabs. When you are ready to answer a question, click the Question button to return to the question.\nGeneral Overview -\nFabrikam, Inc. is a consulting company that has a main o\u0000ce in Montreal and branch o\u0000ces in Seattle and New York. Fabrikam has IT , human\nresources (HR), and \u0000nance departments.\nExisting Environment -\nNetwork Environment -\nFabrikam has a Microsoft 365 subscription and an Azure subscription named subscription1.\nThe network contains an on-premises Active Directory domain named Fabrikam.com. The domain contains two organizational units (OUs)\nnamed OU1 and OU2.\nAzure AD Connect cloud sync syncs only OU1.\nThe Azure resources hierarchy is shown in the following exhibit.\nThe Azure Active Directory (Azure AD) tenant contains the users shown in the following table.",
+    "boxes": {},
+    "count": 0
+  },
+  {
+    "id": "T15-Q1",
+    "topic": 15,
+    "question": "Introductory Info\nCase Study -\nThis is a case study. Case studies are not timed separately. You can use as much exam time as you would like to complete each case.\nHowever, there may be additional case studies and sections on this exam. You must manage your time to ensure that you are able to\ncomplete all questions included on this exam in the time provided.\nTo answer the questions included in a case study, you will need to reference information that is provided in the case study. Case studies might\ncontain exhibits and other resources that provide more information about the scenario that is described in the case study. Each question is\nindependent of the other questions in this case study.\nAt the end of this case study, a review screen will appear. This screen allows you to review your answers and to make changes before you\nmove to the next section of the exam. After you begin a new section, you cannot return to this section.\nTo start the case study -\nTo display the \u0000rst question in this case study, click the Next button. Use the buttons in the left pane to explore the content of the case study\nbefore you answer the questions. Clicking these buttons displays information such as business requirements, existing environment, and\nproblem statements. If the case study has an All Information tab, note that the information displayed is identical to the information displayed\non the subsequent tabs. When you are ready to answer a question, click the Question button to return to the question.\nOverview -\nContoso, Ltd. is a consulting company that has a main o\u0000ce in Montreal and two branch o\u0000ces in Seattle and New York.\nThe company hosts its entire server infrastructure in Azure.\nContoso has two Azure subscriptions named Sub1 and Sub2. Both subscriptions are associated to an Azure Active Directory (Azure AD) tenant\nnamed contoso.com.\nExisting Environment -\nAzure AD -\nContoso.com contains the users shown in the following table.\nContoso.com contains the security groups shown in the following table.\nSub1 -\nSub1 contains six resource groups named RG1, RG2, RG3, RG4, RG5, and RG6.\nUser9 creates the virtual networks shown in the following table.",
+    "boxes": {
+      "1": {
+        "answer": "RG6 only",
+        "explanation": "The policy does not allow the creation of virtual networks/subnets in RG5. Only NSGs can be created in RG4."
+      },
+      "2": {
+        "answer": "The policy does not allow the creation of NSGs in RG5.",
+        "explanation": ""
+      }
+    },
+    "count": 2
+  },
+  {
+    "id": "T15-Q2",
+    "topic": 15,
+    "question": "Introductory Info\nCase Study -\nThis is a case study. Case studies are not timed separately. You can use as much exam time as you would like to complete each case.\nHowever, there may be additional case studies and sections on this exam. You must manage your time to ensure that you are able to\ncomplete all questions included on this exam in the time provided.\nTo answer the questions included in a case study, you will need to reference information that is provided in the case study. Case studies might\ncontain exhibits and other resources that provide more information about the scenario that is described in the case study. Each question is\nindependent of the other questions in this case study.\nAt the end of this case study, a review screen will appear. This screen allows you to review your answers and to make changes before you\nmove to the next section of the exam. After you begin a new section, you cannot return to this section.\nTo start the case study -\nTo display the \u0000rst question in this case study, click the Next button. Use the buttons in the left pane to explore the content of the case study\nbefore you answer the questions. Clicking these buttons displays information such as business requirements, existing environment, and\nproblem statements. If the case study has an All Information tab, note that the information displayed is identical to the information displayed\non the subsequent tabs. When you are ready to answer a question, click the Question button to return to the question.\nOverview -\nContoso, Ltd. is a consulting company that has a main o\u0000ce in Montreal and two branch o\u0000ces in Seattle and New York.\nThe company hosts its entire server infrastructure in Azure.\nContoso has two Azure subscriptions named Sub1 and Sub2. Both subscriptions are associated to an Azure Active Directory (Azure AD) tenant\nnamed contoso.com.\nExisting Environment -\nAzure AD -\nContoso.com contains the users shown in the following table.\nContoso.com contains the security groups shown in the following table.\nSub1 -\nSub1 contains six resource groups named RG1, RG2, RG3, RG4, RG5, and RG6.\nUser9 creates the virtual networks shown in the following table.\nSub1 contains the locks shown in the following table.",
+    "boxes": {
+      "1": {
+        "answer": "VNET4 and VNET1 only",
+        "explanation": "RG1 has only Delete lock, while there are no locks on RG4. RG2 and RG3 both have Read-only locks."
+      },
+      "2": {
+        "answer": "VNET4 only",
+        "explanation": "There are no locks on RG4, while the other resource groups have either Delete or Read-only locks."
+      }
+    },
+    "count": 2
+  },
+  {
+    "id": "T18-Q2",
+    "topic": 18,
+    "question": "Introductory Info\nThis is a case study. Case studies are not timed separately. You can use as much exam time as you would like to complete each case.\nHowever, there may be additional case studies and sections on this exam. You must manage your time to ensure that you are able to\ncomplete all questions included on this exam in the time provided.\nTo answer the questions included in a case study, you will need to reference information that is provided in the case study. Case studies might\ncontain exhibits and other resources that provide more information about the scenario that is described in the case study. Each question is\nindependent of the other questions in this case study.\nAt the end of this case study, a review screen will appear. This screen allows you to review your answers and to make changes before you\nmove to the next section of the exam. After you begin a new section, you cannot return to this section.\nTo start the case study -\nTo display the \u0000rst question in this case study, click the Next button. Use the buttons in the left pane to explore the content of the case study\nbefore you answer the questions. Clicking these buttons displays information such as business requirements, existing environment, and\nproblem statements. If the case study has an All Information tab, note that the information displayed is identical to the information displayed\non the subsequent tabs. When you are ready to answer a question, click the Question button to return to the question.\nOverview -\nLitware, Inc. is a digital media company that has 500 employees in the Chicago area and 20 employees in the San Francisco area.\nExisting Environment -\nLitware has an Azure subscription named Sub1 that has a subscription ID of 43894a43-17c2-4a39-8cfc-3540c2653ef4.\nSub1 is associated to an Azure Active Directory (Azure AD) tenant named litwareinc.com. The tenant contains the user objects and the device\nobjects of all the\nLitware employees and their devices. Each user is assigned an Azure AD Premium P2 license. Azure AD Privileged Identity Management (PIM)\nis activated.\nThe tenant contains the groups shown in the following table.\nThe Azure subscription contains the objects shown in the following table.\nAzure Security Center is set to the Standard tier.\nRequirements -\nPlanned Changes -",
+    "boxes": {},
+    "count": 0
+  }
+]
