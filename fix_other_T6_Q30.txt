@@ -1,0 +1,13 @@
+You have an on-premises network.
+You have an Azure subscription that contains the resources shown in the following table.
+You plan to deploy a Site-to-Site (S2S) VPN between the on-premises network and VNet1.
+You need to recommend an Azure VPN Gateway SKU that meets the following requirements:
+• Supports 1-Gbps throughput
+• Minimizes costs
+What should you recommend?
+A. VpnGw1
+B. VpnGw2
+C. VpnGw1AZ
+D. VpnGw2AZ
+Correct Answer:
+B

@@ -23,6 +23,7 @@ export function useQuizStore() {
   const [queue, setQueue] = useState<Question[]>([])
   const [current, setCurrent] = useState<Question | null>(null)
   const [selected, setSelected] = useState<number | null>(null)
+  const [selectedMulti, setSelectedMulti] = useState<Set<number>>(new Set())
   const [confirmed, setConfirmed] = useState(false)
   const [totalAnswered, setTotalAnswered] = useState(0)
   const [totalCorrect, setTotalCorrect] = useState(0)
@@ -98,6 +99,7 @@ export function useQuizStore() {
     setQueue(limited)
     setCurrent(limited[0] ?? null)
     setSelected(null)
+    setSelectedMulti(new Set())
     setConfirmed(false)
     setSessionCorrect(0)
     setSessionAnswered(0)
@@ -114,6 +116,7 @@ export function useQuizStore() {
     setReviewQueue(sorted)
     setCurrent(sorted[0] ?? null)
     setSelected(null)
+    setSelectedMulti(new Set())
     setConfirmed(false)
     setReviewAnswered(0)
     setMode('review')
@@ -134,27 +137,74 @@ export function useQuizStore() {
     } else {
       setCurrent(reviewQueue[idx + 1])
       setSelected(null)
+      setSelectedMulti(new Set())
       setConfirmed(false)
     }
   }, [current, reviewQueue])
 
   const answer = useCallback((optIndex: number) => {
     if (confirmed) return
-    setSelected(optIndex)
-    setConfirmed(true)
-    const correct = current!.answer === optIndex
-    const nextAnswered = totalAnswered + 1
-    const nextCorrect = correct ? totalCorrect + 1 : totalCorrect
-    const nextWrong = new Set(wrongIds)
-    if (correct) {
-      nextWrong.delete(current!.id)
+    const q = current!
+    const isMulti = q.isMulti
+
+    if (isMulti) {
+      // Toggle multi-select
+      const next = new Set(selectedMulti)
+      if (next.has(optIndex)) {
+        next.delete(optIndex)
+      } else {
+        next.add(optIndex)
+      }
+      setSelectedMulti(next)
+      setSelected(null)  // single selection unused for multi
     } else {
-      nextWrong.add(current!.id)
+      setSelected(optIndex)
+      setConfirmed(true)
+      // Check single-select answer
+      const correct = q.answer === optIndex
+      const nextAnswered = totalAnswered + 1
+      const nextCorrect = correct ? totalCorrect + 1 : totalCorrect
+      const nextWrong = new Set(wrongIds)
+      if (correct) {
+        nextWrong.delete(q.id)
+      } else {
+        nextWrong.add(q.id)
+      }
+      setTotalAnswered(nextAnswered)
+      setTotalCorrect(nextCorrect)
+      setSessionAnswered(a => a + 1)
+      setSessionCorrect(c => c + (correct ? 1 : 0))
+      setWrongIds(nextWrong)
+      saveCloudData({
+        exam: examType,
+        wrongIds: [...nextWrong],
+        totalAnswered: nextAnswered,
+        totalCorrect: nextCorrect,
+        lastUpdated: Date.now(),
+      })
+    }
+  }, [confirmed, current, wrongIds, totalAnswered, totalCorrect, examType, selectedMulti])
+
+  const confirmMulti = useCallback(() => {
+    if (confirmed || !current?.isMulti) return
+    setConfirmed(true)
+    const correctLetters = (current.answer as string).split(',')
+    const correctIndices = new Set(correctLetters.map(l => l.charCodeAt(0) - 65))
+    const isCorrect =
+      selectedMulti.size === correctIndices.size &&
+      [...selectedMulti].every(i => correctIndices.has(i))
+    const nextAnswered = totalAnswered + 1
+    const nextCorrect = isCorrect ? totalCorrect + 1 : totalCorrect
+    const nextWrong = new Set(wrongIds)
+    if (isCorrect) {
+      nextWrong.delete(current.id)
+    } else {
+      nextWrong.add(current.id)
     }
     setTotalAnswered(nextAnswered)
     setTotalCorrect(nextCorrect)
     setSessionAnswered(a => a + 1)
-    setSessionCorrect(c => c + (correct ? 1 : 0))
+    setSessionCorrect(c => c + (isCorrect ? 1 : 0))
     setWrongIds(nextWrong)
     saveCloudData({
       exam: examType,
@@ -163,7 +213,7 @@ export function useQuizStore() {
       totalCorrect: nextCorrect,
       lastUpdated: Date.now(),
     })
-  }, [confirmed, current, wrongIds, totalAnswered, totalCorrect, examType])
+  }, [confirmed, current, wrongIds, totalAnswered, totalCorrect, examType, selectedMulti])
 
   const next = useCallback(() => {
     const idx = queue.indexOf(current!)
@@ -172,6 +222,7 @@ export function useQuizStore() {
     } else {
       setCurrent(queue[idx + 1])
       setSelected(null)
+      setSelectedMulti(new Set())
       setConfirmed(false)
     }
   }, [current, queue])
@@ -193,6 +244,7 @@ export function useQuizStore() {
   return {
     mode, loadState,
     current, selected, confirmed,
+    selectedMulti, setSelectedMulti,
     totalAnswered, totalCorrect,
     sessionCorrect, sessionAnswered,
     sessionGoal, setSessionGoal,
@@ -205,5 +257,6 @@ export function useQuizStore() {
     examType, setExamType,
     selectedDomains, setSelectedDomains,
     questions: getQuestions(examType),
+    confirmMulti,
   }
 }

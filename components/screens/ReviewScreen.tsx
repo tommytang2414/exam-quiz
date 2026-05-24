@@ -8,16 +8,29 @@ export function ReviewScreen({ store }: Props) {
   const { current, selected, confirmed, reviewNext, reviewQueue, goHome } = store
   const idx = reviewQueue.indexOf(current!)
   const total = reviewQueue.length
-  const letters = ['A', 'B', 'C', 'D']
+  const letters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
   const [shake, setShake] = useState(false)
 
+  const isMulti = current!.isMulti
+  const answer = current!.answer
+
   useEffect(() => {
-    if (confirmed && selected !== current!.answer) {
+    if (confirmed && !isMulti && selected !== null && answer !== selected) {
       setShake(true)
       const t = setTimeout(() => setShake(false), 500)
       return () => clearTimeout(t)
     }
-  }, [confirmed, selected, current])
+  }, [confirmed, isMulti, selected, answer])
+
+  const isCorrectOpt = (i: number) => {
+    if (isMulti) {
+      const correctLetters = (answer as string).split(',')
+      return correctLetters.includes(letters[i])
+    }
+    return answer === i
+  }
+
+  const isSelected = (i: number) => selected === i
 
   return (
     <main className="min-h-dvh flex flex-col p-6 gap-4">
@@ -46,18 +59,21 @@ export function ReviewScreen({ store }: Props) {
             <span className="domain-badge" style={{ color: '#fbbf24', background: 'rgba(245, 158, 11, 0.12)', borderColor: 'rgba(245, 158, 11, 0.25)' }}>T{current!.topic}</span>
           )}
           <p className="question-text">{current!.text}</p>
+          {isMulti && (
+            <p className="text-amber-400 text-xs mt-2">Multi-select: choose all that apply</p>
+          )}
         </div>
 
         <div className="options-list">
           {current!.options.map((opt, i) => {
-            const isCorrectOpt = i === current!.answer
-            const isSelected = selected === i
+            const correct = isCorrectOpt(i)
+            const sel = isSelected(i)
             let cls = 'option-btn'
             if (confirmed) {
-              if (isCorrectOpt) cls += ' option-correct'
-              else if (isSelected) cls += ' option-wrong'
+              if (correct) cls += ' option-correct'
+              else if (sel) cls += ' option-wrong'
               else cls += ' option-dim'
-            } else if (isSelected) {
+            } else if (sel) {
               cls += ' option-selected'
             }
             return (
@@ -65,7 +81,7 @@ export function ReviewScreen({ store }: Props) {
                 key={i}
                 onClick={() => store.reviewAnswer(i)}
                 disabled={confirmed}
-                className={`${cls} ${shake && isSelected ? 'option-shake' : ''}`}
+                className={`${cls} ${shake && sel ? 'option-shake' : ''}`}
               >
                 <span className="option-letter">{letters[i]}</span>
                 <span className="option-text">{opt}</span>
@@ -75,9 +91,14 @@ export function ReviewScreen({ store }: Props) {
         </div>
 
         {confirmed && (
-          <div className={`exp-box ${selected === current!.answer ? 'exp-correct' : 'exp-wrong'}`}>
+          <div className={`exp-box ${(!isMulti && selected === answer) || (isMulti && current!.options.map((_, i) => isCorrectOpt(i)).every(c => c)) ? 'exp-correct' : 'exp-wrong'}`}>
             <p className="exp-label">
-              {selected === current!.answer ? '&#10003; You got it!' : `&#10007; Answer: ${letters[current!.answer]}`}
+              {isMulti
+                ? `&#10007; Answer: ${answer}`
+                : selected === answer
+                  ? '&#10003; You got it!'
+                  : `&#10007; Answer: ${typeof answer === 'number' && (answer as number) in letters ? letters[answer as number] : String(answer)}`
+              }
             </p>
             {current!.explanation && (
               <p className="exp-text">{current!.explanation}</p>

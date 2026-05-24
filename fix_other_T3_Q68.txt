@@ -1,0 +1,14 @@
+You are testing an Azure Kubernetes Service (AKS) cluster. The cluster is congured as shown in the exhibit. (Click the Exhibit tab.)
+You plan to deploy the cluster to production. You disable HTTP application routing.
+You need to implement application routing that will provide reverse proxy and TLS termination for AKS services by using a single IP address.
+What should you do?
+A. Create an AKS Ingress controller.
+B. Create an Azure Standard Load Balancer.
+C. Install the container network interface (CNI) plug-in.
+D. Create an Azure Basic Load Balancer.
+Correct Answer:
+A
+Community vote distribution
+
+
+A (100%)

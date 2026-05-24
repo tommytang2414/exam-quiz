@@ -1,0 +1,74 @@
+AZ-500 Data Quality Report
+==================================================
+Total question blocks: 506
+MCQ parsed: 247
+Skipped: 259
+
+Skipped breakdown:
+  DRAG_DROP: 39
+  HOTSPOT: 152
+  NO_CORRECT_ANSWER: 24
+  SIMULATION: 44
+
+Fixable (need manual review):
+  T1-Q21 [NO_CORRECT_ANSWER]: Topic 1Question #21
+Your company has an Azure subscription that includes two virtual machines, named
+  T1-Q27 [NO_CORRECT_ANSWER]: Topic 1Question #27
+You want to gather logs from a large number of Windows Server 2016 computers usi
+  T1-Q32 [NO_CORRECT_ANSWER]: Topic 1Question #32
+Your company uses Azure DevOps with branch policies congured.
+Which of the follo
+  T1-Q42 [NO_CORRECT_ANSWER]: Topic 1Question #42
+You have been tasked with creating an Azure key vault using PowerShell. You have
+  T2-Q14 [NO_CORRECT_ANSWER]: Topic 2Question #14
+You have an Azure subscription.
+You create an Azure web app named Contoso1812 th
+  T2-Q17 [NO_CORRECT_ANSWER]: Topic 2Question #17
+Your network contains an Active Directory forest named contoso.com. You have an 
+  T2-Q34 [NO_CORRECT_ANSWER]: Topic 2Question #34
+You have an Azure subscription.
+You congure the subscription to use a different 
+  T2-Q40 [NO_CORRECT_ANSWER]: Topic 2Question #40
+You have an Azure Active Directory (Azure AD) tenant.
+You have the deleted objec
+  T2-Q42 [NO_CORRECT_ANSWER]: Topic 2Question #42
+You have an Azure Active Directory (Azure AD) tenant named contoso.com that cont
+  T2-Q61 [NO_CORRECT_ANSWER]: Topic 2Question #61
+You have an Azure subscription that contains the resources shown in the followin
+  T2-Q98 [NO_CORRECT_ANSWER]: Topic 2Question #98
+You have an Azure subscription that contains a web app named App1.
+Users must be
+  T2-Q107 [NO_CORRECT_ANSWER]: Topic 2Question #107
+You have an Azure subscription linked to an Azure AD tenant named contoso.com. 
+  T3-Q1 [NO_CORRECT_ANSWER]: Topic 3Question #1
+You have an Azure subscription that contains a user named User1 and an Azure Cont
+  T3-Q36 [NO_CORRECT_ANSWER]: Topic 3Question #36
+You have an Azure Container Registry named Registry1.
+From Azure Security Center
+  T4-Q21 [NO_CORRECT_ANSWER]: Topic 4Question #21
+You have an Azure subscription that contains 100 virtual machines and has Azure 
+  T4-Q31 [NO_CORRECT_ANSWER]: Topic 4Question #31
+You are collecting events from Azure virtual machines to an Azure Log Analytics 
+  T4-Q38 [NO_CORRECT_ANSWER]: Topic 4Question #38
+You create a new Azure subscription.
+You need to ensure that you can create cust
+  T4-Q78 [NO_CORRECT_ANSWER]: Topic 4Question #78
+You have an Azure Sentinel workspace.
+You need to create a playbook.
+Which two t
+  T4-Q125 [NO_CORRECT_ANSWER]: Topic 4Question #125
+You have an Azure subscription that contains an Azure key vault.
+You create a s
+  T5-Q20 [NO_CORRECT_ANSWER]: Topic 5Question #20
+You have an Azure SQL database.
+You implement Always Encrypted.
+You need to ensu
+  T5-Q45 [NO_CORRECT_ANSWER]: Topic 5Question #45
+You have an Azure subscription that contains as Azure key vault and an Azure Sto
+  T5-Q60 [NO_CORRECT_ANSWER]: Topic 5Question #60
+You have an Azure subscription that contains an Azure key vault named Vault1 and
+  T6-Q19 [NO_CORRECT_ANSWER]: Topic 6Question #19
+You have an Azure subscription that contains a virtual network named VNet1. VNet
+  T18-Q1 [NO_CORRECT_ANSWER]: Topic 18Question #1
+Introductory Info
+This is a case study. Case studies are not timed separately. Y

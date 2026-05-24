@@ -1,19 +1,18 @@
 import { questions as ccspQuestions } from './ccsp'
-import type { Question as CCSPQuestion } from './ccsp'
 import { questions as cisspQuestions } from './cissp'
 import { questions as az500Questions } from './az500'
-import type { Question as AZ500Question } from './az500'
 
 export type ExamType = 'CCSP' | 'CISSP' | 'AZ500'
 
-// Unified question type — both CCSP (domain) and AZ500 (topic) supported
+// Unified question type for all exam types
 export interface Question {
   id: number
   topic?: number  // CCSP = domain (1-6), AZ500 = topic (1-18)
   text: string
   options: string[]
-  answer: number
+  answer: number | string
   explanation?: string
+  isMulti?: boolean  // true = multi-select, answer is comma-separated letters
 }
 
 const QUESTION_BANKS = {
