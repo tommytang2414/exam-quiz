@@ -45,8 +45,8 @@ export function QuizScreen({ store }: Props) {
       {/* Question card */}
       <div className="flex-1 flex flex-col px-4 gap-5">
         <div className="question-card">
-          {current!.domain && (
-            <span className="domain-badge">D{current!.domain}</span>
+          {current!.topic !== undefined && (
+            <span className="domain-badge">T{current!.topic}</span>
           )}
           <h2 className="question-text">{current!.text}</h2>
         </div>

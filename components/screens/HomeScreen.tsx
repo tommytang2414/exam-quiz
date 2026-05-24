@@ -1,9 +1,21 @@
 'use client'
 
 import { ProgressRing } from '@/components/ProgressRing'
-import { SESSION_GOALS, CCSP_DOMAINS, getGreeting } from '@/lib/utils'
+import { SESSION_GOALS, getGreeting } from '@/lib/utils'
+import { CCSP_DOMAINS, AZ500_TOPICS } from '@/lib/questions'
 
 type Props = { store: ReturnType<typeof import('@/lib/quiz-store').useQuizStore> }
+
+const EXAM_LABELS: Record<string, string> = {
+  CCSP: 'CCSP',
+  CISSP: 'CISSP',
+  AZ500: 'AZ-500',
+}
+
+const TOPIC_LISTS: Record<string, { id: number; name: string }[]> = {
+  CCSP: CCSP_DOMAINS as unknown as { id: number; name: string }[],
+  AZ500: AZ500_TOPICS as unknown as { id: number; name: string }[],
+}
 
 export function HomeScreen({ store }: Props) {
   const { wrongCount, totalAnswered, totalCorrect, sessionGoal, setSessionGoal,
@@ -15,6 +27,8 @@ export function HomeScreen({ store }: Props) {
   const pct = done > 0 ? Math.round((totalCorrect / done) * 100) : 0
   const goalLabel = sessionGoal === 0 ? 'All' : `${sessionGoal}`
 
+  const topicList = TOPIC_LISTS[examType] ?? []
+
   return (
     <main className="min-h-dvh flex flex-col items-center justify-center p-6 gap-6">
       {/* Header */}
@@ -22,16 +36,17 @@ export function HomeScreen({ store }: Props) {
         <div>
           <p className="text-slate-400 text-sm font-medium">{getGreeting()}</p>
           <div className="flex items-center gap-2 mt-1">
-            <span className="text-slate-500 text-xs">{examType} Exam</span>
+            <span className="text-slate-500 text-xs">{EXAM_LABELS[examType]}</span>
             <select
               value={examType}
               onChange={e => {
-                const exam = e.target.value as 'CCSP' | 'CISSP'
+                const exam = e.target.value as 'CCSP' | 'CISSP' | 'AZ500'
                 setExamType(exam)
                 localStorage.setItem('ccsp-exam', exam)
               }}
               className="exam-select"
             >
+              <option value="AZ500">AZ-500</option>
               <option value="CCSP">CCSP</option>
               <option value="CISSP" disabled>CISSP (soon)</option>
             </select>
@@ -80,11 +95,11 @@ export function HomeScreen({ store }: Props) {
         </div>
       </div>
 
-      {/* Domain filter */}
+      {/* Topic/Domain filter */}
       <div className="flex flex-col items-center gap-2">
-        <p className="text-slate-500 text-xs">Filter by domain</p>
-        <div className="flex gap-1.5 flex-wrap justify-center">
-          {CCSP_DOMAINS.map(d => {
+        <p className="text-slate-500 text-xs">Filter by {examType === 'AZ500' ? 'Topic' : 'Domain'}</p>
+        <div className="flex gap-1.5 flex-wrap justify-center max-w-sm">
+          {topicList.map(d => {
             const active = selectedDomains.includes(d.id)
             return (
               <button
@@ -99,7 +114,7 @@ export function HomeScreen({ store }: Props) {
                 className={`domain-chip ${active ? 'active' : ''}`}
                 title={d.name}
               >
-                D{d.id}
+                {examType === 'AZ500' ? `T${d.id}` : `D${d.id}`}
               </button>
             )
           })}

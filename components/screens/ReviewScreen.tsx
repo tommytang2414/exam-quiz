@@ -42,8 +42,8 @@ export function ReviewScreen({ store }: Props) {
       {/* Question */}
       <div className="flex-1 flex flex-col gap-4 max-w-sm mx-auto w-full">
         <div className="question-card">
-          {current!.domain && (
-            <span className="domain-badge" style={{ color: '#fbbf24', background: 'rgba(245, 158, 11, 0.12)', borderColor: 'rgba(245, 158, 11, 0.25)' }}>D{current!.domain}</span>
+          {current!.topic !== undefined && (
+            <span className="domain-badge" style={{ color: '#fbbf24', background: 'rgba(245, 158, 11, 0.12)', borderColor: 'rgba(245, 158, 11, 0.25)' }}>T{current!.topic}</span>
           )}
           <p className="question-text">{current!.text}</p>
         </div>

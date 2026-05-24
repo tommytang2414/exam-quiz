@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
-import { getQuestions, DEFAULT_EXAM, type ExamType, type Question } from './questions'
+import { getQuestions, DEFAULT_EXAM, type ExamType, type Question, AZ500_TOPICS, CCSP_DOMAINS } from './questions'
 import { fetchCloudData, saveCloudData, register, getToken, logout, getSavedExam } from './cloud-sync'
 
 type QuizMode = 'login' | 'home' | 'quiz' | 'done' | 'review' | 'select-exam'
@@ -36,7 +36,6 @@ export function useQuizStore() {
   const [examType, setExamType] = useState<ExamType>(DEFAULT_EXAM)
   const [selectedDomains, setSelectedDomains] = useState<number[]>([])
 
-  // Check existing token on mount
   useEffect(() => {
     const token = getToken()
     const savedExam = getSavedExam() as ExamType
@@ -89,7 +88,7 @@ export function useQuizStore() {
   const startQuiz = useCallback((wrongOnly = false) => {
     const allQuestions = getQuestions(examType)
     const filtered = selectedDomains.length > 0
-      ? allQuestions.filter(q => selectedDomains.includes(q.domain ?? 0))
+      ? allQuestions.filter(q => selectedDomains.includes(q.topic ?? 0))
       : allQuestions
     const src = wrongOnly && wrongIds.size > 0
       ? filtered.filter(q => wrongIds.has(q.id))
@@ -108,7 +107,7 @@ export function useQuizStore() {
   const goReview = useCallback(() => {
     const allQuestions = getQuestions(examType)
     const filtered = selectedDomains.length > 0
-      ? allQuestions.filter(q => selectedDomains.includes(q.domain ?? 0))
+      ? allQuestions.filter(q => selectedDomains.includes(q.topic ?? 0))
       : allQuestions
     const wrongQs = filtered.filter(q => wrongIds.has(q.id))
     const sorted = wrongQs.sort((a, b) => a.id - b.id)
