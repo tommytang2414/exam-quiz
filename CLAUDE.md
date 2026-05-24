@@ -151,7 +151,31 @@ Textbank uses SINGLE-SPACE separation (no pipe `|`). Parsed by matching first 80
 
 ## Changelog
 
-### 2026-04-05 — Admin Panel Enhanced + Email Auth
+### 2026-05-25 — HOTSPOT + DRAG DROP Question Types
+
+**New question types onboarded from AZ-500 PDF:**
+- **HOTSPOT**: 31 questions — Yes/No box UI with purple/violet accent
+  - Each question has 1-3 boxes; user selects Yes or No per box
+  - Box descriptions pulled from PDF explanation text
+  - 10 yesno-type, 13 text-type (User3 only, DeployIfNotExists, etc.)
+  - **121 HOTSPOT skipped**: answers embedded in PDF images (graphs, screenshots, exhibit tabs)
+- **DRAG DROP (order)**: 4 questions — numbered ordering UI with cyan accent
+  - Users input step positions (1, 2, 3) for each answer item
+  - 35 DRAG DROP skipped: select-type questions with no parseable answers in PDF
+
+**Files added:**
+- `lib/questions/types.ts` — `HotspotQuestion`, `DragDropQuestion` interfaces
+- `lib/questions/az500_extra.ts` — parsed HOTSPOT + DRAG DROP data
+- `components/screens/HotspotScreen.tsx` — Yes/No box component
+- `components/screens/DragDropScreen.tsx` — numbered ordering component
+
+**Home screen**: shows HOTSPOT and DRAG DROP buttons when AZ-500 selected.
+
+**Why 155 of 191 HOTSPOT/DRAG DROP couldn't be parsed:** The PDF uses exhibit/graph images for answer key visualization — the correct answers are embedded in screenshots, NOT in extractable text. HOTSPOT questions that reference "(Click the Exhibit tab)" have no text answer in the PDF.
+
+**Deploy**: `npx vercel --prod` ✓ | commit `c9363aa`
+
+### 2026-05-24 — AZ-500 MCQ Full Onboard (2nd deploy)
 
 **Admin Panel (https://ccsp-quiz.vercel.app/admin):**
 - Stats tab: Shows users, codes generated, codes used, unused per exam
